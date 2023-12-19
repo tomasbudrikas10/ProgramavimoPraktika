@@ -1,0 +1,19 @@
+.vbox {
+    -fx-alignment: center;
+    -fx-background-color: lightblue;
+    -fx-spacing: 20;
+}
+.button {
+    -fx-font-family: Arial;
+    -fx-font-size: 20;
+    -fx-padding: 10;
+    -fx-background-color: lightgray;
+    -fx-border-color: blue;
+    -fx-min-width: 200;
+}
+.button:hover {
+    -fx-background-color: gray;
+}
+.button:pressed {
+    -fx-background-color: whitesmoke;
+}
