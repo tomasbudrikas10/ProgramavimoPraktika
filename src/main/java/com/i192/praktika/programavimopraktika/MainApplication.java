@@ -18,6 +18,7 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setTitle("Main Menu");
+
     }
 
     public static void main(String[] args) {
