@@ -8,6 +8,6 @@ public class CharacterSelect {
 
 
     public void charactersSelectedAction() throws IOException {
-        SceneManager.getInstance().setScene("game");
+//        SceneManager.getInstance().setScene();
     }
 }

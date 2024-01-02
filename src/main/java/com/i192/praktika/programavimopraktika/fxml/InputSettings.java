@@ -2,6 +2,7 @@ package com.i192.praktika.programavimopraktika.fxml;
 
 
 import com.i192.praktika.programavimopraktika.SceneManager;
+import com.i192.praktika.programavimopraktika.Scenes;
 import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import com.i192.praktika.programavimopraktika.controller.ControllerMapingsReadWriter;
 import com.i192.praktika.programavimopraktika.controller.Input;
@@ -28,7 +29,7 @@ public class InputSettings {
     }
 
     public void doneAction() throws IOException {
-        SceneManager.getInstance().setScene("main menu");
+        SceneManager.getInstance().setScene(Scenes.MAIN_MENU);
     }
 
     public void ControllerSetupLoop(){

@@ -1,6 +1,7 @@
 package com.i192.praktika.programavimopraktika.fxml;
 
 import com.i192.praktika.programavimopraktika.SceneManager;
+import com.i192.praktika.programavimopraktika.Scenes;
 import com.i192.praktika.programavimopraktika.controller.ConfiguredController;
 import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import javafx.animation.AnimationTimer;
@@ -57,5 +58,5 @@ public class PlayersJoin {
         timer.start();
     }
     public void playersJoinedAction() throws IOException {
-        SceneManager.getInstance().setScene("character select");    }
+        SceneManager.getInstance().setScene(Scenes.CHARACTER_SELECT);    }
 }

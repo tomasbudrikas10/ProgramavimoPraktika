@@ -12,9 +12,10 @@ public class SceneManager {
     private static Stage stage;
     private static Map<String, Scene> sceneMap;
 
-    private SceneManager() {
+    private SceneManager() throws IOException {
         stage = new Stage();
         sceneMap = new HashMap<>();
+        loadAllFXMLScenes();
     }
 
     public static SceneManager getInstance() throws IOException {
@@ -24,20 +25,23 @@ public class SceneManager {
         return sceneManager;
     }
 
-    public void loadFXMLScene(String fileName, String sceneName) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/com/i192/praktika/programavimopraktika/fxml/" + fileName + ".fxml"));
-        sceneMap.put(sceneName, new Scene(fxmlLoader.load()));
-    }
-
-    public void loadFXMLScene(String fileName, String sceneName, String cssFileName) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/com/i192/praktika/programavimopraktika/fxml/" + fileName + ".fxml"));
+    private void loadFXMLScene(Scenes sceneData) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/com/i192/praktika/programavimopraktika/fxml/" + sceneData.getFxmlFileName() + ".fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(MainApplication.class.getResource("/com/i192/praktika/programavimopraktika/css/" + cssFileName + ".css").toExternalForm());
-        sceneMap.put(sceneName, scene);
+        if (sceneData.getCssFileName() != null) {
+            scene.getStylesheets().add(MainApplication.class.getResource("/com/i192/praktika/programavimopraktika/css/" + sceneData.getCssFileName() + ".css").toExternalForm());
+        }
+        sceneMap.put(sceneData.getSceneName(), scene);
     }
 
-    public void setScene(String name) {
-        stage.setScene(sceneMap.get(name));
+    private void loadAllFXMLScenes() throws IOException {
+        for (Scenes scene: Scenes.values()) {
+            loadFXMLScene(scene);
+        }
+    }
+
+    public void setScene(Scenes sceneData) {
+        stage.setScene(sceneMap.get(sceneData.getSceneName()));
     }
 
     public void setStage(Stage newStage) {

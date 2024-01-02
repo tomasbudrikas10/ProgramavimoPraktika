@@ -1,6 +1,7 @@
 package com.i192.praktika.programavimopraktika.fxml;
 
 import com.i192.praktika.programavimopraktika.SceneManager;
+import com.i192.praktika.programavimopraktika.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -13,11 +14,11 @@ public class MainMenu {
     }
     @FXML
     public void settingsAction() throws IOException {
-        SceneManager.getInstance().setScene("settings");
+        SceneManager.getInstance().setScene(Scenes.SETTINGS);
     }
 
     @FXML
     public void startGameAction() throws IOException {
-        SceneManager.getInstance().setScene("players join");
+        SceneManager.getInstance().setScene(Scenes.PLAYERS_JOIN);
     }
 }
