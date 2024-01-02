@@ -14,12 +14,11 @@ public class MainApplication extends Application {
         sceneManager.setStage(stage);
         sceneManager.loadFXMLScene("main-menu", "main menu", "style");
         sceneManager.loadFXMLScene("character-select", "character select");
-        sceneManager.loadFXMLScene("game_scene", "game");
         sceneManager.loadFXMLScene("settings", "settings");
         sceneManager.loadFXMLScene("input-settings", "input settings");
         sceneManager.loadFXMLScene("players-join", "players join");
         sceneManager.loadFXMLScene("gamemode-select", "gamemode select");
-        sceneManager.setScene("gamemode select");
+        sceneManager.setScene("main menu");
         sceneManager.getStage().show();
     }
 
