@@ -8,7 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -41,8 +40,13 @@ public class ControllerMapingsReadWriter {
 
     public static void writeControllerMappings(HashMap<Input, Component> inputComponentHashMap, Controller controller){
 
+        String nameOfC = controller.getName();
 
-        Path filePath = Path.of("controller_mappings/" + controller.getName() + ".txt");
+        nameOfC = nameOfC.replace("/","").trim();
+
+        System.out.println(nameOfC);
+
+        Path filePath = Path.of("controller_mappings/" + nameOfC + ".txt");
         //Path filePath = Path.of(controller.getName() + ".txt");
 
         HashMap<Component, Integer> componentIntegerHashMap = getComponentIntegerHashmapFromController(controller);
