@@ -10,21 +10,21 @@ import java.io.IOException;
 
 public class MainApplication extends Application {
     //define scenes
-    static Stage mainStage;
-    static Scene titleScreenScene;
-    static Scene mainMenuScene;
-    static Scene settingsScene;
-    static Scene playersJoinScene;
-    static Scene characterSelectScene;
-    static Scene gameScene;
+    public static Stage mainStage;
+    public static Scene titleScreenScene;
+    public static Scene mainMenuScene;
+    public static Scene settingsScene;
+    public static Scene playersJoinScene;
+    public static Scene characterSelectScene;
+    public static Scene gameScene;
 
     //define controllers
-    static TitleScreen titleScreen;
-    static MainMenu mainMenu;
-    static Settings settings;
-    static PlayersJoin playersJoin;
-    static CharacterSelect characterSelect;
-    static Game game;
+    public static TitleScreen titleScreen;
+    public static MainMenu mainMenu;
+    public static Settings settings;
+    public static PlayersJoin playersJoin;
+    public static CharacterSelect characterSelect;
+    public static Game game;
     @Override
     public void start(Stage stage) throws IOException {
         //save stage
@@ -88,6 +88,11 @@ public class MainApplication extends Application {
     public static void toPlayersJoin(){
         mainStage.setTitle("PlayersJoin");
         mainStage.setScene(playersJoinScene);
+        //ControllerManager.test();
+        playersJoin.JoinLoop();
+
+
+
     }
 
     public static void toCharacterSelect(){

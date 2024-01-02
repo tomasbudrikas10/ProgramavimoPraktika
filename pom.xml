@@ -76,7 +76,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.i192.praktika.programavimopraktika/com.i192.praktika.programavimopraktika.HelloApplication
+                                com.i192.praktika.programavimopraktika/com.i192.praktika.programavimopraktika.MainApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
