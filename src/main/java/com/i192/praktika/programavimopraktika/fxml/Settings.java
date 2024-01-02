@@ -1,7 +1,6 @@
 package com.i192.praktika.programavimopraktika.fxml;
 
 
-
 import com.i192.praktika.programavimopraktika.MainApplication;
 import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import com.i192.praktika.programavimopraktika.controller.ControllerMapingsReadWriter;
@@ -11,12 +10,7 @@ import javafx.scene.text.Text;
 import net.java.games.input.Component;
 import net.java.games.input.Controller;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
-import java.util.List;
 
 public class Settings {
 
@@ -42,6 +36,7 @@ public class Settings {
         //first ask to press any button on controller, so we know what controller is getting set up
         //then ask to press the button the player would like to have bind as punch, then kick....
         //then once all these are set up save it to a file, so this step won't be repeated each time
+        //PYRST
 
 
 
