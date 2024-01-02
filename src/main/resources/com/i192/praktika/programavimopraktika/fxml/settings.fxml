@@ -1,13 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.i192.praktika.programavimopraktika.fxml.Settings">
-   <children>
-      <Button layoutX="245.0" layoutY="188.0" mnemonicParsing="false" onAction="#ControllerSetupLoop" text="Setup a controller" />
-      <Button layoutX="245.0" layoutY="246.0" mnemonicParsing="false" onAction="#ControllerSetupLoop" prefHeight="25.0" prefWidth="111.0" text="Done" />
-      <Text fx:id="textInfo" layoutX="-3.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="618.0" />
-   </children>
-</AnchorPane>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.i192.praktika.programavimopraktika.fxml.InputSettings">
+<VBox prefHeight="301.0" prefWidth="777.0" spacing="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <Label style="-fx-font-size: 25px; -fx-font-weight: bold;" text="Game Settings" textFill="#862929">
+      <font>
+         <Font size="24.0" />
+      </font></Label>
+    <HBox spacing="10">
+        <Label text="Sound Volume:" textFill="#862929" />
+        <Slider max="100" min="0" value="50" />
+        <Label text="50%" textFill="#862929" />
+    </HBox>
+    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Graphics" textFill="#862929">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Label>
+   <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="323.0" text="High" textFill="#862929">
+      <graphic>
+         <RadioButton mnemonicParsing="false" text="Medium" textFill="#862929">
+            <graphic>
+               <RadioButton mnemonicParsing="false" text="Low" textFill="#862929" />
+            </graphic>
+         </RadioButton>
+      </graphic>
+   </RadioButton>
+   <Label style="-fx-font-size: 18px; -fx-font-weight: bold" text="Keybord settings" textFill="#862929" />
+   <GridPane>
+       <CheckBox text="Move Left" textFill="#862929" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+       <CheckBox text="Move Right" textFill="#862929" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+       <CheckBox text="Jump" textFill="#862929" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+       <CheckBox text="Attack" textFill="#862929" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
+   </GridPane>
+
+    <Button text="Reset Settings"/>
+    <Button text="Save Settings" />
+</VBox>
+    </AnchorPane>

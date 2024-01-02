@@ -1,7 +1,7 @@
 package com.i192.praktika.programavimopraktika.fxml;
 
 
-import com.i192.praktika.programavimopraktika.MainApplication;
+import com.i192.praktika.programavimopraktika.SceneManager;
 import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import com.i192.praktika.programavimopraktika.controller.ControllerMapingsReadWriter;
 import com.i192.praktika.programavimopraktika.controller.Input;
@@ -10,12 +10,12 @@ import javafx.scene.text.Text;
 import net.java.games.input.Component;
 import net.java.games.input.Controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 
-public class Settings {
+public class InputSettings {
 
     public Text textInfo;
-
     static class ControllerSetupContext{
         public Controller controller;
         public HashMap<Input, Component> inputHashMap;
@@ -27,8 +27,8 @@ public class Settings {
         }
     }
 
-    public void doneAction(){
-        MainApplication.toMainMenu();
+    public void doneAction() throws IOException {
+        SceneManager.getInstance().setScene("main menu");
     }
 
     public void ControllerSetupLoop(){

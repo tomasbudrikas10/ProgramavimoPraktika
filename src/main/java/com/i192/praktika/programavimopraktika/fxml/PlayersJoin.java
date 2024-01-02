@@ -1,12 +1,14 @@
 package com.i192.praktika.programavimopraktika.fxml;
 
-import com.i192.praktika.programavimopraktika.MainApplication;
+import com.i192.praktika.programavimopraktika.SceneManager;
 import com.i192.praktika.programavimopraktika.controller.ConfiguredController;
 import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import javafx.animation.AnimationTimer;
 import net.java.games.input.Controller;
 import net.java.games.input.Event;
 import net.java.games.input.EventQueue;
+
+import java.io.IOException;
 
 public class PlayersJoin {
     ConfiguredController left;
@@ -54,7 +56,6 @@ public class PlayersJoin {
 
         timer.start();
     }
-    public void playersJoinedAction(){
-        MainApplication.toCharacterSelect();
-    }
+    public void playersJoinedAction() throws IOException {
+        SceneManager.getInstance().setScene("character select");    }
 }

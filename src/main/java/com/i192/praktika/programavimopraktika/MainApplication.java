@@ -10,15 +10,17 @@ import java.io.IOException;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/i192/praktika/programavimopraktika/fxml/main-menu-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 500, 500);
-        MainMenuViewController controller = fxmlLoader.getController();
-        controller.setPrimaryStage(stage);
-        scene.getStylesheets().add(getClass().getResource("/com/i192/praktika/programavimopraktika/css/style.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Main Menu");
-
+        SceneManager sceneManager = SceneManager.getInstance();
+        sceneManager.setStage(stage);
+        sceneManager.loadFXMLScene("main-menu", "main menu", "style");
+        sceneManager.loadFXMLScene("character-select", "character select");
+        sceneManager.loadFXMLScene("game_scene", "game");
+        sceneManager.loadFXMLScene("settings", "settings");
+        sceneManager.loadFXMLScene("input-settings", "input settings");
+        sceneManager.loadFXMLScene("players-join", "players join");
+        sceneManager.loadFXMLScene("gamemode-select", "gamemode select");
+        sceneManager.setScene("gamemode select");
+        sceneManager.getStage().show();
     }
 
     public static void main(String[] args) {
