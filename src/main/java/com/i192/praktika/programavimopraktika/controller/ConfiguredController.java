@@ -9,7 +9,7 @@ import net.java.games.input.EventQueue;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ConfiguredController {
+public class ConfiguredController{
 
     public HashMap<Component, Inputs> componentInputsHashMap;
     public Controller controller;

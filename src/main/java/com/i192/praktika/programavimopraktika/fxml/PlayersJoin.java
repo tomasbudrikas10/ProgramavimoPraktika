@@ -13,13 +13,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayersJoin {
+public class PlayersJoin implements Initialisable{
 
-    public void JoinLoop(){
+    public void joinLoop(){
         AnimationTimer timer = new AnimationTimer() {
 
             ArrayList<ConfiguredController> configuredControllers = ControllerManager.getConfiguredControllers();
+            //System.out.println("got to sadfasdf");
+
             //display each configuredController so everyone can see
+
+            ConfiguredController playerA = null;
+            ConfiguredController playerB = null;
 
             @Override
             public void handle(long now) {
@@ -33,6 +38,28 @@ public class PlayersJoin {
                 for(ConfiguredController c:configuredControllers){
                     if(c.latestChanges.length != 0) {
                         //do something with each input
+                        //nothing special for now
+                        if(playerA == null){
+                            //somehow show that playerA has joined
+                            playerA = c;
+                        }else if(playerB == null){
+
+                            //somehow show that playerA has joined
+                            if(c != playerA){
+                                playerB = c;
+                            }
+                        }else {
+                            //System.out.println("got to E");
+
+                            try {
+                                this.stop();
+                                playersJoinedAction();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+
+
                     }
                 }
 
@@ -45,5 +72,10 @@ public class PlayersJoin {
     }
     public void playersJoinedAction() throws IOException {
         SceneManager.getInstance().setScene(Scenes.CHARACTER_SELECT);
+    }
+
+    @Override
+    public void initialise() {
+        joinLoop();
     }
 }

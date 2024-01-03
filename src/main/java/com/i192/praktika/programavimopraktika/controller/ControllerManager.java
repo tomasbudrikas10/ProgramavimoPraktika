@@ -71,7 +71,7 @@ public class ControllerManager {
         ArrayList<Controller> usable = new ArrayList<Controller>();
 
         for(Controller c: cs){
-            if(c.getType() == GAMEPAD || c.getType() == KEYBOARD || c.getType() == STICK){
+            if(c.getType() == GAMEPAD || c.getType() == KEYBOARD || c.getType() == STICK || c.getType() == MOUSE){
                 usable.add(c);
             }
         }

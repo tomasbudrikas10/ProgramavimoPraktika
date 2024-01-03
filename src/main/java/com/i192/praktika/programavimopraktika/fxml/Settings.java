@@ -14,9 +14,15 @@ import net.java.games.input.Controller;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class Settings {
+public class Settings implements Initialisable{
 
     public Text textInfo;
+
+    @Override
+    public void initialise() {
+
+    }
+
     static class ControllerSetupContext{
         public Controller controller;
         public HashMap<Inputs, Component> inputHashMap;
@@ -59,7 +65,7 @@ public class Settings {
                         this.stop();
                     }else if(!csc.inputHashMap.containsKey(Inputs.values()[csc.i])){
                         Component comp = ControllerManager.getComponentOn(csc.controller);
-                        textInfo.textProperty().set("Press button for:" + Inputs.values()[csc.i].name() + ".");
+                        textInfo.textProperty().set("Press button for:" + Inputs.values()[csc.i].inputName + ".");
 
                         if(comp != null){
                             csc.inputHashMap.put(Inputs.values()[csc.i], comp);

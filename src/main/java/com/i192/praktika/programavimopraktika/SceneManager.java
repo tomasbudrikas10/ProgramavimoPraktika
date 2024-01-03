@@ -1,5 +1,6 @@
 package com.i192.praktika.programavimopraktika;
 
+import com.i192.praktika.programavimopraktika.fxml.Initialisable;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -11,10 +12,12 @@ public class SceneManager {
     private static SceneManager sceneManager;
     private static Stage stage;
     private static Map<String, Scene> sceneMap;
+    private static Map<String, Initialisable> sceneInitMap;
 
     private SceneManager() throws IOException {
         stage = new Stage();
         sceneMap = new HashMap<>();
+        sceneInitMap = new HashMap<>();
         loadAllFXMLScenes();
     }
 
@@ -32,6 +35,7 @@ public class SceneManager {
             scene.getStylesheets().add(MainApplication.class.getResource("/com/i192/praktika/programavimopraktika/css/" + sceneData.getCssFileName() + ".css").toExternalForm());
         }
         sceneMap.put(sceneData.getSceneName(), scene);
+        sceneInitMap.put(sceneData.getSceneName(), fxmlLoader.getController());
     }
 
     private void loadAllFXMLScenes() throws IOException {
@@ -42,6 +46,8 @@ public class SceneManager {
 
     public void setScene(Scenes sceneData) {
         stage.setScene(sceneMap.get(sceneData.getSceneName()));
+        stage.setTitle(sceneData.getSceneName());
+        sceneInitMap.get(sceneData.getSceneName()).initialise();
     }
 
     public void setStage(Stage newStage) {

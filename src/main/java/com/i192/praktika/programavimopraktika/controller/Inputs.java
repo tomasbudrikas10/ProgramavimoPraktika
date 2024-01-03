@@ -8,7 +8,7 @@ public enum Inputs {
     PUNCH("Perform punch"),
     KICK("Perform kick");
 
-    private final String inputName;
+    public final String inputName;
 
     Inputs(String inputName){
         this.inputName = inputName;
