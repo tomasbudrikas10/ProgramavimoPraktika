@@ -5,7 +5,7 @@ import com.i192.praktika.programavimopraktika.SceneManager;
 import com.i192.praktika.programavimopraktika.Scenes;
 import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import com.i192.praktika.programavimopraktika.controller.ControllerMapingsReadWriter;
-import com.i192.praktika.programavimopraktika.controller.Input;
+import com.i192.praktika.programavimopraktika.controller.Inputs;
 import javafx.animation.AnimationTimer;
 import javafx.scene.text.Text;
 import net.java.games.input.Component;
@@ -19,7 +19,7 @@ public class Settings {
     public Text textInfo;
     static class ControllerSetupContext{
         public Controller controller;
-        public HashMap<Input, Component> inputHashMap;
+        public HashMap<Inputs, Component> inputHashMap;
         int i = 0;
 
         public ControllerSetupContext(){
@@ -52,16 +52,16 @@ public class Settings {
                     csc.controller = ControllerManager.firstControllerWithComponentOn(ControllerManager.getAllUsableControllers());
                 }
                 else {
-                    if(csc.i == Input.values().length){
+                    if(csc.i == Inputs.values().length){
                         //if all inputs were mapped
                         textInfo.textProperty().set("");
                         ControllerMapingsReadWriter.writeControllerMappings(csc.inputHashMap, csc.controller);
                         this.stop();
-                    }else if(!csc.inputHashMap.containsKey(Input.values()[csc.i])){
+                    }else if(!csc.inputHashMap.containsKey(Inputs.values()[csc.i])){
                         Component comp = ControllerManager.getComponentOn(csc.controller);
-                        textInfo.textProperty().set("Press button for:" + Input.DOWN.getInputName(Input.values()[csc.i]) + ".");
+                        textInfo.textProperty().set("Press button for:" + Inputs.DOWN.getInputName(Inputs.values()[csc.i]) + ".");
                         if(comp != null){
-                            csc.inputHashMap.put(Input.values()[csc.i], comp);
+                            csc.inputHashMap.put(Inputs.values()[csc.i], comp);
                             csc.i = csc.i + 1;
                         }
                     }

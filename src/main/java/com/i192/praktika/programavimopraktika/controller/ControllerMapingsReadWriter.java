@@ -13,8 +13,8 @@ import java.util.List;
 
 public class ControllerMapingsReadWriter {
 
-    public static HashMap<Input, Component> ReadControllerMappings(Controller controller){
-        HashMap<Input, Component> inputComponentHashMap = new HashMap<>();
+    public static HashMap<Inputs, Component> ReadControllerMappings(Controller controller){
+        HashMap<Inputs, Component> inputComponentHashMap = new HashMap<>();
         List<String> lines = null;
 
         try {
@@ -26,8 +26,8 @@ public class ControllerMapingsReadWriter {
         HashMap<Integer,Component> integerComponentHashMap =  getIntegerComponentHashmapFromController(controller);
 
         if(lines != null){
-            for(int i = 0; i != Input.values().length; i++) {
-                inputComponentHashMap.put(Input.values()[i], integerComponentHashMap.get(Integer.parseInt(lines.get(i))) );
+            for(int i = 0; i != Inputs.values().length; i++) {
+                inputComponentHashMap.put(Inputs.values()[i], integerComponentHashMap.get(Integer.parseInt(lines.get(i))) );
             }
             return inputComponentHashMap;
         }else {
@@ -38,7 +38,7 @@ public class ControllerMapingsReadWriter {
 
 
 
-    public static void writeControllerMappings(HashMap<Input, Component> inputComponentHashMap, Controller controller){
+    public static void writeControllerMappings(HashMap<Inputs, Component> inputComponentHashMap, Controller controller){
 
         String nameOfC = controller.getName();
 
@@ -53,9 +53,9 @@ public class ControllerMapingsReadWriter {
 
         //take the hashmap and turn it into lines of text to save to a file
         ArrayList<String> lines = new ArrayList<>();
-        for(int i = 0; i != Input.values().length; i++) {
+        for(int i = 0; i != Inputs.values().length; i++) {
             //each line contains an integer that is a value in the "componentIntegerHashmap"
-            Component component = inputComponentHashMap.get(Input.values()[i]);
+            Component component = inputComponentHashMap.get(Inputs.values()[i]);
             String s = componentIntegerHashMap.get(component)+"";
             lines.add(s);
         }
@@ -87,6 +87,19 @@ public class ControllerMapingsReadWriter {
         for(Component component:controllerComponents){
 
             componetIntHashmap.put(component, iter);
+            iter++;
+        }
+
+        return componetIntHashmap;
+    }
+
+    public static HashMap<Component,Inputs> getComponentInputsHashmapFromController(Controller controller){
+        Component[] controllerComponents = controller.getComponents();
+        HashMap<Component,Inputs> componetIntHashmap = new HashMap<>();
+        int iter = 0;
+        for(Component component:controllerComponents){
+
+            componetIntHashmap.put(component, Inputs.values()[iter]);
             iter++;
         }
 

@@ -1,9 +1,9 @@
 package com.i192.praktika.programavimopraktika.controller;
 
-public enum Input {
+public enum Inputs {
     UP,DOWN,LEFT,RIGHT,PUNCH,KICK;
 
-    public String getInputName(Input input){
+    public String getInputName(Inputs input){
         return switch (input) {
             case UP -> "Move up";
             case DOWN -> "Move down";
