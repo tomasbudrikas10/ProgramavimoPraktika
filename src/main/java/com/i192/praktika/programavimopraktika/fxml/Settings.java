@@ -59,7 +59,8 @@ public class Settings {
                         this.stop();
                     }else if(!csc.inputHashMap.containsKey(Inputs.values()[csc.i])){
                         Component comp = ControllerManager.getComponentOn(csc.controller);
-                        textInfo.textProperty().set("Press button for:" + Inputs.DOWN.getInputName(Inputs.values()[csc.i]) + ".");
+                        textInfo.textProperty().set("Press button for:" + Inputs.values()[csc.i].name() + ".");
+
                         if(comp != null){
                             csc.inputHashMap.put(Inputs.values()[csc.i], comp);
                             csc.i = csc.i + 1;

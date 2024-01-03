@@ -26,6 +26,15 @@ public class PlayersJoin {
                 //should wait for at least two configured controllers to provide some input,
                 //then do playersJoinedAction()
 
+                for(ConfiguredController c:configuredControllers){
+                    c.updateLatestChanges();
+                }
+
+                for(ConfiguredController c:configuredControllers){
+                    if(c.latestChanges.length != 0) {
+                        //do something with each input
+                    }
+                }
 
 
             }

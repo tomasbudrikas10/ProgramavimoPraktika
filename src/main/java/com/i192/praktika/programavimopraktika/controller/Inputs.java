@@ -1,17 +1,20 @@
 package com.i192.praktika.programavimopraktika.controller;
 
 public enum Inputs {
-    UP,DOWN,LEFT,RIGHT,PUNCH,KICK;
+    UP("Move up"),
+    DOWN("Move down"),
+    LEFT("Move left"),
+    RIGHT("Move right"),
+    PUNCH("Perform punch"),
+    KICK("Perform kick");
 
-    public String getInputName(Inputs input){
-        return switch (input) {
-            case UP -> "Move up";
-            case DOWN -> "Move down";
-            case LEFT -> "Move left";
-            case RIGHT -> "Move right";
-            case PUNCH -> "Perform punch";
-            case KICK -> "Perform kick";
-            default -> null;
-        };
+    private final String inputName;
+
+    Inputs(String inputName){
+        this.inputName = inputName;
     }
+
+
+
+
 }

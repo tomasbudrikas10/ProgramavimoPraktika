@@ -50,34 +50,6 @@ public class ControllerManager {
         return null;
     }
 
-    public static void pollController(Controller c) {
-
-
-        c.poll();
-
-        EventQueue queue = c.getEventQueue();
-
-        Event event = new Event();
-
-        /* For each object in the queue */
-        while (queue.getNextEvent(event)) {
-
-            String contName = c.getName();
-
-            long time  = event.getNanos();
-            Component component = event.getComponent();
-
-            String compName = component.getName();
-
-            float value = event.getValue();
-
-
-
-            if (value != 0.0) {
-                System.out.println(c.getType() + " " + c.getComponents().length);
-            }
-        }
-    }
 
     public static List<String> listAllComponents(Controller c){
         ArrayList<String> list = new ArrayList<>();
