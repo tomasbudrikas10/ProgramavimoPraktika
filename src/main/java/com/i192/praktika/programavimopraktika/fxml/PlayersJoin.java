@@ -2,7 +2,6 @@ package com.i192.praktika.programavimopraktika.fxml;
 
 import com.i192.praktika.programavimopraktika.SceneManager;
 import com.i192.praktika.programavimopraktika.Scenes;
-import com.i192.praktika.programavimopraktika.controller.ConfiguredController;
 import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import javafx.animation.AnimationTimer;
 import net.java.games.input.Controller;
@@ -12,8 +11,6 @@ import net.java.games.input.EventQueue;
 import java.io.IOException;
 
 public class PlayersJoin {
-    ConfiguredController left;
-    ConfiguredController right;
 
     public void JoinLoop(){
         //first id like the availiable controllers to be registered.
