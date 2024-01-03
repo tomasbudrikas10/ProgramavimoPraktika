@@ -14,7 +14,7 @@ import net.java.games.input.Controller;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class InputSettings {
+public class Settings {
 
     public Text textInfo;
     static class ControllerSetupContext{
@@ -32,7 +32,7 @@ public class InputSettings {
         SceneManager.getInstance().setScene(Scenes.MAIN_MENU);
     }
 
-    public void ControllerSetupLoop(){
+    public void controllerSetupLoop(){
         //this should be called when a button is pressed named something like: setup controller
         //first ask to press any button on controller, so we know what controller is getting set up
         //then ask to press the button the player would like to have bind as punch, then kick....
@@ -71,7 +71,6 @@ public class InputSettings {
         };
         timer.start();
     }
-
 
 
 }
