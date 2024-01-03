@@ -7,9 +7,11 @@ import java.util.HashMap;
 
 public class ConfiguredController {
 
-    HashMap<Component, Inputs> componentInputsHashMap;
+    public HashMap<Component, Inputs> componentInputsHashMap;
+    public Controller controller;
 
-    ConfiguredController(Controller controller){
-        componentInputsHashMap = ControllerMapingsReadWriter.getComponentInputsHashmapFromController(controller);
+    ConfiguredController(Controller controller, HashMap<Component, Inputs> componentInputsHashMap){
+        this.controller = controller;
+        this.componentInputsHashMap = componentInputsHashMap;
     }
 }

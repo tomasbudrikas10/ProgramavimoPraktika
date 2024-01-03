@@ -3,7 +3,9 @@ package com.i192.praktika.programavimopraktika.controller;
 import net.java.games.input.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import static net.java.games.input.Controller.Type.*;
 
@@ -102,5 +104,23 @@ public class ControllerManager {
             }
         }
         return usable.toArray(new Controller[0]);
+    }
+    public static ArrayList<ConfiguredController> getConfiguredControllers(){
+        ArrayList<ConfiguredController> ccList = new ArrayList<>();
+
+        Controller[] cArr = ControllerManager.getAllUsableControllers();
+
+        for(Controller c: cArr){
+            Optional<ConfiguredController> optional = makeConfiguredController(c);
+
+            optional.ifPresent(ccList::add);//this is same as: if(optional.isPresent()){ ccList.add(optional.get()); }
+        }
+        return ccList;
+    }
+
+    public static Optional<ConfiguredController> makeConfiguredController(Controller controller){
+        Optional<HashMap<Component, Inputs>> optional = ControllerMapingsReadWriter.readControllerMappings(controller);
+
+        return optional.map(componentInputsHashMap -> new ConfiguredController(controller, componentInputsHashMap));
     }
 }

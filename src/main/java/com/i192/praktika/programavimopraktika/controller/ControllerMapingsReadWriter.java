@@ -4,49 +4,42 @@ import net.java.games.input.Component;
 import net.java.games.input.Controller;
 
 import java.io.IOException;
+import java.lang.foreign.Linker;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 public class ControllerMapingsReadWriter {
 
-    public static HashMap<Inputs, Component> ReadControllerMappings(Controller controller){
-        HashMap<Inputs, Component> inputComponentHashMap = new HashMap<>();
+    public static Optional<HashMap<Component, Inputs>> readControllerMappings(Controller controller){
+        HashMap<Component, Inputs> inputComponentHashMap = new HashMap<>();
         List<String> lines = null;
 
         try {
-            lines = Files.readAllLines(Path.of("controller_mappings/" + controller.getName() + ".txt"));
-        }catch (IOException e) {
-            System.err.println("An error occurred while reading the file: " + e.getMessage());
-        }
+            lines = Files.readAllLines(Path.of("controller_mappings/" + sanitisedControllerName(controller) + ".txt"));
 
-        HashMap<Integer,Component> integerComponentHashMap =  getIntegerComponentHashmapFromController(controller);
+            HashMap<Integer,Component> integerComponentHashMap =  getIntegerComponentHashmapFromController(controller);
 
-        if(lines != null){
             for(int i = 0; i != Inputs.values().length; i++) {
-                inputComponentHashMap.put(Inputs.values()[i], integerComponentHashMap.get(Integer.parseInt(lines.get(i))) );
+                inputComponentHashMap.put(integerComponentHashMap.get(Integer.parseInt(lines.get(i))), Inputs.values()[i]);
             }
-            return inputComponentHashMap;
-        }else {
-            return null;
+            return Optional.of(inputComponentHashMap);
+        }catch (IOException e) {
+            return Optional.empty();
         }
-
     }
 
 
 
     public static void writeControllerMappings(HashMap<Inputs, Component> inputComponentHashMap, Controller controller){
 
-        String nameOfC = controller.getName();
 
-        nameOfC = nameOfC.replace("/","").trim();
 
-        System.out.println(nameOfC);
-
-        Path filePath = Path.of("controller_mappings/" + nameOfC + ".txt");
+        Path filePath = Path.of("controller_mappings/" + sanitisedControllerName(controller) + ".txt");
         //Path filePath = Path.of(controller.getName() + ".txt");
 
         HashMap<Component, Integer> componentIntegerHashMap = getComponentIntegerHashmapFromController(controller);
@@ -93,17 +86,11 @@ public class ControllerMapingsReadWriter {
         return componetIntHashmap;
     }
 
-    public static HashMap<Component,Inputs> getComponentInputsHashmapFromController(Controller controller){
-        Component[] controllerComponents = controller.getComponents();
-        HashMap<Component,Inputs> componetIntHashmap = new HashMap<>();
-        int iter = 0;
-        for(Component component:controllerComponents){
 
-            componetIntHashmap.put(component, Inputs.values()[iter]);
-            iter++;
-        }
 
-        return componetIntHashmap;
+
+    static String sanitisedControllerName(Controller controller){
+        return controller.getName().replace("/","").trim();
     }
 
     public static HashMap<Integer, Component> getIntegerComponentHashmapFromController(Controller controller){
