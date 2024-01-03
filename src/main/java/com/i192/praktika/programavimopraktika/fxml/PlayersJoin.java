@@ -19,17 +19,14 @@ public class PlayersJoin implements Initialisable{
         AnimationTimer timer = new AnimationTimer() {
 
             ArrayList<ConfiguredController> configuredControllers = ControllerManager.getConfiguredControllers();
-            //System.out.println("got to sadfasdf");
 
-            //display each configuredController so everyone can see
+            //toDo:display each configuredController so everyone can see
 
             ConfiguredController playerA = null;
             ConfiguredController playerB = null;
 
             @Override
             public void handle(long now) {
-                //should wait for at least two configured controllers to provide some input,
-                //then do playersJoinedAction()
 
                 for(ConfiguredController c:configuredControllers){
                     c.updateLatestChanges();
@@ -37,26 +34,22 @@ public class PlayersJoin implements Initialisable{
 
                 for(ConfiguredController c:configuredControllers){
                     if(c.latestChanges.length != 0) {
-                        //do something with each input
-                        //nothing special for now
                         if(playerA == null){
-                            //somehow show that playerA has joined
+                            //toDo:somehow show that playerA has joined
                             playerA = c;
                         }else if(playerB == null){
 
-                            //somehow show that playerA has joined
                             if(c != playerA){
+                                //toDo:somehow show that playerB has joined
                                 playerB = c;
                             }
                         }else {
-                            //System.out.println("got to E");
-
                             try {
-                                this.stop();
                                 playersJoinedAction();
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
+                            this.stop();
                         }
 
 
