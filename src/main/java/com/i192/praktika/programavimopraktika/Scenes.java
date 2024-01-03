@@ -4,7 +4,6 @@ public enum Scenes {
     MAIN_MENU("Main Menu", "main-menu", "style"),
     CHARACTER_SELECT("Character Select", "character-select", null),
     SETTINGS("Settings", "settings", null),
-    INPUT_SETTINGS("Input Settings", "input-settings", null),
     PLAYERS_JOIN("Players Join", "players-join", null),
     GAMEMODE_MENU("Gamemode Menu", "gamemode-menu", null);
 
