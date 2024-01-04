@@ -42,6 +42,8 @@ public class OneVSOneFight implements Initialisable{
                 playerB.updateLatestChanges();
 
 
+                //do gravity
+                //enter animation
 
                 fightOver = characterStateA.health == 0 || characterStateB.health == 0;
                 if(fightOver){
