@@ -44,6 +44,14 @@ public class PlayersJoin implements Initialisable{
                                 playerB = c;
                             }
                         }else {
+                            //send configured controllers to next scene controller
+                            try {
+                                CharacterSelect cs = SceneManager.getInstance().getLoader(Scenes.CHARACTER_SELECT).getController();
+                                cs.setPlayers(playerA, playerB);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+
                             try {
                                 playersJoinedAction();
                             } catch (IOException e) {

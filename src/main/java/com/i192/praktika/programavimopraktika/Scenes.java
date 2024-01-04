@@ -5,7 +5,8 @@ public enum Scenes {
     CHARACTER_SELECT("Character Select", "character-select", null),
     SETTINGS("Settings", "settings", null),
     PLAYERS_JOIN("Players Join", "players-join", null),
-    GAMEMODE_MENU("Gamemode Menu", "gamemode-menu", null);
+    GAMEMODE_MENU("Gamemode Menu", "gamemode-menu", null),
+    ONE_VS_ONE_FIGHT("One VS One Fight", "one-vs-one-fight", null);
 
     private final String sceneName;
     private final String fxmlFileName;
