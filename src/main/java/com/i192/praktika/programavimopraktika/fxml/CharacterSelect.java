@@ -40,22 +40,22 @@ public class CharacterSelect implements Initialisable{
 
                 //toDO: respond to changed inputs
 
+                try {
+                    OneVSOneFight ovof = SceneManager.getInstance().getLoader(Scenes.ONE_VS_ONE_FIGHT).getController();
+                    ovof.setPlayers(playerA, playerB);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
+                try {
+                    charactersSelectedAction();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                this.stop();
                 if(characters_selected){
-                    try {
-                        OneVSOneFight ovof = SceneManager.getInstance().getLoader(Scenes.CHARACTER_SELECT).getController();
-                        ovof.setPlayers(playerA, playerB);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
 
-                    try {
-                        charactersSelectedAction();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-
-                    this.stop();
                 }
 
 
@@ -67,8 +67,7 @@ public class CharacterSelect implements Initialisable{
     }
 
     public void charactersSelectedAction() throws IOException {
-        //toDo: make the 1v1 game scene
-        //SceneManager.getInstance().setScene();
+        SceneManager.getInstance().setScene(Scenes.ONE_VS_ONE_FIGHT);
     }
 
     @Override
