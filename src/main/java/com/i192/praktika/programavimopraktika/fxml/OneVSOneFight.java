@@ -1,8 +1,12 @@
 package com.i192.praktika.programavimopraktika.fxml;
 
 import com.i192.praktika.programavimopraktika.controller.ConfiguredController;
+import com.i192.praktika.programavimopraktika.data.Box;
+import com.i192.praktika.programavimopraktika.data.Vector2d;
 import com.i192.praktika.programavimopraktika.game.Character;
 import com.i192.praktika.programavimopraktika.game.CharacterState;
+import com.i192.praktika.programavimopraktika.game.FightGameManager;
+import com.i192.praktika.programavimopraktika.game.FightStage;
 import com.i192.praktika.programavimopraktika.graphics.SpriteSheet;
 import javafx.animation.AnimationTimer;
 import javafx.scene.image.ImageView;
@@ -38,8 +42,7 @@ public class OneVSOneFight implements Initialisable{
 
         AnimationTimer timer = new AnimationTimer() {
 
-            CharacterState characterStateA = new CharacterState(100, -100, 0);
-            CharacterState characterStateB = new CharacterState(100, 100, 0);
+            FightGameManager gameManager = new FightGameManager(selectedCharacterA, selectedCharacterB);
 
             SpriteSheet spriteSheet = new SpriteSheet("CircleFighter.png", 6, 5, 22, 22);
 
@@ -59,9 +62,10 @@ public class OneVSOneFight implements Initialisable{
 
 
                 //do gravity
+
                 //enter animation
 
-                fightOver = characterStateA.health == 0 || characterStateB.health == 0;
+                //fightOver = characterStateA.health == 0 || characterStateB.health == 0;
                 if(fightOver){
                     fightOverAction();
                 }
