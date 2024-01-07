@@ -9,7 +9,7 @@ public class CharacterState{
 
     public Character character;
     public int health;
-    RigidBody rb;
+    public RigidBody rb;
     public int animation = 0;
     public int animationFrame = 0;
 
@@ -25,6 +25,9 @@ public class CharacterState{
         return character.animations[animation].frames[animationFrame].colliderBoxes;
     }
 
+    public int[] currImage(){
+        return new int[]{animation, animationFrame};
+    }
     public Box[] getHitBoxes(){
         return character.animations[animation].frames[animationFrame].hitBoxes;
     }

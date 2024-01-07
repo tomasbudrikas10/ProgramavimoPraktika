@@ -30,13 +30,6 @@ public class SpriteSheet {
         this.height = height;
     }
 
-    public ImageView getSpriteIV(int col, int row) {
-        PixelReader pixelReader = spriteSheet.getPixelReader();
-
-        WritableImage spriteImage = new WritableImage(pixelReader, col * width, row * height, width, height);
-
-        return new ImageView(spriteImage);
-    }
 
     public Image getSprite(int col, int row) {
         PixelReader pixelReader = spriteSheet.getPixelReader();

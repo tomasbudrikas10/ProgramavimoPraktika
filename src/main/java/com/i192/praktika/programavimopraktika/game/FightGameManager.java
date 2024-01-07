@@ -10,9 +10,9 @@ public class FightGameManager {
         this.characterStateA = new CharacterState(A,100, new Vector2d(-1, 0));
         this.characterStateB = new CharacterState(B,100, new Vector2d(1, 0));
     }
-    FightStage fightStage = new FightStage(new Vector2d(0, -1), new Box(new Vector2d(-100, 0), new Vector2d(100, -10)));
-    CharacterState characterStateA;
-    CharacterState characterStateB;
+    public FightStage fightStage = new FightStage(new Vector2d(0, -1), new Box(new Vector2d(-100, 0), new Vector2d(100, -10)));
+    public CharacterState characterStateA;
+    public CharacterState characterStateB;
 
     public void update(){
 
