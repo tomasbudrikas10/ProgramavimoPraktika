@@ -13,18 +13,8 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         SceneManager sceneManager = SceneManager.getInstance();
         sceneManager.setStage(stage);
-        sceneManager.setScene(Scenes.MAIN_MENU);
+        sceneManager.setScene(Scenes.GAME_STAGE);
         sceneManager.getStage().show();
-        Image image =new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/animations/sprite_sheets/background.png"));
-        BackgroundImage bgImage= new BackgroundImage(
-                image,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(100,100,true,true,true,true)
-        );
-        Background bg= new Background(bgImage);
-
     }
 
     public static void main(String[] args) {
