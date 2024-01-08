@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.i192.praktika.programavimopraktika.fxml.CharacterSelect"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.i192.praktika.programavimopraktika.fxml.CharacterSelect">
+   <children>
+      <HBox prefHeight="200.0" prefWidth="1280.0">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="300.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/player1.jpg" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="200.0" prefWidth="1257.0" style="-fx-alignment: center; -fx-background-color: cyan; -fx-spacing: 50;">
+               <children>
+                  <Text fill="#001aff" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your fighter!">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="It is time for Player 1 to pick a fighter">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <ImageView fitHeight="200.0" fitWidth="300.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/player2.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox prefHeight="534.0" prefWidth="1280.0" style="-fx-background-color: lightblue;">
+         <children>
+            <GridPane fx:id="characters" prefHeight="499.0" prefWidth="1284.0" style="-fx-padding: 30; -fx-hgap: 30; -fx-vgap: 30;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>
