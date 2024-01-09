@@ -15,9 +15,9 @@
    <children>
       <HBox prefHeight="200.0" prefWidth="1280.0">
          <children>
-            <ImageView fitHeight="200.0" fitWidth="300.0" pickOnBounds="true">
+            <ImageView fx:id="player1icon" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/player1.jpg" />
+                  <Image url="@../images/question-mark-1019820_1280.jpg" />
                </image>
             </ImageView>
             <VBox prefHeight="200.0" prefWidth="1257.0" style="-fx-alignment: center; -fx-background-color: cyan; -fx-spacing: 50;">
@@ -27,16 +27,16 @@
                         <Font size="32.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="It is time for Player 1 to pick a fighter">
+                  <Text fx:id="turnText" strokeType="OUTSIDE" strokeWidth="0.0" text="It is time for Player 1 to pick a fighter">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
                </children>
             </VBox>
-            <ImageView fitHeight="200.0" fitWidth="300.0" pickOnBounds="true">
+            <ImageView fx:id="player2icon" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/player2.jpg" />
+                  <Image url="@../images/question-mark-1019820_1280.jpg" />
                </image>
             </ImageView>
          </children>

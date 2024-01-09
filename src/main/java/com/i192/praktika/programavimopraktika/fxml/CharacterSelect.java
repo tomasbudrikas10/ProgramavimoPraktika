@@ -4,8 +4,9 @@ import com.i192.praktika.programavimopraktika.Characters;
 import com.i192.praktika.programavimopraktika.SceneManager;
 import com.i192.praktika.programavimopraktika.Scenes;
 import com.i192.praktika.programavimopraktika.controller.ConfiguredController;
-import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
@@ -16,9 +17,11 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CharacterSelect implements Initialisable{
 
@@ -29,6 +32,9 @@ public class CharacterSelect implements Initialisable{
     //toDo: have some characters to select...
     public ConfiguredController playerA = null;
     public ConfiguredController playerB = null;
+    public Text turnText;
+    public ImageView player1icon;
+    public ImageView player2icon;
 
     public void setPlayers(ConfiguredController playerA , ConfiguredController playerB){
         this.playerA = playerA;
@@ -87,6 +93,9 @@ public class CharacterSelect implements Initialisable{
     @Override
     public void initialise() {
 //        charSelectLoop();
+        AtomicBoolean playerOneTurn = new AtomicBoolean(true);
+        turnText.setText("Player 1 turn to pick!");
+        player2icon.setScaleX(-1);
         int characterCount = 0;
         for (Characters character : Characters.values()) {
             StackPane stackPane = new StackPane();
@@ -111,6 +120,47 @@ public class CharacterSelect implements Initialisable{
             });
             vbox.setOnMouseExited(e -> {
                 vbox.setOpacity(0);
+            });
+            vbox.setOnMouseClicked(e -> {
+                Color vboxFillColor;
+                Color stackPaneBorderColor;
+                if (playerOneTurn.get()) {
+                    vboxFillColor = Color.rgb(184, 108, 108, 0.9);
+                    stackPaneBorderColor = Color.RED;
+                    player1icon.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/" + character.getImageName()).toExternalForm()));
+                    description.setText("SELECTED BY PLAYER 1");
+                    turnText.setText("Player 2 turn to pick!");
+                    playerOneTurn.set(false);
+                } else {
+                    vboxFillColor = Color.rgb(108, 123, 184, 0.9);
+                    stackPaneBorderColor = Color.BLUE;
+                    player2icon.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/" + character.getImageName()).toExternalForm()));
+                    description.setText("SELECTED BY PLAYER 2");
+                    Duration duration = Duration.seconds(1);
+                    int totalSeconds = 10;
+                    AtomicInteger secondsRemaining = new AtomicInteger(10);
+                    Timeline timeline = new Timeline();
+                    timeline.getKeyFrames().add(new KeyFrame(duration, event -> {
+                        turnText.setText("Game starting in " + secondsRemaining + " seconds.");
+                        secondsRemaining.getAndDecrement();
+                    }));
+                    timeline.setCycleCount(totalSeconds);
+                    timeline.setOnFinished(e2 -> {
+                        try {
+                            SceneManager.getInstance().setScene(Scenes.GAME_STAGE);
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    });
+                    timeline.play();
+                }
+                vbox.setBackground(Background.fill(vboxFillColor));
+                stackPane.setBorder(new Border(new BorderStroke(stackPaneBorderColor, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
+                vbox.setOnMouseEntered(null);
+                vbox.setOnMouseExited(null);
+                vbox.setOnMouseClicked(null);
+                vbox.setOpacity(1);
+
             });
             characters.add(stackPane, characterCount % characters.getColumnCount(), characterCount / (characters.getColumnCount()));
             characterCount++;
