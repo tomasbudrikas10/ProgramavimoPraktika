@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox fx:controller="com.i192.praktika.programavimopraktika.fxml.MainMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="vbox" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="vbox" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.i192.praktika.programavimopraktika.fxml.MainMenu">
    <children>
-      <Button mnemonicParsing="false" text="Start Game" onAction="#startGameAction"/>
-      <Button mnemonicParsing="false" text="Settings" onAction="#settingsAction"/>
-      <Button mnemonicParsing="false" text="Quit Game" onAction="#quitGameAction" />
+      <Region fx:id="backgrounRegion" prefHeight="400.0" prefWidth="600.0" />
+      <VBox layoutX="250.0" layoutY="100.0" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#startGameAction" text="Start Game" />
+            <Button mnemonicParsing="false" onAction="#settingsAction" text="Settings" />
+            <Button mnemonicParsing="false" onAction="#quitGameAction" text="Quit Game" />
+         </children>
+      </VBox>
    </children>
-</VBox>
+</Pane>
