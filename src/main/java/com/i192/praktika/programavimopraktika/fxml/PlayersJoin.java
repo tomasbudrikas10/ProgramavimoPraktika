@@ -5,10 +5,14 @@ import com.i192.praktika.programavimopraktika.Scenes;
 import com.i192.praktika.programavimopraktika.controller.ConfiguredController;
 import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import javafx.animation.AnimationTimer;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import net.java.games.input.Controller;
 import net.java.games.input.Event;
 import net.java.games.input.EventQueue;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,18 +36,31 @@ public class PlayersJoin implements Initialisable{
                     c.updateLatestChanges();
                 }
 
-                for(ConfiguredController c:configuredControllers){
-                    if(c.latestChanges.length != 0) {
-                        if(playerA == null){
+                for(ConfiguredController c:configuredControllers) {
+                    if (c.latestChanges.length != 0) {
+                        if (playerA == null) {
                             //toDo:somehow show that playerA has joined
-                            playerA = c;
-                        }else if(playerB == null){
+                            Label label1 = new Label("Player A joined!");
+                            try {
+                                Image image1 = new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/backgorund.png"));
+                            } catch (FileNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
 
-                            if(c != playerA){
+                            playerA = c;
+                        } else if (playerB == null) {
+
+                            if (c != playerA) {
                                 //toDo:somehow show that playerB has joined
+                                Label label2 = new Label("Player B joined!");
+                                try {
+                                    Image image2 = new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/backgorund.png"));
+                                } catch (FileNotFoundException e) {
+                                    throw new RuntimeException(e);
+                                }
                                 playerB = c;
                             }
-                        }else {
+                        } else {
                             //send configured controllers to next scene controller
                             try {
                                 CharacterSelect cs = SceneManager.getInstance().getLoader(Scenes.CHARACTER_SELECT).getController();
@@ -59,18 +76,15 @@ public class PlayersJoin implements Initialisable{
                             }
                             this.stop();
                         }
-
-
                     }
                 }
-
-
             }
-
         };
 
         timer.start();
     }
+
+
     public void playersJoinedAction() throws IOException {
         SceneManager.getInstance().setScene(Scenes.CHARACTER_SELECT);
     }
