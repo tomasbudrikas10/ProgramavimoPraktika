@@ -18,6 +18,9 @@ public class GameStage implements Initialisable {
     public Rectangle leftWall;
     public Rectangle rightWall;
     public StackPane root;
+    public Rectangle playerOneSpawn;
+    public Rectangle playerTwoSpawn;
+
     @Override
     public void initialise() {
 
