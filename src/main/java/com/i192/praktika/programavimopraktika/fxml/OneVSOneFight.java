@@ -58,7 +58,6 @@ public class OneVSOneFight implements Initialisable{
             SpriteSheet spriteSheet = new SpriteSheet("CircleFighter.png", 6, 5, 22, 22);
 
             int i = 0;
-            int o = 0;
             boolean fightOver = false;
             @Override
             public void handle(long l) {
@@ -70,23 +69,13 @@ public class OneVSOneFight implements Initialisable{
                 updateCharacterImages(spriteSheet, gameManager.characterStateB, ivB);
 
 
-                //just testing
-                ivA.setLayoutX(100);
-                ivA.setLayoutY(100);
 
-
-                ivB.setLayoutX(200);
-                ivB.setLayoutY(200);
-
-                ivA.setImage(spriteSheet.getSprite(i,3));
+                ivA.setLayoutX(100+i);
+                ivA.setLayoutY(100+i);
                 i++;
-                if(i>3){i = 0;}
-
-
-                ivA.setTranslateX(o);
-                o++;
-                if(o>100){o = 0;}
-
+                if(i == 100){
+                    i = 0;
+                }
 
                 //enter animation
 
@@ -101,10 +90,14 @@ public class OneVSOneFight implements Initialisable{
 
     void updateCharacterImages(SpriteSheet ss, CharacterState characterState, ImageView iv){
         int[] ii = characterState.currImage();
-        iv.setImage(ss.getSprite(ii[0],ii[1]));
+        Image image = ss.getSprite(ii[0],ii[1]);
+        iv.setImage(image);
+        iv.setFitWidth(image.getWidth());
         iv.setLayoutX(characterState.rb.rootPosition.x);
         iv.setLayoutY(characterState.rb.rootPosition.y);
     }
+
+
 
     public void fightOverAction(){
 

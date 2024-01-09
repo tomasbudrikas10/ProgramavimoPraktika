@@ -3,11 +3,18 @@ package com.i192.praktika.programavimopraktika.data;
 import com.i192.praktika.programavimopraktika.game.Animation;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class Frame{
+    //boxes used for attacking
     public Box[] hitBoxes;
+    //boxes used for character getting hurt
     public Box[] hurtBoxes;
+    //boxes used for character body collision with ground walls and other character
     public Box[] colliderBoxes;
+
+    //how much must the character move from last frame to this one
+    public Vector2d translation;
 
     //imageIndex is used to tell which image to take from the spriteSheet
     int imageColl;

@@ -86,7 +86,7 @@ public class CharacterSelect implements Initialisable{
 
     @Override
     public void initialise() {
-//        charSelectLoop();
+        charSelectLoop();
         int characterCount = 0;
         for (Characters character : Characters.values()) {
             StackPane stackPane = new StackPane();
