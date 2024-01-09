@@ -137,7 +137,7 @@ public class CharacterSelect implements Initialisable{
                     player2icon.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/" + character.getImageName()).toExternalForm()));
                     description.setText("SELECTED BY PLAYER 2");
                     Duration duration = Duration.seconds(1);
-                    int totalSeconds = 10;
+                    int totalSeconds = 1;
                     AtomicInteger secondsRemaining = new AtomicInteger(10);
                     Timeline timeline = new Timeline();
                     timeline.getKeyFrames().add(new KeyFrame(duration, event -> {
