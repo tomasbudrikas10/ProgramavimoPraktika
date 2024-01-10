@@ -98,9 +98,9 @@ public class Fighter {
         Frame[] jumpFrames = new Frame[4];
         {
             jumpFrames[0] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,0,7, new Vector2d(0,0));
-            jumpFrames[1] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,1,7, new Vector2d(0,22));
-            jumpFrames[2] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,2,7, new Vector2d(0,11));
-            jumpFrames[3] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,3,7, new Vector2d(0,5));
+            jumpFrames[1] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,1,7, new Vector2d(0,-110));
+            jumpFrames[2] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,2,7, new Vector2d(0,-50));
+            jumpFrames[3] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,3,7, new Vector2d(0,-20));
         }
 
         Animation[] animationArr = new Animation[8];
@@ -111,7 +111,8 @@ public class Fighter {
             animationArr[3] = new Animation(punchFrames);
             animationArr[4] = new Animation(kickFrames);
             animationArr[5] = new Animation(hurtFrames);
-            animationArr[6] = new Animation(jumpFrames);
+            animationArr[6] = new Animation(tumblingFrames);
+            animationArr[7] = new Animation(jumpFrames);
         }
 
         this.inputAnimationMap = new HashMap<Inputs, Integer>();
