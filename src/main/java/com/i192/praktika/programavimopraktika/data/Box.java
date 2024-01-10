@@ -13,6 +13,8 @@ public class Box{
         this.topLeft = new Vector2d(ss[0]);
         this.bottomRight = new Vector2d(ss[1]);
     }
+
+
     @Override
     public String toString() {
         return topLeft.toString() + "~" + bottomRight.toString();

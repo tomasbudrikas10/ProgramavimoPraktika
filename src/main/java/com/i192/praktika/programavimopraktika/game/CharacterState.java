@@ -1,13 +1,12 @@
 package com.i192.praktika.programavimopraktika.game;
 
 import com.i192.praktika.programavimopraktika.data.Box;
-import com.i192.praktika.programavimopraktika.data.Frame;
 import com.i192.praktika.programavimopraktika.data.Vector2d;
 import com.i192.praktika.programavimopraktika.physics.RigidBody;
 
 public class CharacterState{
 
-    public Character character;
+    public Fighter character;
     public int health;
     public RigidBody rb;
     public int animation = 0;
@@ -15,7 +14,7 @@ public class CharacterState{
 
 
 
-    public CharacterState(Character character,int startHealth, Vector2d startPosition){
+    public CharacterState(Fighter character, int startHealth, Vector2d startPosition){
         this.character = character;
         this.health = startHealth;
         this.rb = new RigidBody(startPosition);

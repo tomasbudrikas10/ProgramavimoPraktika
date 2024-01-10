@@ -1,5 +1,7 @@
 package com.i192.praktika.programavimopraktika;
 
+import com.i192.praktika.programavimopraktika.game.Fighter;
+
 public enum Characters {
     BOB_THE_CAT("Bob The Cat", "Bob is a cool cat!", "player1.png"),
     ROB_THE_CAT("Rob The Cat", "Rob is a less cool cat than Bob :(", "player2.png");
@@ -12,6 +14,10 @@ public enum Characters {
         this.name = name;
         this.description = description;
         this.imageName = imageName;
+    }
+
+    public static Fighter getFighter(Characters the){
+        return new Fighter();
     }
 
     public String getName() {

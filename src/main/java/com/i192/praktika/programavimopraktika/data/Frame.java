@@ -13,7 +13,7 @@ public class Frame{
     int imageColl;
     int imageRow;
 
-    Frame(Box[] hitBoxes, Box[] hurtBoxes, Box[] colliderBoxes, int imageColl, int imageRow){
+    public Frame(Box[] hitBoxes, Box[] hurtBoxes, Box[] colliderBoxes, int imageColl, int imageRow){
         this.hitBoxes = hitBoxes;
         this.hurtBoxes = hurtBoxes;
         this.colliderBoxes = colliderBoxes;

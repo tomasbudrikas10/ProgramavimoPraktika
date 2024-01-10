@@ -6,11 +6,11 @@ import com.i192.praktika.programavimopraktika.physics.Collisions;
 
 public class FightGameManager {
 
-    public FightGameManager(Character A, Character B){
-        this.characterStateA = new CharacterState(A,100, new Vector2d(-1, 0));
-        this.characterStateB = new CharacterState(B,100, new Vector2d(1, 0));
+    public FightGameManager(Fighter A, Fighter B){
+        this.characterStateA = new CharacterState(A,100, new Vector2d(100, 200));
+        this.characterStateB = new CharacterState(B,100, new Vector2d(500, 200));
     }
-    public FightStage fightStage = new FightStage(new Vector2d(0, -1), new Box(new Vector2d(0, 350), new Vector2d(600, 400)));
+    public FightStage fightStage = new FightStage(new Vector2d(0, 22), new Box(new Vector2d(0, 350), new Vector2d(600, 1000000)));
     public CharacterState characterStateA;
     public CharacterState characterStateB;
 
@@ -49,8 +49,10 @@ public class FightGameManager {
         for(Box b: boxes){
             boolean c = Collisions.collides(fightStage.gorund, b, Vector2d.ZERO, characterState.rb.rootPosition);
             if(c){
+                //System.out.println("GGS");
                 Vector2d v = Collisions.push(fightStage.gorund, b, Vector2d.ZERO, characterState.rb.rootPosition);
                 characterState.rb.rootPosition.add(v);
+                characterState.rb.velocity.setY(0);
             }
         }
     }
@@ -61,6 +63,6 @@ public class FightGameManager {
     }
 
     public void advanceAnimations(){
-        
+        //not yet...
     }
 }

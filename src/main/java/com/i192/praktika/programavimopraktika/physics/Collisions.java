@@ -14,8 +14,8 @@ public class Collisions {
         boolean horisontalOne = bottomRightA.x > topLeftB.x;//is the rightest point in a righter than the leftest point in b
         boolean horisontalTwo = topLeftA.x < bottomRightB.x;
 
-        boolean verticalOne = bottomRightA.y < topLeftB.y;
-        boolean verticalTwo = topLeftA.y > bottomRightB.y;
+        boolean verticalOne = bottomRightA.y > topLeftB.y;
+        boolean verticalTwo = topLeftA.y < bottomRightB.y;
 
         return horisontalOne & horisontalTwo & verticalOne & verticalTwo;
     }
@@ -35,7 +35,7 @@ public class Collisions {
 
         //find shortest
         int bestIndex = 0;
-        double bestLength = Float.MAX_VALUE;
+        double bestLength = Double.MAX_VALUE;
         for(int i = 0; i < 4; i++){
             double lengthCurr = dirs[i].length();
             if(lengthCurr < bestLength){

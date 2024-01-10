@@ -1,17 +1,14 @@
 package com.i192.praktika.programavimopraktika.fxml;
 
+import com.i192.praktika.programavimopraktika.Characters;
 import com.i192.praktika.programavimopraktika.controller.ConfiguredController;
-import com.i192.praktika.programavimopraktika.data.Vector2d;
-import com.i192.praktika.programavimopraktika.game.Character;
+import com.i192.praktika.programavimopraktika.game.Fighter;
 import com.i192.praktika.programavimopraktika.game.CharacterState;
 import com.i192.praktika.programavimopraktika.game.FightGameManager;
-import com.i192.praktika.programavimopraktika.game.FightStage;
 import com.i192.praktika.programavimopraktika.graphics.SpriteSheet;
 import javafx.animation.AnimationTimer;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Box;
 import javafx.scene.image.Image;
 
 import java.io.FileInputStream;
@@ -22,8 +19,8 @@ public class OneVSOneFight implements Initialisable{
     ConfiguredController playerA = null;
     ConfiguredController playerB = null;
 
-    Character selectedCharacterA = null;
-    Character selectedCharacterB = null;
+    Fighter selectedCharacterA = null;
+    Fighter selectedCharacterB = null;
 
     public Pane pane;
 
@@ -39,7 +36,7 @@ public class OneVSOneFight implements Initialisable{
         this.playerB = B;
     }
 
-    public void setSelectedCharacters(Character A , Character B){
+    public void setSelectedCharacters(Fighter A , Fighter B){
         this.selectedCharacterA = A;
         this.selectedCharacterB = B;
     }
@@ -47,8 +44,8 @@ public class OneVSOneFight implements Initialisable{
 
 
     public void gameLoop(){
-
-
+        selectedCharacterA = Characters.getFighter(Characters.BOB_THE_CAT);
+        selectedCharacterB = Characters.getFighter(Characters.ROB_THE_CAT);
 
 
         AnimationTimer timer = new AnimationTimer() {
@@ -65,27 +62,16 @@ public class OneVSOneFight implements Initialisable{
                 playerA.updateLatestChanges();
                 playerB.updateLatestChanges();
 
+                gameManager.update();
+
                 //display both characters
                 updateCharacterImages(spriteSheet, gameManager.characterStateA, ivA);
                 updateCharacterImages(spriteSheet, gameManager.characterStateB, ivB);
 
 
                 //just testing
-                ivA.setLayoutX(100);
-                ivA.setLayoutY(100);
+                //System.out.println(gameManager.characterStateA.rb.rootPosition.toString());
 
-
-                ivB.setLayoutX(200);
-                ivB.setLayoutY(200);
-
-                ivA.setImage(spriteSheet.getSprite(i,2));
-                i++;
-                if(i>4){i = 0;}
-
-
-                ivA.setTranslateX(o);
-                o++;
-                if(o>100){o = 0;}
 
 
                 //enter animation
@@ -101,7 +87,10 @@ public class OneVSOneFight implements Initialisable{
 
     void updateCharacterImages(SpriteSheet ss, CharacterState characterState, ImageView iv){
         int[] ii = characterState.currImage();
-        iv.setImage(ss.getSprite(ii[0],ii[1]));
+        Image image = ss.getSprite(ii[0],ii[1]);
+        iv.setFitWidth(image.getWidth());
+
+        iv.setImage(image);
         iv.setLayoutX(characterState.rb.rootPosition.x);
         iv.setLayoutY(characterState.rb.rootPosition.y);
     }
@@ -122,6 +111,16 @@ public class OneVSOneFight implements Initialisable{
         }
         ground.preserveRatioProperty().set(false);
         background.preserveRatioProperty().set(false);
+
+        ground.setLayoutX(0);
+        ground.setLayoutY(350);
+        ground.setFitWidth(600);
+        ground.setFitHeight(50);
+
+        background.setLayoutX(0);
+        background.setLayoutY(0);
+        background.setFitWidth(600);
+        background.setFitHeight(400);
 
         gameLoop();
     }

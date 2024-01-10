@@ -26,6 +26,14 @@ public class Vector2d{
         y = y + plus.y;
     }
 
+    public void setX(double x){
+        this.x = x;
+    }
+
+    public void setY(double y){
+        this.y = y;
+    }
+
     public double length(){
         return (double) sqrt(x * x + y * y);
     }
