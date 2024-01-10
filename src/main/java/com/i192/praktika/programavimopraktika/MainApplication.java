@@ -13,7 +13,7 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         SceneManager sceneManager = SceneManager.getInstance();
         sceneManager.setStage(stage);
-        sceneManager.setScene(Scenes.MAIN_MENU);
+        sceneManager.setScene(Scenes.PLAYERS_JOIN);
         sceneManager.getStage().show();
     }
 

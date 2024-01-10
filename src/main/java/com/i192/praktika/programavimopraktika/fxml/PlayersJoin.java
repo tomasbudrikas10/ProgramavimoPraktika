@@ -7,6 +7,9 @@ import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import net.java.games.input.Controller;
 import net.java.games.input.Event;
 import net.java.games.input.EventQueue;
@@ -17,7 +20,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class PlayersJoin implements Initialisable{
+
+    public VBox player;
 
     public void joinLoop(){
         AnimationTimer timer = new AnimationTimer() {
@@ -39,10 +45,12 @@ public class PlayersJoin implements Initialisable{
                 for(ConfiguredController c:configuredControllers) {
                     if (c.latestChanges.length != 0) {
                         if (playerA == null) {
-                            //toDo:somehow show that playerA has joined
+
                             Label label1 = new Label("Player A joined!");
                             try {
-                                Image image1 = new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/backgorund.png"));
+                                Image image1 = new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/playerA.png"));
+                                player.getChildren().add(label1);
+                                player.getChildren().add(new ImageView(image1) );
                             } catch (FileNotFoundException e) {
                                 throw new RuntimeException(e);
                             }
@@ -51,13 +59,16 @@ public class PlayersJoin implements Initialisable{
                         } else if (playerB == null) {
 
                             if (c != playerA) {
-                                //toDo:somehow show that playerB has joined
+
                                 Label label2 = new Label("Player B joined!");
+                                Image image2 =null;
                                 try {
-                                    Image image2 = new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/backgorund.png"));
+                                     image2 = new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/playerB.png"));
+
                                 } catch (FileNotFoundException e) {
                                     throw new RuntimeException(e);
                                 }
+                                player.getChildren().addAll(label2,new ImageView(image2));
                                 playerB = c;
                             }
                         } else {
