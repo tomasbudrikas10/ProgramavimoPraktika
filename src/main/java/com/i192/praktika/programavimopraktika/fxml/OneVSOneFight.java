@@ -54,10 +54,8 @@ public class OneVSOneFight implements Initialisable{
 
             FightGameManager gameManager = new FightGameManager(selectedCharacterA, selectedCharacterB);
 
-            SpriteSheet spriteSheet = new SpriteSheet("CircleFighter.png", 6, 5, 22, 22);
+            SpriteSheet spriteSheet = new SpriteSheet("CircleFighterNew.png", 22, 22);
 
-            int i = 0;
-            int o = 0;
             boolean fightOver = false;
             @Override
             public void handle(long l) {
@@ -65,7 +63,8 @@ public class OneVSOneFight implements Initialisable{
                 playerB.updateLatestChanges();
 
 
-
+                imputsToAnimation(playerA, gameManager.characterStateA);
+                imputsToAnimation(playerB, gameManager.characterStateB);
                 gameManager.update();
 
                 //display both characters
@@ -90,7 +89,7 @@ public class OneVSOneFight implements Initialisable{
 
     void updateCharacterImages(SpriteSheet ss, CharacterState characterState, ImageView iv){
         int[] ii = characterState.currImage();
-        Image image = ss.getSprite(ii[0],ii[1]);
+        Image image = ss.getSprite(ii[1],ii[0]);
         iv.setFitWidth(image.getWidth());
 
         iv.setImage(image);
@@ -99,11 +98,14 @@ public class OneVSOneFight implements Initialisable{
     }
 
     void imputsToAnimation(ConfiguredController configuredControllerler, CharacterState state){
-        Pair<Inputs,Boolean> tehInp = configuredControllerler.latestChanges[0];
-        if(state.animation == 0 && tehInp.getValue()){
-            state.animation = state.character.inputAnimationMap.get(tehInp.getKey());
-            state.animationFrame = 0;
+        if(configuredControllerler.latestChanges.length > 0){
+            Pair<Inputs,Boolean> tehInp = configuredControllerler.latestChanges[0];
+            if(state.animation == 0 && tehInp.getValue()){
+                state.animation = state.character.inputAnimationMap.get(tehInp.getKey());
+                state.animationFrame = 0;
+            }
         }
+
     }
 
     public void fightOverAction(){

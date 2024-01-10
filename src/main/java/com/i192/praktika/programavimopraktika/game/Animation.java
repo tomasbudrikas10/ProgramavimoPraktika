@@ -18,11 +18,9 @@ public class Animation {
     static String animationsFolderPath = "/com/i192/praktika/programavimopraktika/animation";
     Frame[] frames;
 
-    String spriteSheetName;
-
-    Animation(Frame[] frames, String spriteSheetName){
+    Animation(Frame[] frames){
         this.frames = frames;
-        this.spriteSheetName = spriteSheetName;
+
     }
 
     public Frame[] readFrameData(String fileName){

@@ -105,13 +105,13 @@ public class Fighter {
 
         Animation[] animationArr = new Animation[8];
         {
-            animationArr[0] = new Animation(idleFrames, "CircleFighterNew.png");
-            animationArr[1] = new Animation(runForwardFrames, "CircleFighterNew.png");
-            animationArr[2] = new Animation(walkBackFrames, "CircleFighterNew.png");
-            animationArr[3] = new Animation(punchFrames, "CircleFighterNew.png");
-            animationArr[4] = new Animation(kickFrames, "CircleFighterNew.png");
-            animationArr[5] = new Animation(hurtFrames, "CircleFighterNew.png");
-            animationArr[6] = new Animation(jumpFrames, "CircleFighterNew.png");
+            animationArr[0] = new Animation(idleFrames);
+            animationArr[1] = new Animation(runForwardFrames);
+            animationArr[2] = new Animation(walkBackFrames);
+            animationArr[3] = new Animation(punchFrames);
+            animationArr[4] = new Animation(kickFrames);
+            animationArr[5] = new Animation(hurtFrames);
+            animationArr[6] = new Animation(jumpFrames);
         }
 
         this.inputAnimationMap = new HashMap<Inputs, Integer>();
