@@ -5,17 +5,17 @@ import static java.lang.Math.sqrt;
 public class Vector2d{
 
     public static final Vector2d ZERO = new Vector2d(0,0);
-    public float x;
-    public float y;
+    public double x;
+    public double y;
 
-    public Vector2d(float x, float y){
+    public Vector2d(double x, double y){
         this.x = x;
         this.y = y;
     }
     Vector2d(String s){
         String[] ss = s.split(";");
-        this.x = Float.parseFloat(ss[0]);
-        this.y = Float.parseFloat(ss[1]);
+        this.x = Double.parseDouble(ss[0]);
+        this.y = Double.parseDouble(ss[1]);
     }
 
     public static Vector2d sum(Vector2d a, Vector2d b){
@@ -26,8 +26,8 @@ public class Vector2d{
         y = y + plus.y;
     }
 
-    public float length(){
-        return (float) sqrt(x * x + y * y);
+    public double length(){
+        return (double) sqrt(x * x + y * y);
     }
     @Override
     public String toString() {

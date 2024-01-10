@@ -35,9 +35,9 @@ public class Collisions {
 
         //find shortest
         int bestIndex = 0;
-        float bestLength = Float.MAX_VALUE;
+        double bestLength = Float.MAX_VALUE;
         for(int i = 0; i < 4; i++){
-            float lengthCurr = dirs[i].length();
+            double lengthCurr = dirs[i].length();
             if(lengthCurr < bestLength){
                 bestLength = lengthCurr;
                 bestIndex = i;
