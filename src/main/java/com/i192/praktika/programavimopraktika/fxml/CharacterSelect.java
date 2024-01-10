@@ -73,7 +73,7 @@ public class CharacterSelect implements Initialisable{
                     throw new RuntimeException(e);
                 }
 
-                this.stop();
+                //this.stop();
                 if(characters_selected){
 
                 }
@@ -87,12 +87,12 @@ public class CharacterSelect implements Initialisable{
     }
 
     public void charactersSelectedAction() throws IOException {
-        SceneManager.getInstance().setScene(Scenes.ONE_VS_ONE_FIGHT);
+        //SceneManager.getInstance().setScene(Scenes.ONE_VS_ONE_FIGHT);
     }
 
     @Override
     public void initialise() {
-//        charSelectLoop();
+        charSelectLoop();
         AtomicBoolean playerOneTurn = new AtomicBoolean(true);
         turnText.setText("Player 1 turn to pick!");
         player2icon.setScaleX(-1);
@@ -147,7 +147,7 @@ public class CharacterSelect implements Initialisable{
                     timeline.setCycleCount(totalSeconds);
                     timeline.setOnFinished(e2 -> {
                         try {
-                            SceneManager.getInstance().setScene(Scenes.GAME_STAGE);
+                            SceneManager.getInstance().setScene(Scenes.ONE_VS_ONE_FIGHT);
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }

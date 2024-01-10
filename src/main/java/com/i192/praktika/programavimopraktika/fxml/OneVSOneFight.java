@@ -78,9 +78,9 @@ public class OneVSOneFight implements Initialisable{
                 ivB.setLayoutX(200);
                 ivB.setLayoutY(200);
 
-                ivA.setImage(spriteSheet.getSprite(i,3));
+                ivA.setImage(spriteSheet.getSprite(i,2));
                 i++;
-                if(i>3){i = 0;}
+                if(i>4){i = 0;}
 
 
                 ivA.setTranslateX(o);

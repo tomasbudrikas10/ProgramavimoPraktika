@@ -26,7 +26,7 @@ public class MainMenu implements Initialisable{
 
     @FXML
     public void startGameAction() throws IOException {
-        SceneManager.getInstance().setScene(Scenes.CHARACTER_SELECT);
+        SceneManager.getInstance().setScene(Scenes.PLAYERS_JOIN);
     }
 
     @Override
