@@ -73,7 +73,7 @@ public class CharacterSelect implements Initialisable{
                     throw new RuntimeException(e);
                 }
 
-                //this.stop();
+                this.stop();
                 if(characters_selected){
 
                 }

@@ -19,7 +19,6 @@ public class ConfiguredController{
     ConfiguredController(Controller controller, HashMap<Component, Inputs> componentInputsHashMap){
         this.controller = controller;
         this.componentInputsHashMap = componentInputsHashMap;
-        this.latestChanges = new Pair[0];
     }
 
     public void updateLatestChanges(){
@@ -36,11 +35,11 @@ public class ConfiguredController{
             Inputs input = componentInputsHashMap.get(event.getComponent());
             if(input != null){
                 i++;
-                System.out.println(i);
-                changes.add(new Pair<Inputs, Boolean>(input,event.getValue() >= 1.0));
+
+                changes.add(new Pair<>(input,event.getValue() >= 1.0));
             }
         }
-
-        latestChanges = changes.toArray(new Pair[i]);
+        latestChanges = new Pair[i];
+        latestChanges = changes.toArray(latestChanges);
     }
 }

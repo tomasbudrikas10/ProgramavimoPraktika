@@ -116,10 +116,12 @@ public class Fighter {
 
         this.inputAnimationMap = new HashMap<Inputs, Integer>();
         inputAnimationMap.put(Inputs.UP, 7);
-        inputAnimationMap.put(Inputs.RIGHT, 1);
+        inputAnimationMap.put(Inputs.DOWN, 0);
         inputAnimationMap.put(Inputs.LEFT, 2);
+        inputAnimationMap.put(Inputs.RIGHT, 1);
         inputAnimationMap.put(Inputs.PUNCH, 3);
         inputAnimationMap.put(Inputs.KICK, 4);
+
 
 
         this.animations = animationArr;
