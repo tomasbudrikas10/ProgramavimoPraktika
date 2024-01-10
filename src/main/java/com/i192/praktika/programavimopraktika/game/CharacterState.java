@@ -1,6 +1,7 @@
 package com.i192.praktika.programavimopraktika.game;
 
 import com.i192.praktika.programavimopraktika.data.Box;
+import com.i192.praktika.programavimopraktika.data.Frame;
 import com.i192.praktika.programavimopraktika.data.Vector2d;
 import com.i192.praktika.programavimopraktika.physics.RigidBody;
 
@@ -22,6 +23,10 @@ public class CharacterState{
 
     public Box[] getColliderBoxes(){
         return character.animations[animation].frames[animationFrame].colliderBoxes;
+    }
+
+    public Frame getFrame(){
+        return character.animations[animation].frames[animationFrame];
     }
 
     public int[] currImage(){

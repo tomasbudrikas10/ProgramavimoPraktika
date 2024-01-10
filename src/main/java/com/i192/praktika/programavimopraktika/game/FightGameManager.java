@@ -32,8 +32,12 @@ public class FightGameManager {
     }
 
     public void moveCharacters(){
-        characterStateA.rb.move(1f/30);
-        characterStateB.rb.move(1f/30);
+        moveCharacter(characterStateA);
+        moveCharacter(characterStateB);
+    }
+    void moveCharacter(CharacterState cs){
+        cs.rb.move(1f/30);
+        cs.rb.rootPosition.add(cs.getFrame().translation);
     }
     public void manageOverlaps(){
         //character ground overlap
@@ -63,6 +67,15 @@ public class FightGameManager {
     }
 
     public void advanceAnimations(){
-        //not yet...
+        advanceAnimation(characterStateA);
+        advanceAnimation(characterStateB);
+
+    }
+    void advanceAnimation(CharacterState cs){
+        cs.animationFrame++;
+        if(cs.animationFrame == cs.character.animations[cs.animation].frames.length){
+            cs.animation = 0;
+            cs.animationFrame = 0;
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.i192.praktika.programavimopraktika.fxml;
 
 import com.i192.praktika.programavimopraktika.Characters;
 import com.i192.praktika.programavimopraktika.controller.ConfiguredController;
+import com.i192.praktika.programavimopraktika.controller.Inputs;
 import com.i192.praktika.programavimopraktika.game.Fighter;
 import com.i192.praktika.programavimopraktika.game.CharacterState;
 import com.i192.praktika.programavimopraktika.game.FightGameManager;
@@ -10,6 +11,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
+import javafx.util.Pair;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -62,6 +64,8 @@ public class OneVSOneFight implements Initialisable{
                 playerA.updateLatestChanges();
                 playerB.updateLatestChanges();
 
+
+
                 gameManager.update();
 
                 //display both characters
@@ -70,7 +74,6 @@ public class OneVSOneFight implements Initialisable{
 
 
                 //just testing
-                //System.out.println(gameManager.characterStateA.rb.rootPosition.toString());
 
 
 
@@ -93,6 +96,14 @@ public class OneVSOneFight implements Initialisable{
         iv.setImage(image);
         iv.setLayoutX(characterState.rb.rootPosition.x);
         iv.setLayoutY(characterState.rb.rootPosition.y);
+    }
+
+    void imputsToAnimation(ConfiguredController configuredControllerler, CharacterState state){
+        Pair<Inputs,Boolean> tehInp = configuredControllerler.latestChanges[0];
+        if(state.animation == 0 && tehInp.getValue()){
+            state.animation = state.character.inputAnimationMap.get(tehInp.getKey());
+            state.animationFrame = 0;
+        }
     }
 
     public void fightOverAction(){
