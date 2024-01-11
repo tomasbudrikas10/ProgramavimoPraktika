@@ -73,6 +73,8 @@ public class CharacterSelect implements Initialisable{
                     } else {
                         handleInputs(playerB);
                     }
+                } else {
+                    this.stop();
                 }
             }
         };
