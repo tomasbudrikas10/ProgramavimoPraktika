@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 
-<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-pref-width: 900;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.i192.praktika.programavimopraktika.fxml.GameStage">
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-pref-width: 1600; -fx-pref-height: 900;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.i192.praktika.programavimopraktika.fxml.GameStage">
    <children>
-      <Pane fx:id="game" prefHeight="200.0" prefWidth="200.0">
+      <Pane fx:id="background" prefHeight="565.0" prefWidth="1172.0" style="-fx-background-color: radial-gradient(center 95% 5%, radius 35%, yellow, lightblue);">
          <children>
-            <Rectangle fx:id="ground" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutY="350.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" width="900.0" />
-            <Rectangle fx:id="leftWall" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="350.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Rectangle fx:id="rightWall" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="350.0" layoutX="850.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-         </children>
-      </Pane>
-      <Pane fx:id="background" prefHeight="470.0" prefWidth="600.0" style="-fx-background-color: radial-gradient(center 95% 5%, radius 35%, yellow, lightblue);">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="123.0" layoutY="277.0" stroke="BLACK" strokeType="INSIDE" width="900.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="204.0" layoutY="696.0" stroke="BLACK" strokeType="INSIDE" width="1600.0">
                <fill>
                   <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                      <stops>
@@ -32,8 +30,9 @@
                         </Stop>
                      </stops>
                   </RadialGradient>
-               </fill></Rectangle>
-            <Group layoutX="286.0" layoutY="77.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+               </fill>
+            </Rectangle>
+            <Group layoutX="428.0" layoutY="525.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -186,7 +185,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="341.0" layoutY="77.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+            <Group layoutX="483.0" layoutY="525.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -339,7 +338,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="400.0" layoutY="77.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+            <Group layoutX="542.0" layoutY="525.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -492,7 +491,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="532.0" layoutY="77.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+            <Group layoutX="674.0" layoutY="525.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -645,7 +644,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="464.0" layoutY="77.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+            <Group layoutX="606.0" layoutY="525.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -798,7 +797,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="255.0" layoutY="87.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+            <Group layoutX="397.0" layoutY="535.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -951,7 +950,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="310.0" layoutY="87.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+            <Group layoutX="452.0" layoutY="535.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -1104,7 +1103,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="369.0" layoutY="87.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+            <Group layoutX="511.0" layoutY="535.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -1257,7 +1256,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="501.0" layoutY="87.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+            <Group layoutX="643.0" layoutY="535.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -1410,7 +1409,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="433.0" layoutY="87.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+            <Group layoutX="575.0" layoutY="535.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -1563,7 +1562,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="232.0" layoutY="87.0" style="-fx-scale-y: 0.5; -fx-translate-x: -160; -fx-scale-x: 0.5;">
+            <Group layoutX="438.0" layoutY="535.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -1716,7 +1715,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="185.0" layoutY="77.0" style="-fx-scale-y: 0.6; -fx-translate-x: -150; -fx-scale-x: 0.6;">
+            <Group layoutX="684.0" layoutY="535.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -1869,7 +1868,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="296.0" layoutY="87.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
+            <Group layoutX="493.0" layoutY="535.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -2022,7 +2021,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="542.0" layoutY="87.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
+            <Group layoutX="552.0" layoutY="535.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -2175,7 +2174,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="351.0" layoutY="87.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
+            <Group layoutX="616.0" layoutY="535.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -2328,7 +2327,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="410.0" layoutY="87.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
+            <Group layoutX="407.0" layoutY="545.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -2481,7 +2480,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="474.0" layoutY="87.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
+            <Group layoutX="462.0" layoutY="545.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -2634,7 +2633,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="265.0" layoutY="97.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
+            <Group layoutX="521.0" layoutY="545.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -2787,7 +2786,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="320.0" layoutY="97.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
+            <Group layoutX="653.0" layoutY="545.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -2940,7 +2939,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="379.0" layoutY="97.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
+            <Group layoutX="585.0" layoutY="545.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -3093,7 +3092,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="511.0" layoutY="97.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
+            <Group layoutX="1063.0" layoutY="518.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -3246,7 +3245,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="443.0" layoutY="97.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
+            <Group layoutX="1118.0" layoutY="518.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -3399,7 +3398,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="562.0" layoutY="87.0" style="-fx-scale-y: 0.5; -fx-translate-x: 160; -fx-scale-x: 0.5;">
+            <Group layoutX="1177.0" layoutY="518.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -3552,7 +3551,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="608.0" layoutY="87.0" style="-fx-scale-y: 0.6; -fx-translate-x: 160; -fx-scale-x: 0.6;">
+            <Group layoutX="1309.0" layoutY="518.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -3705,7 +3704,7 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="130.0" layoutY="58.0" style="-fx-scale-y: 0.8; -fx-translate-x: -150; -fx-translate-y: 20;">
+            <Group layoutX="1241.0" layoutY="518.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -3858,7 +3857,1996 @@
                   </Circle>
                </children>
             </Group>
-            <Group layoutX="671.0" layoutY="58.0" style="-fx-scale-y: 0.8; -fx-translate-x: 150; -fx-translate-y: 20;">
+            <Group layoutX="1032.0" layoutY="528.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="1087.0" layoutY="528.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="1146.0" layoutY="528.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="1278.0" layoutY="528.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="1210.0" layoutY="528.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="1073.0" layoutY="528.0" style="-fx-scale-y: 0.35; -fx-translate-y: 0; -fx-scale-x: 0.35; -fx-translate-x: 150;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="1342.0" layoutY="530.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="1406.0" layoutY="530.0" style="-fx-scale-y: 0.35; -fx-translate-y: 15; -fx-scale-x: 0.35; -fx-translate-x: -150;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="1142.0" layoutY="542.0" style="-fx-scale-y: 0.5; -fx-translate-x: 160; -fx-scale-x: 0.5;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="1204.0" layoutY="542.0" style="-fx-scale-y: 0.6; -fx-translate-x: 160; -fx-scale-x: 0.6;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="350.0" layoutY="542.0" style="-fx-scale-y: 0.5; -fx-translate-x: -160; -fx-scale-x: 0.5;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="269.0" layoutY="542.0" style="-fx-scale-y: 0.6; -fx-translate-x: -150; -fx-scale-x: 0.6;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="193.0" layoutY="515.0" style="-fx-scale-y: 0.8; -fx-translate-x: -150; -fx-translate-y: 20;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.5213270142180094" startY="0.5497630331753555">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.3947368562221527" green="0.23483186960220337" blue="0.010964912362396717" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.5394737124443054" green="0.42258772253990173" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Circle layoutY="77.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="92.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="100.0" layoutY="59.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="7.0" layoutY="34.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="85.0" layoutY="30.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="16.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="42.0" layoutY="73.0" radius="65.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.6546961325966851" centerY="0.25829383886255924" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.04087475687265396" green="0.8026315569877625" blue="0.19322611391544342" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.0027412280905991793" green="0.5921052694320679" blue="0.16972769796848297" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Group>
+            <Group layoutX="1307.0" layoutY="522.0" style="-fx-scale-y: 0.8; -fx-translate-x: 150; -fx-translate-y: 20;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutX="25.0" layoutY="102.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
                      <fill>
@@ -4011,6 +5999,15 @@
                   </Circle>
                </children>
             </Group>
+         </children>
+      </Pane>
+      <Pane fx:id="game" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Rectangle fx:id="ground" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" layoutY="802.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="1600.0" />
+            <Rectangle fx:id="leftWall" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="900.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
+            <Rectangle fx:id="rightWall" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="900.0" layoutX="1480.0" layoutY="2.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
+            <Rectangle fx:id="playerOneSpawn" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="225.0" layoutY="576.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+            <Rectangle fx:id="playerTwoSpawn" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="1335.0" layoutY="576.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
          </children>
       </Pane>
    </children>

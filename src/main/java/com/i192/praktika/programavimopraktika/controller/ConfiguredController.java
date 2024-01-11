@@ -26,7 +26,6 @@ public void setPlayerName(String playerName){
     ConfiguredController(Controller controller, HashMap<Component, Inputs> componentInputsHashMap){
         this.controller = controller;
         this.componentInputsHashMap = componentInputsHashMap;
-        this.latestChanges = new Pair[0];
     }
 
     public void updateLatestChanges(){
@@ -35,16 +34,19 @@ public void setPlayerName(String playerName){
         EventQueue queue = controller.getEventQueue();
 
         Event event = new Event();
-        ArrayList<Pair<Inputs, Boolean>> changes = new ArrayList<>();
+        ArrayList<Pair<Inputs, Boolean>> changes = new ArrayList<Pair<Inputs, Boolean>>();
 
+        int i = 0;
         /* For each object in the queue */
         while (queue.getNextEvent(event)) {
             Inputs input = componentInputsHashMap.get(event.getComponent());
-            if(input!= null){
+            if(input != null){
+                i++;
+
                 changes.add(new Pair<>(input,event.getValue() >= 1.0));
             }
         }
-
-        latestChanges = changes.toArray(new Pair[0]);
+        latestChanges = new Pair[i];
+        latestChanges = changes.toArray(latestChanges);
     }
 }

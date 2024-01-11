@@ -2,7 +2,7 @@
   <configuration default="false" name="Paleisti" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.i192.praktika.programavimopraktika.MainApplication" />
     <module name="ProgramavimoPraktika" />
-    <option name="VM_PARAMETERS" value="-Djava.library.path=lib/" />
+    <option name="VM_PARAMETERS" value="-Djava.library.path=lib/ -Djavafx.animation.pulse=value" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

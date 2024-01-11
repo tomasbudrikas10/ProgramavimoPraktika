@@ -1,18 +1,17 @@
 package com.i192.praktika.programavimopraktika.fxml;
 
+import com.i192.praktika.programavimopraktika.Characters;
 import com.i192.praktika.programavimopraktika.controller.ConfiguredController;
-import com.i192.praktika.programavimopraktika.data.Vector2d;
-import com.i192.praktika.programavimopraktika.game.Character;
+import com.i192.praktika.programavimopraktika.controller.Inputs;
+import com.i192.praktika.programavimopraktika.game.Fighter;
 import com.i192.praktika.programavimopraktika.game.CharacterState;
 import com.i192.praktika.programavimopraktika.game.FightGameManager;
-import com.i192.praktika.programavimopraktika.game.FightStage;
 import com.i192.praktika.programavimopraktika.graphics.SpriteSheet;
 import javafx.animation.AnimationTimer;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Box;
 import javafx.scene.image.Image;
+import javafx.util.Pair;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,8 +21,8 @@ public class OneVSOneFight implements Initialisable{
     ConfiguredController playerA = null;
     ConfiguredController playerB = null;
 
-    Character selectedCharacterA = null;
-    Character selectedCharacterB = null;
+    Fighter selectedCharacterA = null;
+    Fighter selectedCharacterB = null;
 
     public Pane pane;
 
@@ -39,7 +38,7 @@ public class OneVSOneFight implements Initialisable{
         this.playerB = B;
     }
 
-    public void setSelectedCharacters(Character A , Character B){
+    public void setSelectedCharacters(Fighter A , Fighter B){
         this.selectedCharacterA = A;
         this.selectedCharacterB = B;
     }
@@ -47,23 +46,26 @@ public class OneVSOneFight implements Initialisable{
 
 
     public void gameLoop(){
-
-
+        selectedCharacterA = Characters.getFighter(Characters.BOB_THE_CAT);
+        selectedCharacterB = Characters.getFighter(Characters.ROB_THE_CAT);
 
 
         AnimationTimer timer = new AnimationTimer() {
 
             FightGameManager gameManager = new FightGameManager(selectedCharacterA, selectedCharacterB);
 
-            SpriteSheet spriteSheet = new SpriteSheet("CircleFighter.png", 6, 5, 22, 22);
+            SpriteSheet spriteSheet = new SpriteSheet("CircleFighterNew.png", 22, 22);
 
-            int i = 0;
-            int o = 0;
             boolean fightOver = false;
             @Override
             public void handle(long l) {
                 playerA.updateLatestChanges();
                 playerB.updateLatestChanges();
+
+
+                imputsToAnimation(playerA, gameManager.characterStateA);
+                imputsToAnimation(playerB, gameManager.characterStateB);
+                gameManager.update();
 
                 //display both characters
                 updateCharacterImages(spriteSheet, gameManager.characterStateA, ivA);
@@ -71,21 +73,7 @@ public class OneVSOneFight implements Initialisable{
 
 
                 //just testing
-                ivA.setLayoutX(100);
-                ivA.setLayoutY(100);
 
-
-                ivB.setLayoutX(200);
-                ivB.setLayoutY(200);
-
-                ivA.setImage(spriteSheet.getSprite(i,3));
-                i++;
-                if(i>3){i = 0;}
-
-
-                ivA.setTranslateX(o);
-                o++;
-                if(o>100){o = 0;}
 
 
                 //enter animation
@@ -101,9 +89,23 @@ public class OneVSOneFight implements Initialisable{
 
     void updateCharacterImages(SpriteSheet ss, CharacterState characterState, ImageView iv){
         int[] ii = characterState.currImage();
-        iv.setImage(ss.getSprite(ii[0],ii[1]));
+        Image image = ss.getSprite(ii[1],ii[0]);
+        iv.setFitWidth(image.getWidth());
+
+        iv.setImage(image);
         iv.setLayoutX(characterState.rb.rootPosition.x);
         iv.setLayoutY(characterState.rb.rootPosition.y);
+    }
+
+    void imputsToAnimation(ConfiguredController configuredControllerler, CharacterState state){
+        if(configuredControllerler.latestChanges.length > 0){
+            Pair<Inputs,Boolean> tehInp = configuredControllerler.latestChanges[0];
+            if(state.animation == 0 && tehInp.getValue()){
+                state.animation = state.character.inputAnimationMap.get(tehInp.getKey());
+                state.animationFrame = 0;
+            }
+        }
+
     }
 
     public void fightOverAction(){
@@ -122,6 +124,16 @@ public class OneVSOneFight implements Initialisable{
         }
         ground.preserveRatioProperty().set(false);
         background.preserveRatioProperty().set(false);
+
+        ground.setLayoutX(0);
+        ground.setLayoutY(350);
+        ground.setFitWidth(600);
+        ground.setFitHeight(50);
+
+        background.setLayoutX(0);
+        background.setLayoutY(0);
+        background.setFitWidth(600);
+        background.setFitHeight(400);
 
         gameLoop();
     }

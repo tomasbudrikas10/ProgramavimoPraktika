@@ -7,6 +7,7 @@ import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import com.i192.praktika.programavimopraktika.controller.ControllerMapingsReadWriter;
 import com.i192.praktika.programavimopraktika.controller.Inputs;
 import javafx.animation.AnimationTimer;
+import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import net.java.games.input.Component;
 import net.java.games.input.Controller;
@@ -17,21 +18,11 @@ import java.util.HashMap;
 public class Settings implements Initialisable{
 
     public Text textInfo;
+    public Button controllerSetupButton;
 
     @Override
     public void initialise() {
 
-    }
-
-    static class ControllerSetupContext{
-        public Controller controller;
-        public HashMap<Inputs, Component> inputHashMap;
-        int i = 0;
-
-        public ControllerSetupContext(){
-            this.controller = null;
-            this.inputHashMap = new HashMap<>();
-        }
     }
 
     public void doneAction() throws IOException {
@@ -48,9 +39,9 @@ public class Settings implements Initialisable{
 
 
         //I will create a hash map of componet(controllers has many components) to input(enum I created for each command used in game)
-
+        controllerSetupButton.setOnAction(null);
         AnimationTimer timer = new AnimationTimer() {
-            ControllerSetupContext csc = new ControllerSetupContext();
+            final ControllerSetupContext csc = new ControllerSetupContext();
             @Override
             public void handle(long now) {
                 if(csc.controller == null){
@@ -62,6 +53,7 @@ public class Settings implements Initialisable{
                         //if all inputs were mapped
                         textInfo.textProperty().set("");
                         ControllerMapingsReadWriter.writeControllerMappings(csc.inputHashMap, csc.controller);
+                        controllerSetupButton.setOnAction(e -> controllerSetupLoop());
                         this.stop();
                     }else if(!csc.inputHashMap.containsKey(Inputs.values()[csc.i])){
                         Component comp = ControllerManager.getComponentOn(csc.controller);
@@ -78,6 +70,15 @@ public class Settings implements Initialisable{
         };
         timer.start();
     }
+}
 
+class ControllerSetupContext{
+    public Controller controller;
+    public HashMap<Inputs, Component> inputHashMap;
+    int i = 0;
 
+    public ControllerSetupContext(){
+        this.controller = null;
+        this.inputHashMap = new HashMap<>();
+    }
 }

@@ -7,7 +7,7 @@ import com.i192.praktika.programavimopraktika.physics.RigidBody;
 
 public class CharacterState{
 
-    public Character character;
+    public Fighter character;
     public int health;
     public RigidBody rb;
     public int animation = 0;
@@ -15,7 +15,7 @@ public class CharacterState{
 
 
 
-    public CharacterState(Character character,int startHealth, Vector2d startPosition){
+    public CharacterState(Fighter character, int startHealth, Vector2d startPosition){
         this.character = character;
         this.health = startHealth;
         this.rb = new RigidBody(startPosition);
@@ -23,6 +23,10 @@ public class CharacterState{
 
     public Box[] getColliderBoxes(){
         return character.animations[animation].frames[animationFrame].colliderBoxes;
+    }
+
+    public Frame getFrame(){
+        return character.animations[animation].frames[animationFrame];
     }
 
     public int[] currImage(){
