@@ -43,7 +43,7 @@
       </HBox>
       <HBox prefHeight="534.0" prefWidth="1280.0" style="-fx-background-color: lightblue;">
          <children>
-            <GridPane fx:id="characters" prefHeight="499.0" prefWidth="1284.0" style="-fx-padding: 30; -fx-hgap: 30; -fx-vgap: 30;">
+            <GridPane fx:id="charactersGrid" prefHeight="499.0" prefWidth="1284.0" style="-fx-padding: 30; -fx-hgap: 30; -fx-vgap: 30;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
