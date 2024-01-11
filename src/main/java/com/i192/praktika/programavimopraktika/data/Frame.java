@@ -11,6 +11,7 @@ public class Frame{
 
     //change since last frame
     public Vector2d translation;
+    public Vector2d velosityChange;
 
     //imageIndex is used to tell which image to take from the spriteSheet
     int imageColl;
