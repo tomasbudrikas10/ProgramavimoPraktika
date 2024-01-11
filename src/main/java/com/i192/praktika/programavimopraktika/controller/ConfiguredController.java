@@ -10,6 +10,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ConfiguredController{
+public String playerName;
+public String getPlayerName(){
+    return playerName;
+}
+public void setPlayerName(String playerName){
+    this.playerName= playerName;
+}
 
     public HashMap<Component, Inputs> componentInputsHashMap;
     public Controller controller;
