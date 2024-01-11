@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane fx:controller="com.i192.praktika.programavimopraktika.fxml.SpritesheetEditor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox id="menu" prefHeight="100.0" prefWidth="1280.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Open Spritesheet" onMouseClicked="#openSpritesheet"/>
+                  <Button mnemonicParsing="false" text="Save Spritesheet" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Previous Frame" />
+                  <Button mnemonicParsing="false" text="Next Frame" />
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="119.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Add Hitbox" />
+                  <Button mnemonicParsing="false" text="Add Hurtbox" />
+                  <Button mnemonicParsing="false" text="Add Collision Box" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Select Box" />
+                  <Button mnemonicParsing="false" text="Edit Selection" />
+                  <Button mnemonicParsing="false" text="Delete Selection" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Move Right" />
+                  <Button mnemonicParsing="false" text="Move Left" />
+                  <Button mnemonicParsing="false" text="Move Up" />
+                  <Button mnemonicParsing="false" text="Move Down" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Previous Animation" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Next Animation" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Edit Frame Translation " />
+                  <Button mnemonicParsing="false" text="Edit Frame Velocity" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <ScrollPane layoutX="157.0" layoutY="233.0" prefHeight="382.0" prefWidth="967.0" />
+   </children>
+</AnchorPane>

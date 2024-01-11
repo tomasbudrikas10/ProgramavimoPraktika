@@ -1,0 +1,17 @@
+#menu {
+    -fx-spacing: 0;
+    -fx-background-color: blue;
+    -fx-alignment: center;
+}
+#menu VBox {
+    -fx-pref-width: 150;
+    -fx-spacing: 10;
+    -fx-padding: 10;
+}
+#menu VBox Button {
+    -fx-pref-width: 150;
+    -fx-font-size: 10;
+}
+AnchorPane {
+    -fx-background-color: gray;
+}
