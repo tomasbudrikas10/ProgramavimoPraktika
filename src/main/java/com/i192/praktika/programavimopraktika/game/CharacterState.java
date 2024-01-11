@@ -13,6 +13,8 @@ public class CharacterState{
     public int animation = 0;
     public int animationFrame = 0;
 
+    public boolean isOnRight;
+
 
 
     public CharacterState(Fighter character, int startHealth, Vector2d startPosition){

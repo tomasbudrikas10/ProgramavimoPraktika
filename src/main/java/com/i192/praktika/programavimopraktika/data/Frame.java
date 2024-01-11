@@ -10,12 +10,22 @@ public class Frame{
     public Box[] colliderBoxes;
 
     //change since last frame
-    public Vector2d translation;
-    public Vector2d velosityChange;
+    public Vector2d translation = Vector2d.ZERO;
+    public Vector2d velosityChange = Vector2d.ZERO;
 
     //imageIndex is used to tell which image to take from the spriteSheet
     int imageColl;
     int imageRow;
+
+    public Frame(Box[] hitBoxes, Box[] hurtBoxes, Box[] colliderBoxes, int imageColl, int imageRow, Vector2d translation, Vector2d velosityChange){
+        this.hitBoxes = hitBoxes;
+        this.hurtBoxes = hurtBoxes;
+        this.colliderBoxes = colliderBoxes;
+        this.imageColl = imageColl;
+        this.imageRow = imageRow;
+        this.translation = translation;
+        this.velosityChange = velosityChange;
+    }
 
     public Frame(Box[] hitBoxes, Box[] hurtBoxes, Box[] colliderBoxes, int imageColl, int imageRow, Vector2d translation){
         this.hitBoxes = hitBoxes;
@@ -25,6 +35,8 @@ public class Frame{
         this.imageRow = imageRow;
         this.translation = translation;
     }
+
+
 
     public Frame(String s){
         String[] ss = s.split("hitBoxes:");

@@ -12,11 +12,12 @@ import java.util.HashMap;
 public class Fighter {
     //will provide access to assets
     //animation images, frame data, sounds, default health, movement speed, ect....
+    public int defaultHealth = 100;
 
     //should have some way to map inputs(or anything that is relevant to this, like isInAirState) to animations
     Animation[] animations;
 
-    public HashMap<Inputs, Integer> inputAnimationMap;
+    public HashMap<Inputs, Integer>[] inputAnimationMap;
 
     public Fighter(){
         Box oneBox = new Box(Vector2d.ZERO, new Vector2d(22,22));
@@ -115,13 +116,23 @@ public class Fighter {
             animationArr[7] = new Animation(jumpFrames);
         }
 
-        this.inputAnimationMap = new HashMap<Inputs, Integer>();
-        inputAnimationMap.put(Inputs.UP, 7);
-        inputAnimationMap.put(Inputs.DOWN, 0);
-        inputAnimationMap.put(Inputs.LEFT, 2);
-        inputAnimationMap.put(Inputs.RIGHT, 1);
-        inputAnimationMap.put(Inputs.PUNCH, 3);
-        inputAnimationMap.put(Inputs.KICK, 4);
+        this.inputAnimationMap[0] = new HashMap<Inputs, Integer>();
+        {
+            inputAnimationMap[].put(Inputs.UP, 7);
+            inputAnimationMap.put(Inputs.DOWN, 0);
+            inputAnimationMap.put(Inputs.LEFT, 2);
+            inputAnimationMap.put(Inputs.RIGHT, 1);
+            inputAnimationMap.put(Inputs.PUNCH, 3);
+            inputAnimationMap.put(Inputs.KICK, 4);
+
+            inputAnimationMap.put(Inputs.UP, 7);
+            inputAnimationMap.put(Inputs.DOWN, 0);
+            inputAnimationMap.put(Inputs.LEFT, 2);
+            inputAnimationMap.put(Inputs.RIGHT, 1);
+            inputAnimationMap.put(Inputs.PUNCH, 3);
+            inputAnimationMap.put(Inputs.KICK, 4);
+        }
+
 
 
 
