@@ -1,9 +1,11 @@
 package com.i192.praktika.programavimopraktika.game;
 
+import com.i192.praktika.programavimopraktika.controller.Inputs;
 import com.i192.praktika.programavimopraktika.data.Box;
 import com.i192.praktika.programavimopraktika.data.Frame;
 import com.i192.praktika.programavimopraktika.data.Vector2d;
 import com.i192.praktika.programavimopraktika.physics.RigidBody;
+import javafx.util.Pair;
 
 public class CharacterState{
 
@@ -14,10 +16,17 @@ public class CharacterState{
     public int animationFrame = 0;
 
     public boolean isOnRight;
+    public boolean isGrounded = false;
+
+    public Pair<Inputs, Boolean>[] loopingImputs;
 
 
 
     public CharacterState(Fighter character, int startHealth, Vector2d startPosition){
+        loopingImputs = new Pair[Inputs.values().length];
+        for(int i = 0; i < loopingImputs.length; i++){
+            loopingImputs[i] = new Pair<>(Inputs.values()[i],false);
+        }
         this.character = character;
         this.health = startHealth;
         this.rb = new RigidBody(startPosition);

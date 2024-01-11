@@ -1,13 +1,12 @@
 package com.i192.praktika.programavimopraktika.game;
 
-import com.almasb.fxgl.input.Input;
 import com.i192.praktika.programavimopraktika.controller.Inputs;
 import com.i192.praktika.programavimopraktika.data.Box;
 import com.i192.praktika.programavimopraktika.data.Frame;
 import com.i192.praktika.programavimopraktika.data.Vector2d;
-import kotlin.Result;
 
 import java.util.HashMap;
+import java.util.function.Function;
 
 public class Fighter {
     //will provide access to assets
@@ -18,6 +17,8 @@ public class Fighter {
     Animation[] animations;
 
     public HashMap<Inputs, Integer>[] inputAnimationMap;
+    public HashMap<Inputs, Function<CharacterState,Boolean>> inputDownBoolLamdaMap;
+    public HashMap<Inputs, Function<CharacterState,Boolean>> inputUpBoolLamdaMap;
 
     public Fighter(){
         Box oneBox = new Box(Vector2d.ZERO, new Vector2d(22,22));
@@ -115,23 +116,55 @@ public class Fighter {
             animationArr[6] = new Animation(tumblingFrames);
             animationArr[7] = new Animation(jumpFrames);
         }
+        this.inputAnimationMap = new HashMap[2];
 
-        this.inputAnimationMap[0] = new HashMap<Inputs, Integer>();
         {
-            inputAnimationMap[].put(Inputs.UP, 7);
-            inputAnimationMap.put(Inputs.DOWN, 0);
-            inputAnimationMap.put(Inputs.LEFT, 2);
-            inputAnimationMap.put(Inputs.RIGHT, 1);
-            inputAnimationMap.put(Inputs.PUNCH, 3);
-            inputAnimationMap.put(Inputs.KICK, 4);
+            this.inputAnimationMap[0] = new HashMap<Inputs, Integer>();
+            this.inputAnimationMap[1] = new HashMap<Inputs, Integer>();
 
-            inputAnimationMap.put(Inputs.UP, 7);
-            inputAnimationMap.put(Inputs.DOWN, 0);
-            inputAnimationMap.put(Inputs.LEFT, 2);
-            inputAnimationMap.put(Inputs.RIGHT, 1);
-            inputAnimationMap.put(Inputs.PUNCH, 3);
-            inputAnimationMap.put(Inputs.KICK, 4);
+            inputAnimationMap[0].put(Inputs.UP, 7);
+            inputAnimationMap[0].put(Inputs.DOWN, 0);
+            inputAnimationMap[0].put(Inputs.LEFT, 2);
+            inputAnimationMap[0].put(Inputs.RIGHT, 1);
+            inputAnimationMap[0].put(Inputs.PUNCH, 3);
+            inputAnimationMap[0].put(Inputs.KICK, 4);
+
+            inputAnimationMap[1].put(Inputs.UP, 7);
+            inputAnimationMap[1].put(Inputs.DOWN, 0);
+            inputAnimationMap[1].put(Inputs.LEFT, 1);
+            inputAnimationMap[1].put(Inputs.RIGHT, 2);
+            inputAnimationMap[1].put(Inputs.PUNCH, 3);
+            inputAnimationMap[1].put(Inputs.KICK, 4);
         }
+
+        this.inputDownBoolLamdaMap = new HashMap<>();
+        {
+            inputDownBoolLamdaMap.put(Inputs.UP, characterState -> {
+                boolean b = characterState.isGrounded && characterState.animation == 0;
+                characterState.isGrounded = false;
+                return b;
+            });
+            inputDownBoolLamdaMap.put(Inputs.DOWN, characterState -> false);
+            inputDownBoolLamdaMap.put(Inputs.KICK, characterState -> characterState.animation == 0);
+            inputDownBoolLamdaMap.put(Inputs.PUNCH, characterState -> characterState.animation == 0);
+            inputDownBoolLamdaMap.put(Inputs.RIGHT, characterState -> characterState.animation == 0);
+            inputDownBoolLamdaMap.put(Inputs.LEFT, characterState -> characterState.animation == 0);
+
+        }
+
+        this.inputUpBoolLamdaMap = new HashMap<>();
+        {
+            inputUpBoolLamdaMap.put(Inputs.UP, characterState -> false);
+            inputUpBoolLamdaMap.put(Inputs.DOWN, characterState -> false);
+            inputUpBoolLamdaMap.put(Inputs.KICK, characterState -> false);
+            inputUpBoolLamdaMap.put(Inputs.PUNCH, characterState -> false);
+            inputUpBoolLamdaMap.put(Inputs.RIGHT, characterState -> false);
+            inputUpBoolLamdaMap.put(Inputs.LEFT, characterState -> false);
+
+        }
+
+
+
 
 
 

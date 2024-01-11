@@ -12,6 +12,15 @@ public class FightGameManager {
     public FightGameManager setFighters(Fighter A, Fighter B){
         this.characterStateA = new CharacterState(A,A.defaultHealth, new Vector2d(100, 200));
         this.characterStateB = new CharacterState(B,B.defaultHealth, new Vector2d(500, 200));
+
+        Box[] groundBoxes = new Box[3];
+        groundBoxes[0] = new Box(new Vector2d(0, 350), new Vector2d(600, 1000000));
+        groundBoxes[1] = new Box(new Vector2d(-100, 0), new Vector2d(0, 500));
+        groundBoxes[2] = new Box(new Vector2d(600, 0), new Vector2d(700, 500));
+
+
+
+        this.fightStage = new FightStage(new Vector2d(0, 22), groundBoxes);
         return this;
     }
 
@@ -20,7 +29,8 @@ public class FightGameManager {
         playerB = B;
         return this;
     }
-    public FightStage fightStage = new FightStage(new Vector2d(0, 22), new Box(new Vector2d(0, 350), new Vector2d(600, 1000000)));
+
+    public FightStage fightStage;
     public CharacterState characterStateA;
     public CharacterState characterStateB;
 
@@ -66,6 +76,7 @@ public class FightGameManager {
         moveCharacter(characterStateA);
         moveCharacter(characterStateB);
     }
+
     void moveCharacter(CharacterState cs){
         cs.rb.move(1f/30);
         if(cs.isOnRight){
@@ -82,9 +93,8 @@ public class FightGameManager {
         characterGroundOverlap(characterStateB);
 
 
-        //toDo:character to character overlap
         Box[] boxesA = characterStateA.getColliderBoxes();
-        Box[] boxesB = characterStateA.getColliderBoxes();
+        Box[] boxesB = characterStateB.getColliderBoxes();
 
         for(Box ba: boxesA){
             for(Box bb: boxesB){
@@ -104,19 +114,68 @@ public class FightGameManager {
     private void characterGroundOverlap(CharacterState characterState) {
         Box[] boxes = characterState.getColliderBoxes();
         for(Box b: boxes){
-            boolean c = Collisions.collides(fightStage.gorund, b, Vector2d.ZERO, characterState.rb.rootPosition);
-            if(c){
-                //System.out.println("GGS");
-                Vector2d v = Collisions.push(fightStage.gorund, b, Vector2d.ZERO, characterState.rb.rootPosition);
-                characterState.rb.rootPosition.add(v);
-                characterState.rb.velocity.setY(0);
+            for(Box bg:fightStage.gorund){
+                boolean c = Collisions.collides(bg, b.mabyFlippedX(11, characterState.isOnRight), Vector2d.ZERO, characterState.rb.rootPosition);
+                if(c){
+                    //System.out.println("GGS");
+                    Vector2d v = Collisions.push(bg, b.mabyFlippedX(11, characterState.isOnRight), Vector2d.ZERO, characterState.rb.rootPosition);
+                    characterState.rb.rootPosition.add(v);
+
+                    //toDo:actually should only take avay the part of velocity that is pointing towards the obstacle
+                    characterState.rb.velocity.setY(0);
+                    characterState.isGrounded = true;
+                }
             }
+
         }
     }
 
     public void manageHit(){
-        //A on B
-        //B on A
+
+        Box[] hitBoxesA = characterStateA.getHitBoxes();
+        Box[] hurtBoxesA = characterStateA.getHurtBoxes();
+
+        Box[] hitBoxesB = characterStateB.getHitBoxes();
+        Box[] hurtBoxesB = characterStateB.getHurtBoxes();
+
+        boolean aHitB = false;
+        boolean bHitA = false;
+
+        for(Box ba: hitBoxesA){
+            for(Box bb: hurtBoxesB){
+                boolean c = Collisions.collides(ba.mabyFlippedX(11, characterStateA.isOnRight), bb.mabyFlippedX(11, characterStateB.isOnRight), characterStateA.rb.rootPosition, characterStateB.rb.rootPosition);
+                if(c){
+                    aHitB = true;
+
+                    characterStateB.health-=10;
+
+                    Vector2d v = Collisions.push(ba.mabyFlippedX(11, characterStateA.isOnRight), bb.mabyFlippedX(11, characterStateB.isOnRight), characterStateA.rb.rootPosition, characterStateB.rb.rootPosition);
+
+                    characterStateB.rb.rootPosition.add(Vector2d.mul(v,0.5));
+                    //characterStateB.rb.velocity.add(Vector2d.mul(v, -1));
+                    characterStateB.animation = 5;
+                    characterStateB.animationFrame = 0;
+                }
+            }
+        }
+
+        for(Box ba: hitBoxesB){
+            for(Box bb: hurtBoxesA){
+                boolean c = Collisions.collides(ba.mabyFlippedX(11, characterStateB.isOnRight), bb.mabyFlippedX(11, characterStateA.isOnRight), characterStateB.rb.rootPosition, characterStateA.rb.rootPosition);
+                if(c){
+                    bHitA = true;
+
+                    characterStateA.health-=10;
+
+                    Vector2d v = Collisions.push(ba.mabyFlippedX(11, characterStateB.isOnRight), bb.mabyFlippedX(11, characterStateA.isOnRight), characterStateB.rb.rootPosition, characterStateA.rb.rootPosition);
+
+                    characterStateA.rb.rootPosition.add(Vector2d.mul(v,0.5));
+                    //characterStateA.rb.velocity.add(Vector2d.mul(v, -1));
+                    characterStateA.animation = 5;
+                    characterStateA.animationFrame = 0;
+                }
+            }
+        }
     }
 
     public void advanceAnimations(){
@@ -130,13 +189,30 @@ public class FightGameManager {
 
     void imputsToAnimation(ConfiguredController configuredControllerler, CharacterState state){
         if(configuredControllerler.latestChanges.length > 0){
-            Pair<Inputs,Boolean> tehInp = configuredControllerler.latestChanges[0];
-            if(state.animation == 0 && tehInp.getValue()){
-                int o = 0;
-                if(state.isOnRight){o = 1;}
-                state.animation = state.character.inputAnimationMap[o].get(tehInp.getKey());
-                state.animationFrame = 0;
+
+            for(Pair<Inputs,Boolean> tehInp:configuredControllerler.latestChanges){
+                //Pair<Inputs,Boolean> tehInp = configuredControllerler.latestChanges[0];
+                if(tehInp.getValue()){
+                    if(state.character.inputDownBoolLamdaMap.get(tehInp.getKey()).apply(state)){
+                        int o = 0;
+                        if(state.isOnRight){o = 1;}
+                        state.animation = state.character.inputAnimationMap[o].get(tehInp.getKey());
+                        state.animationFrame = 0;
+                    }
+                }
+                else
+                {
+                    if(state.character.inputUpBoolLamdaMap.get(tehInp.getKey()).apply(state)){
+                        //int o = 0;
+                        //if(state.isOnRight){o = 1;}
+                        //state.animation = state.character.inputAnimationMap[o].get(tehInp.getKey());
+                        //state.animationFrame = 0;
+                    }
+                }
             }
+
+
+
         }
     }
     void advanceAnimation(CharacterState cs){
