@@ -2,15 +2,39 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 
+<?import javafx.scene.text.Text?>
 <VBox fx:controller="com.i192.praktika.programavimopraktika.fxml.SpritesheetEditor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1280.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox id="menu" prefHeight="100.0" prefWidth="1280.0">
          <children>
+            <VBox prefHeight="200" prefWidth="100">
+               <children>
+                  <HBox>
+                     <children>
+                        <Text>Row Total: </Text><Text fx:id="openedSpritesheetRowCountLabel"> </Text>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Text>Frame Total: </Text><Text fx:id="openedSpritesheetColCountLabel"> </Text>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Text>Current Row: </Text><Text fx:id="currentlyDisplayedRowLabel"> </Text>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Text>Current Frame: </Text><Text fx:id="currentlyDisplayedColLabel"> </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Button mnemonicParsing="false" text="Open Spritesheet" onMouseClicked="#openSpritesheet"/>
@@ -19,8 +43,10 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" text="Previous Frame" />
-                  <Button mnemonicParsing="false" text="Next Frame" />
+                  <Button onMouseClicked="#displayPreviousRow" mnemonicParsing="false" text="Previous Row" />
+                  <Button onMouseClicked="#displayNextRow" mnemonicParsing="false" text="Next Row" />
+                  <Button onMouseClicked="#displayPreviousFrameOfRow" mnemonicParsing="false" text="Previous Frame" />
+                  <Button onMouseClicked="#displayNextFrameOfRow" mnemonicParsing="false" text="Next Frame" />
                </children>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="119.0">
