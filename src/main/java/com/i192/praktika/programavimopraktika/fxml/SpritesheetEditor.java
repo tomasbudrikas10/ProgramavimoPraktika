@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -28,14 +29,20 @@ public class SpritesheetEditor implements Initialisable {
     }
 
     public Stage createOpenSpritesheetWindow(MouseEvent event) {
-        Stage popupWindow = createPopup("Open Spritesheet", 300, 200, event);
+        Stage popupWindow = createPopup("Open Spritesheet", 600, 480, event);
         Button openFileSearchButton = new Button("Select Spritesheet");
         Button setSpritesheetButton = new Button("Set Spritesheet");
+        Text openFileResultMessage = new Text();
+        setSpritesheetButton.setManaged(false);
+        setSpritesheetButton.setVisible(false);
         Pane popupContent = (Pane) popupWindow.getScene().getRoot();
         VBox vbox = new VBox();
+        vbox.setPrefWidth(popupContent.getWidth());
         ImageView previewImage = new ImageView();
         vbox.getChildren().add(openFileSearchButton);
+        vbox.getChildren().add(openFileResultMessage);
         vbox.getChildren().add(previewImage);
+        vbox.getChildren().add(setSpritesheetButton);
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(20);
         FileChooser fileChooser = new FileChooser();
@@ -44,7 +51,7 @@ public class SpritesheetEditor implements Initialisable {
         openFileSearchButton.setOnMouseClicked(e -> {
             // Show the file chooser dialog
             File selectedFile = fileChooser.showOpenDialog(popupWindow);
-
+            previewImage.setImage(null);
             if (selectedFile != null) {
                 // Check the file type based on its extension or MIME type
                 String fileName = selectedFile.getName();
@@ -57,7 +64,14 @@ public class SpritesheetEditor implements Initialisable {
                     previewImage.setImage(new Image(selectedFile.toURI().toString()));
                     previewImage.setPreserveRatio(true);
                     previewImage.setFitWidth(200);
-                    vbox.getChildren().add(setSpritesheetButton);
+                    openFileResultMessage.setText("Opened Spritesheet: " + selectedFile.getName());
+                    setSpritesheetButton.setVisible(true);
+                    setSpritesheetButton.setManaged(true);
+                } else {
+                    previewImage.setImage(null);
+                    openFileResultMessage.setText("Invalid file selected. Please select an image.");
+                    setSpritesheetButton.setVisible(false);
+                    setSpritesheetButton.setManaged(false);
                 }
             }
         });
