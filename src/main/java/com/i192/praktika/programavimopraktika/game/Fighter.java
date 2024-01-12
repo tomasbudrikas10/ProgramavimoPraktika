@@ -99,10 +99,10 @@ public class Fighter {
 
         Frame[] jumpFrames = new Frame[4];
         {
-            jumpFrames[0] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,0,7, new Vector2d(0,0));
-            jumpFrames[1] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,1,7, new Vector2d(0,-110));
-            jumpFrames[2] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,2,7, new Vector2d(0,-50));
-            jumpFrames[3] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,3,7, new Vector2d(0,-20));
+            jumpFrames[0] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,0,7, Vector2d.ZERO);
+            jumpFrames[1] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,1,7, Vector2d.ZERO, new Vector2d(0,-300));
+            jumpFrames[2] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,2,7, Vector2d.ZERO);
+            jumpFrames[3] = new Frame(noBoxArr,oneBoxArr,oneBoxArr,3,7, Vector2d.ZERO);
         }
 
         Animation[] animationArr = new Animation[8];
@@ -147,8 +147,14 @@ public class Fighter {
             inputDownBoolLamdaMap.put(Inputs.DOWN, characterState -> false);
             inputDownBoolLamdaMap.put(Inputs.KICK, characterState -> characterState.animation == 0);
             inputDownBoolLamdaMap.put(Inputs.PUNCH, characterState -> characterState.animation == 0);
-            inputDownBoolLamdaMap.put(Inputs.RIGHT, characterState -> characterState.animation == 0);
-            inputDownBoolLamdaMap.put(Inputs.LEFT, characterState -> characterState.animation == 0);
+            inputDownBoolLamdaMap.put(Inputs.RIGHT, characterState -> {
+                characterState.looping = Inputs.RIGHT;
+                return characterState.animation == 0;
+            });
+            inputDownBoolLamdaMap.put(Inputs.LEFT, characterState -> {
+                characterState.looping = Inputs.LEFT;
+                return characterState.animation == 0;
+            });
 
         }
 
@@ -158,9 +164,14 @@ public class Fighter {
             inputUpBoolLamdaMap.put(Inputs.DOWN, characterState -> false);
             inputUpBoolLamdaMap.put(Inputs.KICK, characterState -> false);
             inputUpBoolLamdaMap.put(Inputs.PUNCH, characterState -> false);
-            inputUpBoolLamdaMap.put(Inputs.RIGHT, characterState -> false);
-            inputUpBoolLamdaMap.put(Inputs.LEFT, characterState -> false);
-
+            inputUpBoolLamdaMap.put(Inputs.RIGHT, characterState -> {
+                characterState.looping = null;
+                return false;
+            });
+            inputUpBoolLamdaMap.put(Inputs.LEFT, characterState -> {
+                characterState.looping = null;
+                return false;
+            });
         }
 
 

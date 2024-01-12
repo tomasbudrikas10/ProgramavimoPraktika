@@ -20,6 +20,8 @@ public class CharacterState{
 
     public Pair<Inputs, Boolean>[] loopingImputs;
 
+    public Inputs looping = null;
+
 
 
     public CharacterState(Fighter character, int startHealth, Vector2d startPosition){

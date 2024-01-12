@@ -32,6 +32,13 @@ public class Vector2d{
         y = y + plus.y;
     }
 
+    public Vector2d noPosY(){
+        if(y>0){
+            setY(0);
+        }
+        return this;
+    }
+
     public void setX(double x){
         this.x = x;
     }

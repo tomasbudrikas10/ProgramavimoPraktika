@@ -81,9 +81,11 @@ public class FightGameManager {
         cs.rb.move(1f/30);
         if(cs.isOnRight){
             cs.rb.rootPosition.add(Vector2d.flipX(cs.getFrame().translation));
+            cs.rb.velocity.add(Vector2d.flipX(cs.getFrame().velosityChange));
         }
         else{
             cs.rb.rootPosition.add(cs.getFrame().translation);
+            cs.rb.velocity.add(cs.getFrame().velosityChange);
         }
 
     }
@@ -103,8 +105,8 @@ public class FightGameManager {
                     Vector2d v = Collisions.push(ba, bb, characterStateA.rb.rootPosition, characterStateB.rb.rootPosition);
                     characterStateA.rb.rootPosition.add(Vector2d.mul(v,-0.5));
                     characterStateB.rb.rootPosition.add(Vector2d.mul(v,0.5));
-                    characterStateA.rb.velocity.setY(0);
-                    characterStateB.rb.velocity.setY(0);
+                    characterStateA.rb.velocity.noPosY();
+                    characterStateB.rb.velocity.noPosY();
                 }
             }
         }
@@ -122,7 +124,7 @@ public class FightGameManager {
                     characterState.rb.rootPosition.add(v);
 
                     //toDo:actually should only take avay the part of velocity that is pointing towards the obstacle
-                    characterState.rb.velocity.setY(0);
+                    characterState.rb.velocity.noPosY();
                     characterState.isGrounded = true;
                 }
             }
@@ -218,7 +220,14 @@ public class FightGameManager {
     void advanceAnimation(CharacterState cs){
         cs.animationFrame++;
         if(cs.animationFrame == cs.character.animations[cs.animation].frames.length){
-            cs.animation = 0;
+            if(cs.looping == null) {
+                cs.animation = 0;
+            } else {
+                int o = 0;
+                if(cs.isOnRight){o = 1;}
+                cs.animation = cs.character.inputAnimationMap[o].get(cs.looping);
+            }
+
             cs.animationFrame = 0;
         }
     }
