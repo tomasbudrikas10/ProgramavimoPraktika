@@ -3,17 +3,15 @@ package com.i192.praktika.programavimopraktika.fxml;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -26,6 +24,9 @@ public class SpritesheetEditor implements Initialisable {
     public ImageView openedSpritesheet;
     public int openedSpritesheetRowCount;
     public int openedSpritesheetColCount;
+    public ArrayList<ArrayList<ArrayList<Rectangle>>> hitBoxes;
+    public ArrayList<ArrayList<ArrayList<Rectangle>>> hurtBoxes;
+    public ArrayList<ArrayList<ArrayList<Rectangle>>> collisionBoxes;
     public Integer currentlyDisplayedRow;
     public Integer currentlyDisplayedCol;
     public ImageView currentlyDisplayed;
@@ -35,6 +36,8 @@ public class SpritesheetEditor implements Initialisable {
     public Text currentlyDisplayedRowLabel;
     public Text openedSpritesheetRowCountLabel;
     public Text openedSpritesheetColCountLabel;
+    public StackPane boxStackPane;
+    public ListView frameBoxesListView;
 
     @Override
     public void initialise() {
@@ -47,6 +50,10 @@ public class SpritesheetEditor implements Initialisable {
         currentlyDisplayedRowLabel.setVisible(false);
         currentlyDisplayedColLabel.setVisible(false);
         frames = new ArrayList<>();
+        hitBoxes = new ArrayList<>();
+        hurtBoxes = new ArrayList<>();
+        collisionBoxes = new ArrayList<>();
+        boxStackPane.setAlignment(Pos.TOP_LEFT);
         spritesheetScrollpane.setContent(currentlyDisplayed);
     }
 
@@ -147,6 +154,9 @@ public class SpritesheetEditor implements Initialisable {
         createOpenSpritesheetWindow(event).show();
     }
 
+    public void openAddBoxWindow(MouseEvent event) {
+        createAddBoxWindow(event).show();
+    }
     public void setCurrentlyDisplayed(Image image) {
         currentlyDisplayed.setImage(image);
     }
@@ -161,7 +171,13 @@ public class SpritesheetEditor implements Initialisable {
 
         for (int row = 0; row < rowCount; row++) {
             frames.add(new ArrayList<>());
+            hurtBoxes.add(new ArrayList<>());
+            hitBoxes.add(new ArrayList<>());
+            collisionBoxes.add(new ArrayList<>());
             for (int col = 0; col < colCount; col++) {
+                hurtBoxes.get(row).add(new ArrayList<>());
+                hitBoxes.get(row).add(new ArrayList<>());
+                collisionBoxes.get(row).add(new ArrayList<>());
                 int x = (int) (col * spriteWidth);
                 int y = (int) (row * spriteHeight);
 
@@ -173,6 +189,7 @@ public class SpritesheetEditor implements Initialisable {
 
     public void displayFrame(int rowIndex, int colIndex) {
         setCurrentlyDisplayed(frames.get(rowIndex).get(colIndex));
+        displayCurrentBoxes();
     }
 
     public void displayNextFrameOfRow() {
@@ -199,7 +216,31 @@ public class SpritesheetEditor implements Initialisable {
             updateCurrentRowColLabels();
         }
     }
+    public void displayCurrentBoxes() {
+        boxStackPane.getChildren().clear();
+        for (Rectangle box : hitBoxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol)) {
+            boxStackPane.getChildren().add(box);
+        }
+        for (Rectangle box : hurtBoxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol)) {
+            boxStackPane.getChildren().add(box);
+        }
+        for (Rectangle box : collisionBoxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol)) {
+            boxStackPane.getChildren().add(box);
+        }
+        updateFrameBoxList();
+    }
 
+    public void updateFrameBoxList() {
+        for (Rectangle box : hitBoxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol)) {
+//            frameBoxesListView.getItems().add(new Text("Hitbox"));
+        }
+        for (Rectangle box : hurtBoxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol)) {
+            boxStackPane.getChildren().add(box);
+        }
+        for (Rectangle box : collisionBoxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol)) {
+            boxStackPane.getChildren().add(box);
+        }
+    }
 
     public void displayPreviousRow() {
         if (currentlyDisplayedRow - 1 >= 0) {
@@ -219,6 +260,65 @@ public class SpritesheetEditor implements Initialisable {
         openedSpritesheetColCountLabel.setText(String.valueOf(openedSpritesheetColCount));
     }
 
+    public void saveSpreetsheetDataToFile() {
+
+    }
+
+    public void addHitBox(int width, int height) {
+        Rectangle newHitBox = createBox(width, height, Color.RED);
+        this.hitBoxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).add(newHitBox);
+    }
+
+    public void addHurtBox(int width, int height) {
+        Rectangle newHurtBox = createBox(width, height, Color.BLUE);
+        this.hurtBoxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).add(newHurtBox);
+    }
+
+    public void addCollisionBox(int width, int height) {
+        Rectangle newCollisionBox = createBox(width, height, Color.YELLOW);
+        this.collisionBoxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).add(newCollisionBox);
+    }
+
+    public Rectangle createBox(int width, int height, Color color) {
+        Rectangle newBox = new Rectangle(width, height);
+        newBox.setFill(color);
+        newBox.setOpacity(0.5);
+        return newBox;
+    }
+
+    public Stage createAddBoxWindow(MouseEvent event) {
+        Stage popup = createPopup("Add Box", 600, 400, event);
+        VBox vbox = new VBox();
+        Text widthInputLabel = new Text("Enter Width:");
+        Text heightInputLabel = new Text("Enter Height:");
+        Spinner<Integer> widthInput = new Spinner<>();
+        Spinner<Integer> heightInput = new Spinner<>();
+        SpinnerValueFactory<Integer> valueFactory1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 1);
+        SpinnerValueFactory<Integer> valueFactory2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 1);
+        widthInput.setValueFactory(valueFactory1);
+        heightInput.setValueFactory(valueFactory2);
+        Button addHitBox = new Button("Add Hit Box");
+        Button addHurtBox = new Button("Add Hurt Box");
+        Button addCollisionBox = new Button("Add Collision Box");
+        addHitBox.setOnMouseClicked(e -> {
+            addHitBox(widthInput.getValue(), heightInput.getValue());
+            displayCurrentBoxes();
+            popup.close();
+        });
+        addHurtBox.setOnMouseClicked(e -> {
+            addHurtBox(widthInput.getValue(), heightInput.getValue());
+            displayCurrentBoxes();
+            popup.close();
+        });
+        addCollisionBox.setOnMouseClicked(e -> {
+            addCollisionBox(widthInput.getValue(), heightInput.getValue());
+            displayCurrentBoxes();
+            popup.close();
+        });
+        vbox.getChildren().addAll(widthInputLabel, widthInput, heightInputLabel, heightInput, addHitBox, addHurtBox, addCollisionBox);
+        ((Pane) popup.getScene().getRoot()).getChildren().add(vbox);
+        return popup;
+    }
     public Stage createPopup(String title, int width, int height, MouseEvent event) {
         Pane pane = new Pane();
         Scene popupScene = new Scene(pane, width, height);
