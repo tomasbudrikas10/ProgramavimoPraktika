@@ -227,7 +227,7 @@ public class CharacterSelect implements Initialisable{
 
     public void startGame() {
         Duration duration = Duration.seconds(1);
-        int totalSeconds = 10;
+        int totalSeconds = 0;
         AtomicInteger secondsRemaining = new AtomicInteger(10);
         Timeline timeline = new Timeline();
         timeline.getKeyFrames().add(new KeyFrame(duration, event -> {

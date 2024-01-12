@@ -21,6 +21,12 @@ public class Vector2d{
     public static Vector2d sum(Vector2d a, Vector2d b){
         return new Vector2d(a.x + b.x,a.y + b.y);
     }
+    public static Vector2d mul(Vector2d a, double b){
+        return new Vector2d(a.x * b,a.y * b);
+    }
+    public static Vector2d flipX(Vector2d a){
+        return new Vector2d(a.x * -1,a.y);
+    }
     public void add(Vector2d plus){
         x = x + plus.x;
         y = y + plus.y;

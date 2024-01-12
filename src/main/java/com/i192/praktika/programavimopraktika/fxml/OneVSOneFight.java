@@ -52,19 +52,14 @@ public class OneVSOneFight implements Initialisable{
 
         AnimationTimer timer = new AnimationTimer() {
 
-            FightGameManager gameManager = new FightGameManager(selectedCharacterA, selectedCharacterB);
+            FightGameManager gameManager = new FightGameManager().setFighters(selectedCharacterA, selectedCharacterB).setControllers(playerA, playerB);
+
 
             SpriteSheet spriteSheet = new SpriteSheet("CircleFighterNew.png", 22, 22);
 
             boolean fightOver = false;
             @Override
             public void handle(long l) {
-                playerA.updateLatestChanges();
-                playerB.updateLatestChanges();
-
-
-                imputsToAnimation(playerA, gameManager.characterStateA);
-                imputsToAnimation(playerB, gameManager.characterStateB);
                 gameManager.update();
 
                 //display both characters
@@ -93,19 +88,14 @@ public class OneVSOneFight implements Initialisable{
         iv.setFitWidth(image.getWidth());
 
         iv.setImage(image);
+        if(characterState.isOnRight){
+            iv.setScaleX(-1);
+        }
+        else {
+            iv.setScaleX(1);
+        }
         iv.setLayoutX(characterState.rb.rootPosition.x);
         iv.setLayoutY(characterState.rb.rootPosition.y);
-    }
-
-    void imputsToAnimation(ConfiguredController configuredControllerler, CharacterState state){
-        if(configuredControllerler.latestChanges.length > 0){
-            Pair<Inputs,Boolean> tehInp = configuredControllerler.latestChanges[0];
-            if(state.animation == 0 && tehInp.getValue()){
-                state.animation = state.character.inputAnimationMap.get(tehInp.getKey());
-                state.animationFrame = 0;
-            }
-        }
-
     }
 
     public void fightOverAction(){
