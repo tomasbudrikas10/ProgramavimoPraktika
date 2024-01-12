@@ -11,6 +11,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Pair;
 
 import java.io.FileInputStream;
@@ -32,6 +33,10 @@ public class OneVSOneFight implements Initialisable{
 
     public ImageView ground;
     public ImageView background;
+
+    public Rectangle healthA;
+    public Rectangle healthB;
+
 
     public void setPlayers(ConfiguredController A, ConfiguredController B){
         this.playerA = A;

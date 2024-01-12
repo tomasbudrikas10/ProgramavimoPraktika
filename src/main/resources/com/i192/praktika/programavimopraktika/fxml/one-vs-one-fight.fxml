@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.i192.praktika.programavimopraktika.fxml.OneVSOneFight">
+<Pane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.i192.praktika.programavimopraktika.fxml.OneVSOneFight">
    <children>
             <ImageView fx:id="background" fitHeight="80.0" fitWidth="120.0" pickOnBounds="true">
                <image>
@@ -17,5 +22,22 @@
             </ImageView>
             <ImageView fx:id="ivA" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="ivB" fitHeight="150.0" fitWidth="200.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6b6b6b" height="50.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6b6b6b" height="50.0" layoutX="350.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
+      <Text layoutX="267.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+         <font>
+            <Font size="41.0" />
+         </font>
+      </Text>
+      <HBox layoutX="5.0" layoutY="4.0" prefHeight="67.0" prefWidth="295.0">
+         <children>
+            <Rectangle fx:id="healthA" arcHeight="5.0" arcWidth="5.0" fill="#da2f2f" height="40.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
+         </children>
+      </HBox>
+      <HBox alignment="TOP_RIGHT" layoutX="300.0" layoutY="4.0" prefHeight="67.0" prefWidth="295.0">
+         <children>
+            <Rectangle fx:id="healthB" arcHeight="5.0" arcWidth="5.0" fill="#da2f2f" height="40.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
+         </children>
+      </HBox>
    </children>
 </Pane>
