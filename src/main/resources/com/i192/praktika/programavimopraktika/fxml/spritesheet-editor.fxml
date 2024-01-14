@@ -11,6 +11,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
 <VBox fx:controller="com.i192.praktika.programavimopraktika.fxml.SpritesheetEditor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox id="menu" prefHeight="100.0" prefWidth="1280.0">
@@ -58,39 +60,51 @@
                   <Button onMouseClicked="#openAddBoxWindow" mnemonicParsing="false" text="Add Hitbox" />
                   <Button onMouseClicked="#openAddBoxWindow" mnemonicParsing="false" text="Add Hurtbox" />
                   <Button onMouseClicked="#openAddBoxWindow" mnemonicParsing="false" text="Add Collision Box" />
+                  <Button onMouseClicked="#deleteSelectedBox" mnemonicParsing="false" text="Delete Selection" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" text="Select Box" />
-                  <Button mnemonicParsing="false" text="Edit Selection" />
-                  <Button mnemonicParsing="false" text="Delete Selection" />
+                  <Button onMouseClicked="#moveSelectedBoxRight" mnemonicParsing="false" text="Move Right" />
+                  <Button onMouseClicked="#moveSelectedBoxLeft" mnemonicParsing="false" text="Move Left" />
+                  <Button onMouseClicked="#moveSelectedBoxUp" mnemonicParsing="false" text="Move Up" />
+                  <Button onMouseClicked="#moveSelectedBoxDown" mnemonicParsing="false" text="Move Down" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox fx:id="vboxOfTranslationAmountSpinner" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" text="Move Right" />
-                  <Button mnemonicParsing="false" text="Move Left" />
-                  <Button mnemonicParsing="false" text="Move Up" />
-                  <Button mnemonicParsing="false" text="Move Down" />
+                  <HBox>
+                     <children>
+                        <Text text="Translation Amount:"/>
+                        <Text fx:id="translationAmountLabel"/>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox fx:id="vboxOfXVelocityAmountSpinner" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" text="Previous Animation" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Next Animation" />
+                  <HBox>
+                     <children>
+                        <Text text="X Velocity Amount:"/>
+                        <Text fx:id="xVelocityAmountLabel"/>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox fx:id="vboxOfYVelocityAmountSpinner" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" text="Edit Frame Translation " />
-                  <Button mnemonicParsing="false" text="Edit Frame Velocity" />
+                  <HBox>
+                     <children>
+                        <Text text="Y Velocity Amount:"/>
+                        <Text fx:id="yVelocityAmountLabel"/>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
       </HBox>
       <HBox>
-         <ListView fx:id="frameBoxesListView" prefWidth="200" prefHeight="1180" />
+         <ListView fx:id="frameBoxesListView" onMouseClicked="#selectBoxFromList" prefWidth="200" prefHeight="1180" />
          <StackPane>
             <ScrollPane fx:id="spritesheetScrollpane" prefHeight="1180" prefWidth="980" />
             <StackPane fx:id="boxStackPane" prefHeight="1180" prefWidth="1180"/>
