@@ -34,12 +34,15 @@ public class PlayersJoin implements Initialisable{
 
                 for(ConfiguredController c:configuredControllers){
                     c.updateLatestChanges();
+                    String controllerInfo = "Controller: " + c.hashCode() + " is connected.";
+                    Label controllerLabel = new Label(controllerInfo);
                 }
+
 
                 for(ConfiguredController c:configuredControllers) {
                     if (c.latestChanges.length != 0) {
                         if (playerA == null) {
-                            //toDo:somehow show that playerA has joined
+
                             Label label1 = new Label("Player A joined!");
                             try {
                                 Image image1 = new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/backgorund.png"));
@@ -51,7 +54,7 @@ public class PlayersJoin implements Initialisable{
                         } else if (playerB == null) {
 
                             if (c != playerA) {
-                                //toDo:somehow show that playerB has joined
+
                                 Label label2 = new Label("Player B joined!");
                                 try {
                                     Image image2 = new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/backgorund.png"));

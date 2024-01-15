@@ -61,5 +61,6 @@
     <Button fx:id="controllerSetupButton" layoutX="245.0" layoutY="188.0" mnemonicParsing="false" onAction="#controllerSetupLoop" text="Setup a controller" />
     <Button layoutX="245.0" layoutY="246.0" mnemonicParsing="false" onAction="#doneAction" prefHeight="25.0" prefWidth="111.0" text="Done" />
     <Text fx:id="textInfo"/>
+
 </VBox>
     </AnchorPane>

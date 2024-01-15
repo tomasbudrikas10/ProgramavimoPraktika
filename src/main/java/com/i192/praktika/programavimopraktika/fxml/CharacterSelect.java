@@ -187,7 +187,7 @@ public class CharacterSelect implements Initialisable{
         for (Characters character : Characters.values()) {
             StackPane stackPane = new StackPane();
             Pane pane = new Pane();
-            pane.setBackground(Background.fill(new ImagePattern(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/" + character.getImageName()).toExternalForm()))));
+            pane.setBackground(Background.fill(new ImagePattern(new Image( getClass().getResource("/com/i192/praktika/programavimopraktika/images/" + character.getImageName()).toExternalForm()))));
             stackPane.getChildren().add(pane);
             VBox vbox = new VBox();
             vbox.setBackground(Background.fill(Color.rgb(128, 128, 128, 0.7)));
