@@ -35,8 +35,9 @@ public class OneVSOneFight implements Initialisable{
     public ImageView background;
 
     public Rectangle healthA;
+    double aStartWidth;
     public Rectangle healthB;
-
+    double bStartWidth;
 
     public void setPlayers(ConfiguredController A, ConfiguredController B){
         this.playerA = A;
@@ -73,9 +74,9 @@ public class OneVSOneFight implements Initialisable{
 
 
                 //just testing
+                updateHealth(gameManager.characterStateA.health, gameManager.characterStateB.health);
 
-
-
+                
                 //enter animation
 
                 //fightOver = characterStateA.health == 0 || characterStateB.health == 0;
@@ -85,6 +86,11 @@ public class OneVSOneFight implements Initialisable{
             }
         };
         timer.start();
+    }
+
+    void updateHealth(int a, int b){
+        healthA.widthProperty().set((double)aStartWidth/100 * a);
+        healthB.widthProperty().set((double)bStartWidth/100 * b);
     }
 
     void updateCharacterImages(SpriteSheet ss, CharacterState characterState, ImageView iv){
@@ -119,6 +125,9 @@ public class OneVSOneFight implements Initialisable{
         }
         ground.preserveRatioProperty().set(false);
         background.preserveRatioProperty().set(false);
+
+        aStartWidth = healthA.getWidth();
+        bStartWidth = healthB.getWidth();
 
         ground.setLayoutX(0);
         ground.setLayoutY(350);
