@@ -43,8 +43,8 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button mnemonicParsing="false" text="Open Spritesheet" onMouseClicked="#openSpritesheet"/>
-                  <Button mnemonicParsing="false" text="Save Spritesheet" />
+                  <Button onMouseClicked="#openSpritesheet" mnemonicParsing="false" text="Open Spritesheet"/>
+                  <Button onMouseClicked="#saveSpreetsheetDataToFile" mnemonicParsing="false" text="Save Spritesheet" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
