@@ -24,7 +24,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SpritesheetEditor implements Initialisable {
@@ -301,11 +304,7 @@ public class SpritesheetEditor implements Initialisable {
     public void moveSelectedBoxRight() {
         if (selectedBoxId != null) {
             HitHurtCollisionBox box = boxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).get(selectedBoxId);
-            if (box.getWidth() + box.getxOffset() + translateAmountSpinner.getValue() > frames.get(currentlyDisplayedRow).get(currentlyDisplayedCol).getWidth()) {
-                box.setxOffset((int) frames.get(currentlyDisplayedRow).get(currentlyDisplayedCol).getWidth()-box.getWidth());
-            } else {
-                box.setxOffset(box.getxOffset() + translateAmountSpinner.getValue());
-            }
+            box.setxOffset(box.getxOffset() + translateAmountSpinner.getValue());
         }
         displayCurrentBoxes();
     }
@@ -313,7 +312,7 @@ public class SpritesheetEditor implements Initialisable {
     public void moveSelectedBoxLeft() {
         if (selectedBoxId != null) {
             HitHurtCollisionBox box = boxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).get(selectedBoxId);
-            box.setxOffset(Math.max(box.getxOffset() - translateAmountSpinner.getValue(), 0));
+            box.setxOffset(box.getxOffset() - translateAmountSpinner.getValue());
         }
         displayCurrentBoxes();
     }
@@ -321,7 +320,7 @@ public class SpritesheetEditor implements Initialisable {
     public void moveSelectedBoxUp() {
         if (selectedBoxId != null) {
             HitHurtCollisionBox box = boxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).get(selectedBoxId);
-            box.setyOffset(Math.max(box.getyOffset() - translateAmountSpinner.getValue(), 0));
+            box.setyOffset(box.getyOffset() - translateAmountSpinner.getValue());
         }
         displayCurrentBoxes();
     }
@@ -337,11 +336,7 @@ public class SpritesheetEditor implements Initialisable {
     public void moveSelectedBoxDown() {
         if (selectedBoxId != null) {
             HitHurtCollisionBox box = boxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).get(selectedBoxId);
-            if (box.getHeight() + box.getyOffset() + translateAmountSpinner.getValue() > frames.get(currentlyDisplayedRow).get(currentlyDisplayedCol).getHeight()) {
-                box.setyOffset((int) frames.get(currentlyDisplayedRow).get(currentlyDisplayedCol).getHeight()-box.getHeight());
-            } else {
-                box.setyOffset(box.getyOffset() + translateAmountSpinner.getValue());
-            }
+            box.setyOffset(box.getyOffset() + translateAmountSpinner.getValue());
         }
         displayCurrentBoxes();
     }
@@ -381,8 +376,39 @@ public class SpritesheetEditor implements Initialisable {
         openedSpritesheetColCountLabel.setText(String.valueOf(openedSpritesheetColCount));
     }
 
-    public void saveSpreetsheetDataToFile() {
-
+    public void saveSpreetsheetDataToFile(MouseEvent event) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Frame Data to File");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(((Node) event.getSource()).getScene().getWindow());
+        if (file != null) {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            writer.write(String.valueOf(openedSpritesheetRowCount));
+            writer.newLine();
+            writer.write(String.valueOf(openedSpritesheetColCount));
+            writer.newLine();
+            for (int i = 0; i < openedSpritesheetRowCount; i++) {
+                for (int j = 0; j < openedSpritesheetColCount; j++) {
+                    writer.write(String.valueOf(frameVelocities.get(i).get(j).getKey() + ":" + frameVelocities.get(i).get(j).getValue()));
+                    if (!(j == openedSpritesheetColCount)) {
+                        writer.write(" ");
+                    }
+                }
+            }
+            writer.newLine();
+            for (int i = 0; i < openedSpritesheetRowCount; i++) {
+                for (int j = 0; j < openedSpritesheetColCount; j++) {
+                    if (!boxes.get(i).get(j).isEmpty()) {
+                        for (HitHurtCollisionBox box : boxes.get(i).get(j)) {
+                            writer.write(String.valueOf(i + " " + j + " " + box.getWidth() + " " + box.getHeight() + " " + box.getxOffset() + " " + box.getyOffset()));
+                            writer.newLine();
+                        }
+                    }
+                }
+            }
+            writer.close();
+        }
     }
 
     public void addBox(BoxTypes type, int width, int height) {
