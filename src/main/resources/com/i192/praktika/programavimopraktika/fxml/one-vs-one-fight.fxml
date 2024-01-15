@@ -4,6 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -24,20 +25,40 @@
             <ImageView fx:id="ivB" fitHeight="150.0" fitWidth="200.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6b6b6b" height="50.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6b6b6b" height="50.0" layoutX="350.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
-      <Text layoutX="267.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+      <Text fx:id="timeLeftText" layoutX="267.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
          <font>
             <Font size="41.0" />
          </font>
       </Text>
-      <HBox layoutX="5.0" layoutY="4.0" prefHeight="67.0" prefWidth="295.0">
+      <VBox layoutX="5.0" layoutY="5.0" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Rectangle fx:id="healthA" arcHeight="5.0" arcWidth="5.0" fill="#da2f2f" height="40.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
+            <HBox prefHeight="40.0" prefWidth="240.0">
+               <children>
+                  <Rectangle fx:id="healthA" arcHeight="5.0" arcWidth="5.0" fill="#da2f2f" height="40.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+               </children>
+            </HBox>
          </children>
-      </HBox>
-      <HBox alignment="TOP_RIGHT" layoutX="300.0" layoutY="4.0" prefHeight="67.0" prefWidth="295.0">
+      </VBox>
+      <VBox layoutX="355.0" layoutY="5.0" prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Rectangle fx:id="healthB" arcHeight="5.0" arcWidth="5.0" fill="#da2f2f" height="40.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
+            <HBox alignment="TOP_RIGHT" prefHeight="40.0" prefWidth="240.0">
+               <children>
+                  <Rectangle fx:id="healthB" arcHeight="5.0" arcWidth="5.0" fill="#da2f2f" height="40.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
    </children>
 </Pane>
