@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
+<VBox fx:controller="com.i192.praktika.programavimopraktika.fxml.SpritesheetEditor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox id="menu" prefHeight="100.0" prefWidth="1280.0">
+         <children>
+            <VBox prefHeight="200" prefWidth="100">
+               <children>
+                  <HBox>
+                     <children>
+                        <Text>Row Total: </Text><Text fx:id="openedSpritesheetRowCountLabel"> </Text>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Text>Frame Total: </Text><Text fx:id="openedSpritesheetColCountLabel"> </Text>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Text>Current Row: </Text><Text fx:id="currentlyDisplayedRowLabel"> </Text>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Text>Current Frame: </Text><Text fx:id="currentlyDisplayedColLabel"> </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Open Spritesheet" onMouseClicked="#openSpritesheet"/>
+                  <Button mnemonicParsing="false" text="Save Spritesheet" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button onMouseClicked="#displayPreviousRow" mnemonicParsing="false" text="Previous Row" />
+                  <Button onMouseClicked="#displayNextRow" mnemonicParsing="false" text="Next Row" />
+                  <Button onMouseClicked="#displayPreviousFrameOfRow" mnemonicParsing="false" text="Previous Frame" />
+                  <Button onMouseClicked="#displayNextFrameOfRow" mnemonicParsing="false" text="Next Frame" />
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="119.0">
+               <children>
+                  <Button onMouseClicked="#openAddBoxWindow" mnemonicParsing="false" text="Add Hitbox" />
+                  <Button onMouseClicked="#openAddBoxWindow" mnemonicParsing="false" text="Add Hurtbox" />
+                  <Button onMouseClicked="#openAddBoxWindow" mnemonicParsing="false" text="Add Collision Box" />
+                  <Button onMouseClicked="#deleteSelectedBox" mnemonicParsing="false" text="Delete Selection" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button onMouseClicked="#moveSelectedBoxRight" mnemonicParsing="false" text="Move Right" />
+                  <Button onMouseClicked="#moveSelectedBoxLeft" mnemonicParsing="false" text="Move Left" />
+                  <Button onMouseClicked="#moveSelectedBoxUp" mnemonicParsing="false" text="Move Up" />
+                  <Button onMouseClicked="#moveSelectedBoxDown" mnemonicParsing="false" text="Move Down" />
+               </children>
+            </VBox>
+            <VBox fx:id="vboxOfTranslationAmountSpinner" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Text text="Translation Amount:"/>
+                        <Text fx:id="translationAmountLabel"/>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="vboxOfXVelocityAmountSpinner" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Text text="X Velocity Amount:"/>
+                        <Text fx:id="xVelocityAmountLabel"/>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="vboxOfYVelocityAmountSpinner" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Text text="Y Velocity Amount:"/>
+                        <Text fx:id="yVelocityAmountLabel"/>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox>
+         <ListView fx:id="frameBoxesListView" onMouseClicked="#selectBoxFromList" prefWidth="200" prefHeight="1180" />
+         <StackPane>
+            <ScrollPane fx:id="spritesheetScrollpane" prefHeight="1180" prefWidth="980" />
+            <StackPane fx:id="boxStackPane" prefHeight="1180" prefWidth="1180"/>
+         </StackPane>
+      </HBox>
+   </children>
+</VBox>

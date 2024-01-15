@@ -17,3 +17,6 @@
 .button:pressed {
     -fx-background-color: whitesmoke;
 }
+ScrollPane {
+    -fx-alignment: center;
+}
