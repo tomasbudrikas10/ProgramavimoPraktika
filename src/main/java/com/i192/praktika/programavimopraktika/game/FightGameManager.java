@@ -9,9 +9,12 @@ import javafx.util.Pair;
 
 public class FightGameManager {
 
+    boolean bDied = false, aDied = false;
+    public boolean bWon = false, aWon = false;
+
     public FightGameManager setFighters(Fighter A, Fighter B){
-        this.characterStateA = new CharacterState(A,A.defaultHealth, new Vector2d(100, 200));
-        this.characterStateB = new CharacterState(B,B.defaultHealth, new Vector2d(500, 200));
+        this.characterStateA = new CharacterState(A, new Vector2d(100, 200));
+        this.characterStateB = new CharacterState(B, new Vector2d(500, 200));
 
         Box[] groundBoxes = new Box[3];
         groundBoxes[0] = new Box(new Vector2d(0, 350), new Vector2d(600, 1000000));
@@ -37,7 +40,11 @@ public class FightGameManager {
     ConfiguredController playerA;
     ConfiguredController playerB;
 
-    public void update(){
+    public long timeEnd = Long.MAX_VALUE;
+
+    public int timeValue = 100;
+
+    public void update(long now){
         getLatestInputs();
         applyGravity();
         moveCharacters();
@@ -49,6 +56,53 @@ public class FightGameManager {
         // do bounce,
         manageHit();
         advanceAnimations();
+        updateHealth(characterStateA, characterStateB);
+        updateTime(now);
+
+        if(bDied || aDied){
+            resetStage();
+        }
+    }
+
+    void updateHealth(CharacterState a, CharacterState b){
+
+        if(a.health < 0 &&  b.health > 0){
+            a.pipsLeft--;
+            aDied = true;
+        }else if( b.health < 0 &&  a.health > 0){
+            b.pipsLeft--;
+            bDied = true;
+        }else if(b.health < 0 &&  a.health < 0){
+            aDied = true;
+            bDied = true;
+            resetTime();
+        }
+
+        if(a.pipsLeft == 0 ){
+            bWon = true;
+        }
+
+        if(b.pipsLeft == 0 ){
+            aWon = true;
+        }
+    }
+
+    public void updateTime(long timeNow){
+        if(timeEnd > timeNow){
+            timeValue = (int)((timeEnd - timeNow)/1000000000);
+        }else {
+            timeValue = 0;
+            resetStage();
+        }
+    }
+
+    public void resetTime(){
+        timeEnd = Long.MAX_VALUE;
+    }
+
+    public void resetStage() {
+        characterStateA.reset(new Vector2d(100, 200));
+        characterStateB.reset(new Vector2d(500, 200));
     }
 
     public void getLatestInputs(){

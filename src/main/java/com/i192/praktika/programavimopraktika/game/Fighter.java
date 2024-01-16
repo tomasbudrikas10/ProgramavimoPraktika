@@ -13,6 +13,8 @@ public class Fighter {
     //animation images, frame data, sounds, default health, movement speed, ect....
     public int defaultHealth = 100;
 
+    int[] attackDamage = new int[]{0,1,2,4,8,16,32,64};
+
     //should have some way to map inputs(or anything that is relevant to this, like isInAirState) to animations
     Animation[] animations;
 
@@ -154,6 +156,10 @@ public class Fighter {
             inputDownBoolLamdaMap.put(Inputs.LEFT, characterState -> {
                 characterState.looping = Inputs.LEFT;
                 return characterState.animation == 0;
+            });
+            inputDownBoolLamdaMap.put(null, characterState -> {
+                characterState.performingAttackLevel = 0;
+                return false;
             });
 
         }

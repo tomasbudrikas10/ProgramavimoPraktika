@@ -18,19 +18,23 @@ public class CharacterState{
     public boolean isOnRight;
     public boolean isGrounded = false;
 
-    public Pair<Inputs, Boolean>[] loopingImputs;
+    public int pipsLeft = 2;
 
     public Inputs looping = null;
 
+    int performingAttackLevel = 0;
 
 
-    public CharacterState(Fighter character, int startHealth, Vector2d startPosition){
-        loopingImputs = new Pair[Inputs.values().length];
-        for(int i = 0; i < loopingImputs.length; i++){
-            loopingImputs[i] = new Pair<>(Inputs.values()[i],false);
-        }
+
+    public void reset(Vector2d startPosition){
+        this.health = character.defaultHealth;
+        this.rb = new RigidBody(startPosition);
+    }
+
+
+    public CharacterState(Fighter character, Vector2d startPosition){
         this.character = character;
-        this.health = startHealth;
+        this.health = character.defaultHealth;
         this.rb = new RigidBody(startPosition);
     }
 
