@@ -1,5 +1,6 @@
 package com.i192.praktika.programavimopraktika.game;
 
+import com.i192.praktika.programavimopraktika.Characters;
 import com.i192.praktika.programavimopraktika.controller.Inputs;
 import com.i192.praktika.programavimopraktika.data.Box;
 import com.i192.praktika.programavimopraktika.data.Frame;
@@ -13,6 +14,8 @@ public class Fighter {
     //animation images, frame data, sounds, default health, movement speed, ect....
     public int defaultHealth = 100;
 
+    public Characters character;
+
     int[] attackDamage = new int[]{0,1,2,4,8,16,32,64};
 
     //should have some way to map inputs(or anything that is relevant to this, like isInAirState) to animations
@@ -22,7 +25,9 @@ public class Fighter {
     public HashMap<Inputs, Function<CharacterState,Boolean>> inputDownBoolLamdaMap;
     public HashMap<Inputs, Function<CharacterState,Boolean>> inputUpBoolLamdaMap;
 
-    public Fighter(){
+    public Fighter(Characters character){
+        this.character = character;
+
         Box oneBox = new Box(Vector2d.ZERO, new Vector2d(22,22));
         Box[] oneBoxArr = new Box[1];
         oneBoxArr[0] = oneBox;

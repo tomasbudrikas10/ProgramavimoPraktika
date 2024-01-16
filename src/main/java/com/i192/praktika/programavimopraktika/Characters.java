@@ -19,7 +19,7 @@ public enum Characters {
     }
 
     public static Fighter getFighter(Characters the){
-        return new Fighter();
+        return new Fighter(the);
     }
 
     public String getName() {

@@ -97,11 +97,13 @@ public class OneVSOneFight implements Initialisable{
 
                 if(gameManager.bWon){
                     fightOverAction(selectedCharacterB);
+                    winImage.setImage(new Image( getClass().getResource("/com/i192/praktika/programavimopraktika/images/" + selectedCharacterB.character.getImageName()).toExternalForm()));
                     this.stop();
                 }
 
                 if(gameManager.aWon){
                     fightOverAction(selectedCharacterA);
+                    winImage.setImage(new Image( getClass().getResource("/com/i192/praktika/programavimopraktika/images/" + selectedCharacterA.character.getImageName()).toExternalForm()));
                     this.stop();
                 }
             }
