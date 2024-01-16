@@ -24,11 +24,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SpritesheetEditor implements Initialisable {
     public ImageView openedSpritesheet;
@@ -50,6 +48,7 @@ public class SpritesheetEditor implements Initialisable {
     public Text xVelocityAmountLabel;
     public VBox vboxOfYVelocityAmountSpinner;
     public Text yVelocityAmountLabel;
+    public BufferedReader frameData;
     Spinner<Integer> translateAmountSpinner;
     Spinner<Double> xVelocityAmountSpinner;
     Spinner<Double> yVelocityAmountSpinner;
@@ -99,8 +98,10 @@ public class SpritesheetEditor implements Initialisable {
         public Stage createOpenSpritesheetWindow(MouseEvent event) {
         Stage popupWindow = createPopup("Open Spritesheet", 600, 480, event);
         Button openFileSearchButton = new Button("Select Spritesheet");
+        Button openFrameDataFileSearchButton = new Button("Load Framedata");
         Button setSpritesheetButton = new Button("Set Spritesheet");
         Text openFileResultMessage = new Text();
+        Text openFrameDataResultMessage = new Text();
         Text rowCountLabel = new Text("Enter row count:");
         Text colCountLabel = new Text("Enter column count:");
         Spinner<Integer> rowCountInput = new Spinner<>();
@@ -113,6 +114,8 @@ public class SpritesheetEditor implements Initialisable {
         setSpritesheetButton.setVisible(false);
         rowCountInput.setVisible(false);
         rowCountInput.setManaged(false);
+        openFrameDataFileSearchButton.setVisible(false);
+        openFrameDataFileSearchButton.setManaged(false);
         rowCountInput.setEditable(true);
         colCountInput.setEditable(true);
         colCountInput.setVisible(false);
@@ -125,14 +128,18 @@ public class SpritesheetEditor implements Initialisable {
         VBox vbox = new VBox();
         vbox.setPrefWidth(popupContent.getWidth());
         ImageView previewImage = new ImageView();
-        vbox.getChildren().addAll(openFileSearchButton, openFileResultMessage, previewImage, rowCountLabel, rowCountInput, colCountLabel, colCountInput, setSpritesheetButton);
+        vbox.getChildren().addAll(openFileSearchButton, openFileResultMessage, openFrameDataFileSearchButton, openFrameDataResultMessage, previewImage, rowCountLabel, rowCountInput, colCountLabel, colCountInput, setSpritesheetButton);
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(20);
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Spritesheet");
+        FileChooser fileChooser1 = new FileChooser();
+        fileChooser1.setTitle("Select Spritesheet");
+        FileChooser fileChooser2 = new FileChooser();
+        fileChooser2.setTitle("Select Frame Data");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt");
+        fileChooser2.getExtensionFilters().add(extFilter);
         popupContent.getChildren().add(vbox);
         openFileSearchButton.setOnMouseClicked(e -> {
-            File selectedFile = fileChooser.showOpenDialog(popupWindow);
+            File selectedFile = fileChooser1.showOpenDialog(popupWindow);
             previewImage.setImage(null);
             if (selectedFile != null) {
                 String fileName = selectedFile.getName();
@@ -147,6 +154,8 @@ public class SpritesheetEditor implements Initialisable {
                     openFileResultMessage.setText("Opened Spritesheet: " + selectedFile.getName());
                     setSpritesheetButton.setVisible(true);
                     setSpritesheetButton.setManaged(true);
+                    openFrameDataFileSearchButton.setVisible(true);
+                    openFrameDataFileSearchButton.setManaged(true);
                     rowCountInput.setVisible(true);
                     rowCountInput.setManaged(true);
                     colCountInput.setVisible(true);
@@ -158,8 +167,12 @@ public class SpritesheetEditor implements Initialisable {
                 } else {
                     previewImage.setImage(null);
                     openFileResultMessage.setText("Invalid file selected. Please select an image.");
+                    openFrameDataResultMessage.setText("");
+                    frameData = null;
                     setSpritesheetButton.setVisible(false);
                     setSpritesheetButton.setManaged(false);
+                    openFrameDataFileSearchButton.setVisible(false);
+                    openFrameDataFileSearchButton.setManaged(false);
                     rowCountInput.setVisible(false);
                     rowCountInput.setManaged(false);
                     colCountInput.setVisible(false);
@@ -171,24 +184,117 @@ public class SpritesheetEditor implements Initialisable {
                 }
             }
         });
+
+        openFrameDataFileSearchButton.setOnMouseClicked(e -> {
+                File selectedFile = fileChooser2.showOpenDialog(popupWindow);
+                if (selectedFile != null) {
+                    String fileName = selectedFile.getName();
+                    openFrameDataResultMessage.setText("Opened Frame Data: " + fileName);
+                    try {
+                        frameData = new BufferedReader(new FileReader(selectedFile));
+                        rowCountInput.setManaged(false);
+                        rowCountInput.setVisible(false);
+                        colCountInput.setManaged(false);
+                        colCountInput.setVisible(false);
+                        rowCountLabel.setManaged(false);
+                        rowCountLabel.setVisible(false);
+                        colCountLabel.setManaged(false);
+                        colCountLabel.setVisible(false);
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                } else {
+                    openFrameDataResultMessage.setText("Invalid file selected.");
+                    if (frameData != null) {
+                        try {
+                            frameData.close();
+                            rowCountInput.setManaged(true);
+                            rowCountInput.setVisible(true);
+                            colCountInput.setManaged(true);
+                            colCountInput.setVisible(true);
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        frameData = null;
+                    }
+                }
+        });
+
         setSpritesheetButton.setOnMouseClicked(e -> {
             if (previewImage.getImage() != null) {
                 openedSpritesheet.setImage(previewImage.getImage());
-                openedSpritesheetRowCount = rowCountInput.getValue();
-                openedSpritesheetColCount = colCountInput.getValue();
                 currentlyDisplayedRow = 0;
                 currentlyDisplayedCol = 0;
                 currentlyDisplayedRowLabel.setVisible(true);
                 currentlyDisplayedColLabel.setVisible(true);
+                if (frameData != null) {
+                    try {
+                        loadFrameData();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                } else {
+                    openedSpritesheetRowCount = rowCountInput.getValue();
+                    openedSpritesheetColCount = colCountInput.getValue();
+                    setFrames(openedSpritesheetRowCount, openedSpritesheetColCount);
+                }
                 updateTotalRowColLabels();
                 updateCurrentRowColLabels();
-                setFrames(rowCountInput.getValue(), colCountInput.getValue());
                 displayFrame(0, 0);
                 popupWindow.close();
             }
         });
 
         return popupWindow;
+    }
+
+    private void loadFrameData() throws IOException {
+        String rows = frameData.readLine();
+        String cols = frameData.readLine();
+        ArrayList<String> velocities = new ArrayList<>(Arrays.asList(frameData.readLine().split(" ")));
+        String currentBox = frameData.readLine();
+        if (currentBox != null) {
+            currentBox = currentBox.trim();
+        }
+        openedSpritesheetRowCount = Integer.parseInt(rows);
+        openedSpritesheetColCount = Integer.parseInt(cols);
+        setFrames(openedSpritesheetRowCount, openedSpritesheetColCount);
+        for (int i = 0; i < Integer.parseInt(rows); i++) {
+            for (int j = 0; j < Integer.parseInt(cols); j++) {
+                String[] velocity = velocities.get(i*j + j).split(":");
+                frameVelocities.get(i).set(j, new Pair<Double, Double>(Double.parseDouble(velocity[0]), Double.parseDouble(velocity[1])));
+            }
+        }
+        while (currentBox != null) {
+            String[] boxData = currentBox.split(" ");
+            String boxTypeString = boxData[0];
+            BoxTypes boxType;
+            switch (boxTypeString) {
+                case "hitbox":
+                    boxType = BoxTypes.HIT_BOX;
+                    break;
+                case "hurtbox":
+                    boxType = BoxTypes.HURT_BOX;
+                    break;
+                case "collisionbox":
+                    boxType = BoxTypes.COLLISION_BOX;
+                    break;
+                default:
+                    boxType = BoxTypes.HIT_BOX;
+                    break;
+            }
+            int boxRow = Integer.parseInt(boxData[1]);
+            int boxCol = Integer.parseInt(boxData[2]);
+            int boxWidth = Integer.parseInt(boxData[3]);
+            int boxHeight = Integer.parseInt(boxData[4]);
+            int boxXOffset = Integer.parseInt(boxData[5]);
+            int boxYOffset = Integer.parseInt(boxData[6]);
+            loadBox(boxType, boxRow, boxCol, boxWidth, boxHeight, boxXOffset, boxYOffset);
+            currentBox = frameData.readLine();
+            if (currentBox != null) {
+                currentBox = currentBox.trim();
+            }
+        }
     }
 
     public void openSpritesheet(MouseEvent event) {
@@ -401,7 +507,7 @@ public class SpritesheetEditor implements Initialisable {
                 for (int j = 0; j < openedSpritesheetColCount; j++) {
                     if (!boxes.get(i).get(j).isEmpty()) {
                         for (HitHurtCollisionBox box : boxes.get(i).get(j)) {
-                            writer.write(String.valueOf(i + " " + j + " " + box.getWidth() + " " + box.getHeight() + " " + box.getxOffset() + " " + box.getyOffset()));
+                            writer.write(String.valueOf(box.getName() + " " + i + " " + j + " " + box.getWidth() + " " + box.getHeight() + " " + box.getxOffset() + " " + box.getyOffset()));
                             writer.newLine();
                         }
                     }
@@ -414,6 +520,14 @@ public class SpritesheetEditor implements Initialisable {
     public void addBox(BoxTypes type, int width, int height) {
         HitHurtCollisionBox box = new HitHurtCollisionBox(type, width, height);
         this.boxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).add(box);
+        updateFrameBoxList();
+    }
+
+    public void loadBox(BoxTypes type, int row, int col, int width, int height, int xOffset, int yOffset) {
+        HitHurtCollisionBox box = new HitHurtCollisionBox(type, width, height);
+        box.setxOffset(xOffset);
+        box.setyOffset(yOffset);
+        this.boxes.get(row).get(col).add(box);
         updateFrameBoxList();
     }
 
