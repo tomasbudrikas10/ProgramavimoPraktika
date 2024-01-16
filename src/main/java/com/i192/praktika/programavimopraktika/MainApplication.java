@@ -17,10 +17,11 @@ public class MainApplication extends Application {
     Media sound = new Media(new File("src/main/java/music_bacground/backgroundMusic.m4a").toURI().toString());
     MediaPlayer player = new MediaPlayer(sound);
 
+
     @Override
     public void start(Stage stage) throws IOException {
 
-
+        player.volumeProperty().set(player.volumeProperty().get() * 0.02);
         SceneManager sceneManager = SceneManager.getInstance();
         sceneManager.setStage(stage);
         sceneManager.setScene(Scenes.MAIN_MENU);

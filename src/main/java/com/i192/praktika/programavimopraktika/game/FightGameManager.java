@@ -9,9 +9,12 @@ import javafx.util.Pair;
 
 public class FightGameManager {
 
+    boolean bDied = false, aDied = false;
+    public boolean bWon = false, aWon = false;
+
     public FightGameManager setFighters(Fighter A, Fighter B){
-        this.characterStateA = new CharacterState(A,A.defaultHealth, new Vector2d(100, 200));
-        this.characterStateB = new CharacterState(B,B.defaultHealth, new Vector2d(500, 200));
+        this.characterStateA = new CharacterState(A, new Vector2d(100, 200));
+        this.characterStateB = new CharacterState(B, new Vector2d(500, 200));
 
         Box[] groundBoxes = new Box[3];
         groundBoxes[0] = new Box(new Vector2d(0, 350), new Vector2d(600, 1000000));
@@ -37,7 +40,11 @@ public class FightGameManager {
     ConfiguredController playerA;
     ConfiguredController playerB;
 
-    public void update(){
+    public long timeEnd = Long.MAX_VALUE;
+
+    public int timeValue = 100;
+
+    public void update(long now){
         getLatestInputs();
         applyGravity();
         moveCharacters();
@@ -49,6 +56,60 @@ public class FightGameManager {
         // do bounce,
         manageHit();
         advanceAnimations();
+        updateHealth(characterStateA, characterStateB);
+        updateTime(now);
+
+        if(bDied || aDied){
+            bDied = false;
+            aDied = false;
+            resetStage();
+        }
+    }
+
+    void updateHealth(CharacterState a, CharacterState b){
+
+        if(a.health < 0 &&  b.health > 0){
+            a.pipsLeft--;
+            aDied = true;
+        }else if( b.health < 0 &&  a.health > 0){
+            b.pipsLeft--;
+            bDied = true;
+        }else if(b.health < 0 &&  a.health < 0){
+            aDied = true;
+            bDied = true;
+            resetTime();
+        }
+
+        if(a.pipsLeft == 0 ){
+            bWon = true;
+        }
+
+        if(b.pipsLeft == 0 ){
+            aWon = true;
+        }
+    }
+
+    public void updateTime(long timeNow){
+        if(timeEnd == Long.MAX_VALUE){
+            timeEnd = timeNow + (long)100000000000.0;
+        }
+
+        if(timeEnd > timeNow){
+            timeValue = (int)((timeEnd - timeNow)/1000000000);
+        }else {
+            timeValue = 0;
+            resetStage();
+        }
+    }
+
+    public void resetTime(){
+        timeEnd = Long.MAX_VALUE;
+    }
+
+    public void resetStage() {
+        characterStateA.reset(new Vector2d(100, 200));
+        characterStateB.reset(new Vector2d(500, 200));
+        timeEnd = Long.MAX_VALUE;
     }
 
     public void getLatestInputs(){
@@ -81,9 +142,11 @@ public class FightGameManager {
         cs.rb.move(1f/30);
         if(cs.isOnRight){
             cs.rb.rootPosition.add(Vector2d.flipX(cs.getFrame().translation));
+            cs.rb.velocity.add(Vector2d.flipX(cs.getFrame().velosityChange));
         }
         else{
             cs.rb.rootPosition.add(cs.getFrame().translation);
+            cs.rb.velocity.add(cs.getFrame().velosityChange);
         }
 
     }
@@ -103,8 +166,8 @@ public class FightGameManager {
                     Vector2d v = Collisions.push(ba, bb, characterStateA.rb.rootPosition, characterStateB.rb.rootPosition);
                     characterStateA.rb.rootPosition.add(Vector2d.mul(v,-0.5));
                     characterStateB.rb.rootPosition.add(Vector2d.mul(v,0.5));
-                    characterStateA.rb.velocity.setY(0);
-                    characterStateB.rb.velocity.setY(0);
+                    characterStateA.rb.velocity.noPosY();
+                    characterStateB.rb.velocity.noPosY();
                 }
             }
         }
@@ -122,7 +185,7 @@ public class FightGameManager {
                     characterState.rb.rootPosition.add(v);
 
                     //toDo:actually should only take avay the part of velocity that is pointing towards the obstacle
-                    characterState.rb.velocity.setY(0);
+                    characterState.rb.velocity.noPosY();
                     characterState.isGrounded = true;
                 }
             }
@@ -218,7 +281,14 @@ public class FightGameManager {
     void advanceAnimation(CharacterState cs){
         cs.animationFrame++;
         if(cs.animationFrame == cs.character.animations[cs.animation].frames.length){
-            cs.animation = 0;
+            if(cs.looping == null) {
+                cs.animation = 0;
+            } else {
+                int o = 0;
+                if(cs.isOnRight){o = 1;}
+                cs.animation = cs.character.inputAnimationMap[o].get(cs.looping);
+            }
+
             cs.animationFrame = 0;
         }
     }

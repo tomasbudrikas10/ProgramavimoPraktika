@@ -1,20 +1,29 @@
 package com.i192.praktika.programavimopraktika.fxml;
 
 import com.i192.praktika.programavimopraktika.Characters;
+import com.i192.praktika.programavimopraktika.MainApplication;
+import com.i192.praktika.programavimopraktika.SceneManager;
+import com.i192.praktika.programavimopraktika.Scenes;
 import com.i192.praktika.programavimopraktika.controller.ConfiguredController;
-import com.i192.praktika.programavimopraktika.controller.Inputs;
 import com.i192.praktika.programavimopraktika.game.Fighter;
 import com.i192.praktika.programavimopraktika.game.CharacterState;
 import com.i192.praktika.programavimopraktika.game.FightGameManager;
 import com.i192.praktika.programavimopraktika.graphics.SpriteSheet;
 import javafx.animation.AnimationTimer;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
-import javafx.util.Pair;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Objects;
 
 public class OneVSOneFight implements Initialisable{
 
@@ -32,6 +41,20 @@ public class OneVSOneFight implements Initialisable{
 
     public ImageView ground;
     public ImageView background;
+
+    public Rectangle healthA;
+
+    double aWidth;
+    public Rectangle healthB;
+    double bWidth;
+    public Text timeLeftText;
+
+    public HBox pipsA;
+    public HBox pipsB;
+
+    public TitledPane winPane;
+
+    public ImageView winImage;
 
     public void setPlayers(ConfiguredController A, ConfiguredController B){
         this.playerA = A;
@@ -53,32 +76,105 @@ public class OneVSOneFight implements Initialisable{
 
             FightGameManager gameManager = new FightGameManager().setFighters(selectedCharacterA, selectedCharacterB).setControllers(playerA, playerB);
 
-
             SpriteSheet spriteSheet = new SpriteSheet("CircleFighterNew.png", 22, 22);
 
-            boolean fightOver = false;
+            boolean b = setPips(gameManager);
+
             @Override
-            public void handle(long l) {
-                gameManager.update();
+            public void handle(long now) {
+                gameManager.update(now);
 
                 //display both characters
                 updateCharacterImages(spriteSheet, gameManager.characterStateA, ivA);
                 updateCharacterImages(spriteSheet, gameManager.characterStateB, ivB);
 
 
-                //just testing
 
+                updateHealth(gameManager.characterStateA, gameManager.characterStateB);
 
+                updateTime(gameManager);
+                updatePips(gameManager);
 
-                //enter animation
+                if(gameManager.bWon){
+                    fightOverAction(selectedCharacterB);
+                    this.stop();
+                }
 
-                //fightOver = characterStateA.health == 0 || characterStateB.health == 0;
-                if(fightOver){
-                    fightOverAction();
+                if(gameManager.aWon){
+                    fightOverAction(selectedCharacterA);
+                    this.stop();
                 }
             }
         };
+
+
         timer.start();
+    }
+
+    boolean setPips(FightGameManager gameManager){
+        Node pip = pipsA.getChildren().getFirst();
+        int aCount = gameManager.characterStateA.pipsLeft;
+
+        for(int i = 1; i < aCount; i++){
+
+            pipsA.getChildren().add(makePip());
+            pipsB.getChildren().add(makePip());
+
+        }
+
+        return true;
+    }
+
+    Rectangle makePip(){
+        Rectangle pipOG = (Rectangle) pipsA.getChildren().getFirst();
+        Rectangle rect = new Rectangle(pipOG.getWidth(),pipOG.getHeight(), pipOG.getFill());
+        rect.setStroke(pipOG.getStroke());
+        rect.setArcHeight(pipOG.getArcHeight());
+        rect.setArcWidth(pipOG.getArcWidth());
+        rect.setStrokeType(pipOG.getStrokeType());
+        return rect;
+    }
+
+    void updateHealth(CharacterState a, CharacterState b){
+        healthA.setWidth(aWidth/100 * a.health);
+        healthB.setWidth(bWidth/100 * b.health);
+    }
+
+    public void toCharSelect(){
+        try {
+            CharacterSelect cs = SceneManager.getInstance().getLoader(Scenes.CHARACTER_SELECT).getController();
+            cs.setPlayers(playerA, playerB);
+            SceneManager.getInstance().setScene(Scenes.CHARACTER_SELECT);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void playAgain(){
+        try {
+            SceneManager.getInstance().setScene(Scenes.ONE_VS_ONE_FIGHT);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void toMainMenu(){
+        try {
+            SceneManager.getInstance().setScene(Scenes.MAIN_MENU);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    void updatePips(FightGameManager gameManager){
+        for(int i = 0; i < pipsA.getChildren().size(); i++){
+            pipsA.getChildren().get(i).setVisible(i<gameManager.characterStateA.pipsLeft);
+            pipsB.getChildren().get(i).setVisible(i<gameManager.characterStateB.pipsLeft);
+        }
+    }
+
+    void updateTime(FightGameManager gameManager){
+        timeLeftText.setText("" + gameManager.timeValue);
     }
 
     void updateCharacterImages(SpriteSheet ss, CharacterState characterState, ImageView iv){
@@ -97,8 +193,8 @@ public class OneVSOneFight implements Initialisable{
         iv.setLayoutY(characterState.rb.rootPosition.y);
     }
 
-    public void fightOverAction(){
-
+    public void fightOverAction(Fighter winingCharacter){
+        winPane.setVisible(true);
     }
 
     @Override
@@ -114,6 +210,9 @@ public class OneVSOneFight implements Initialisable{
         ground.preserveRatioProperty().set(false);
         background.preserveRatioProperty().set(false);
 
+        aWidth = healthA.getWidth();
+        bWidth = healthB.getWidth();
+
         ground.setLayoutX(0);
         ground.setLayoutY(350);
         ground.setFitWidth(600);
@@ -123,6 +222,11 @@ public class OneVSOneFight implements Initialisable{
         background.setLayoutY(0);
         background.setFitWidth(600);
         background.setFitHeight(400);
+
+        aWidth = healthA.getWidth();
+        bWidth = healthB.getWidth();
+
+        winPane.setVisible(false);
 
         gameLoop();
     }
