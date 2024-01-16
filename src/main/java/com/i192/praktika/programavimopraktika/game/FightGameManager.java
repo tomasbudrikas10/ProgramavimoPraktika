@@ -60,6 +60,8 @@ public class FightGameManager {
         updateTime(now);
 
         if(bDied || aDied){
+            bDied = false;
+            aDied = false;
             resetStage();
         }
     }
@@ -88,6 +90,10 @@ public class FightGameManager {
     }
 
     public void updateTime(long timeNow){
+        if(timeEnd == Long.MAX_VALUE){
+            timeEnd = timeNow + (long)100000000000.0;
+        }
+
         if(timeEnd > timeNow){
             timeValue = (int)((timeEnd - timeNow)/1000000000);
         }else {
@@ -103,6 +109,7 @@ public class FightGameManager {
     public void resetStage() {
         characterStateA.reset(new Vector2d(100, 200));
         characterStateB.reset(new Vector2d(500, 200));
+        timeEnd = Long.MAX_VALUE;
     }
 
     public void getLatestInputs(){
