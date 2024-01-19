@@ -57,9 +57,8 @@
             </VBox>
             <VBox prefHeight="100.0" prefWidth="119.0">
                <children>
-                  <Button onMouseClicked="#openAddBoxWindow" mnemonicParsing="false" text="Add Hitbox" />
-                  <Button onMouseClicked="#openAddBoxWindow" mnemonicParsing="false" text="Add Hurtbox" />
-                  <Button onMouseClicked="#openAddBoxWindow" mnemonicParsing="false" text="Add Collision Box" />
+                  <Button fx:id="cycleBoxTypeButton" onMouseClicked="#cycleAddingBoxType" mnemonicParsing="false" text="collisionBox" />
+                  <Button onMouseClicked="#openAddBoxWindow" mnemonicParsing="false" text="Add Box" />
                   <Button onMouseClicked="#deleteSelectedBox" mnemonicParsing="false" text="Delete Selection" />
                </children>
             </VBox>

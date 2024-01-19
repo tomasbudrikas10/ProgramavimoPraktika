@@ -1,0 +1,19 @@
+1
+8
+0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 
+collisionBox 0 0 60 127 81 32
+hurtBox 0 0 59 124 80 34
+collisionBox 0 1 61 131 79 30
+hurtBox 0 1 58 128 78 31
+collisionBox 0 2 58 129 84 30
+hurtBox 0 2 55 131 86 28
+collisionBox 0 3 59 131 81 30
+hurtBox 0 3 59 129 81 29
+collisionBox 0 4 56 132 84 28
+hurtBox 0 4 55 132 85 26
+collisionBox 0 5 52 127 88 31
+hurtBox 0 5 55 133 88 27
+collisionBox 0 6 58 127 82 33
+hurtBox 0 6 54 126 84 34
+collisionBox 0 7 53 134 86 27
+hurtBox 0 7 54 130 86 29

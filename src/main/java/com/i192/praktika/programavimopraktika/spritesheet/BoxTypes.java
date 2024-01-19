@@ -3,9 +3,9 @@ package com.i192.praktika.programavimopraktika.spritesheet;
 import javafx.scene.paint.Color;
 
 public enum BoxTypes {
-    HIT_BOX(Color.RED, "hitbox"),
-    HURT_BOX(Color.BLUE, "hurtbox"),
-    COLLISION_BOX(Color.YELLOW, "collisionbox");
+    HIT_BOX(Color.RED, "hitBox"),
+    HURT_BOX(Color.BLUE, "hurtBox"),
+    COLLISION_BOX(Color.YELLOW, "collisionBox");
     private Color color;
     private String name;
     BoxTypes(Color color, String name) {

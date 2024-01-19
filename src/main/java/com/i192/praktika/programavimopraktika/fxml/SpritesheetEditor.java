@@ -1,5 +1,8 @@
 package com.i192.praktika.programavimopraktika.fxml;
 
+import com.i192.praktika.programavimopraktika.SceneManager;
+import com.i192.praktika.programavimopraktika.Scenes;
+import com.i192.praktika.programavimopraktika.data.Vector2d;
 import com.i192.praktika.programavimopraktika.spritesheet.BoxTypes;
 import com.i192.praktika.programavimopraktika.spritesheet.HitHurtCollisionBox;
 import javafx.beans.value.ChangeListener;
@@ -29,6 +32,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SpritesheetEditor implements Initialisable {
+
+    private double startX, startY, endX, endY;
     public ImageView openedSpritesheet;
     public int openedSpritesheetRowCount;
     public int openedSpritesheetColCount;
@@ -56,6 +61,9 @@ public class SpritesheetEditor implements Initialisable {
     public Integer selectedBoxId;
     public Text translationAmountLabel;
     public VBox vboxOfTranslationAmountSpinner;
+
+    public Button cycleBoxTypeButton;
+    public int currentlyAddingBoxType = 0;
 
     @Override
     public void initialise() {
@@ -93,9 +101,33 @@ public class SpritesheetEditor implements Initialisable {
         vboxOfTranslationAmountSpinner.getChildren().add(translateAmountSpinner);
         vboxOfXVelocityAmountSpinner.getChildren().add(xVelocityAmountSpinner);
         vboxOfYVelocityAmountSpinner.getChildren().add(yVelocityAmountSpinner);
+        setupImage(boxStackPane);
     }
 
-        public Stage createOpenSpritesheetWindow(MouseEvent event) {
+    void setupImage(Node node){
+
+        node.setOnMousePressed(mouseEvent -> {
+            //System.out.println("afsdfasdf");
+            startX = mouseEvent.getX();
+            startY = mouseEvent.getY();
+            endX = startX;
+            endY = startY;
+        });
+
+        node.setOnMouseDragged(mouseEvent -> {
+            //System.out.println("afsdfasdf");
+            endX = mouseEvent.getX();
+            endY = mouseEvent.getY();
+        });
+
+        node.setOnMouseReleased(mouseEvent -> {
+            //System.out.println("afsdfasdf");
+            addBox(BoxTypes.values()[currentlyAddingBoxType], new Vector2d(startX, startY), new Vector2d(endX, endY));
+        });
+
+    }
+
+    public Stage createOpenSpritesheetWindow(MouseEvent event) {
         Stage popupWindow = createPopup("Open Spritesheet", 600, 480, event);
         Button openFileSearchButton = new Button("Select Spritesheet");
         Button openFrameDataFileSearchButton = new Button("Load Framedata");
@@ -131,10 +163,16 @@ public class SpritesheetEditor implements Initialisable {
         vbox.getChildren().addAll(openFileSearchButton, openFileResultMessage, openFrameDataFileSearchButton, openFrameDataResultMessage, previewImage, rowCountLabel, rowCountInput, colCountLabel, colCountInput, setSpritesheetButton);
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(20);
+
         FileChooser fileChooser1 = new FileChooser();
         fileChooser1.setTitle("Select Spritesheet");
+        fileChooser1.setInitialDirectory(new File("src/main/resources/com/i192/praktika/programavimopraktika/animation/sprite_sheets") );
+
+
         FileChooser fileChooser2 = new FileChooser();
         fileChooser2.setTitle("Select Frame Data");
+        fileChooser2.setInitialDirectory(new File("src/main/resources/com/i192/praktika/programavimopraktika/animation/frame_datas"));
+
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt");
         fileChooser2.getExtensionFilters().add(extFilter);
         popupContent.getChildren().add(vbox);
@@ -303,6 +341,15 @@ public class SpritesheetEditor implements Initialisable {
 
     public void openAddBoxWindow(MouseEvent event) {
         createAddBoxWindow(event).show();
+    }
+
+    public void cycleAddingBoxType(){
+
+        if(currentlyAddingBoxType+1 != BoxTypes.values().length){
+            currentlyAddingBoxType++;
+        }else currentlyAddingBoxType=0;
+        cycleBoxTypeButton.setText(BoxTypes.values()[currentlyAddingBoxType].getName());
+
     }
     public void setCurrentlyDisplayed(Image image) {
         currentlyDisplayed.setImage(image);
@@ -484,6 +531,7 @@ public class SpritesheetEditor implements Initialisable {
 
     public void saveSpreetsheetDataToFile(MouseEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("src/main/resources/com/i192/praktika/programavimopraktika/animation/frame_datas"));
         fileChooser.setTitle("Save Frame Data to File");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
@@ -521,6 +569,20 @@ public class SpritesheetEditor implements Initialisable {
         HitHurtCollisionBox box = new HitHurtCollisionBox(type, width, height);
         this.boxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).add(box);
         updateFrameBoxList();
+    }
+
+
+
+    public void addBox(BoxTypes type, Vector2d topLeft, Vector2d bottomRight) {
+
+        double width = Math.abs(bottomRight.x - topLeft.x);
+        double height = Math.abs(bottomRight.y - topLeft.y);
+        HitHurtCollisionBox box = new HitHurtCollisionBox(type, (int)width, (int)height);
+        box.setxOffset((int)topLeft.x);
+        box.setyOffset((int)topLeft.y);
+        this.boxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).add(box);
+        updateFrameBoxList();
+        displayCurrentBoxes();
     }
 
     public void loadBox(BoxTypes type, int row, int col, int width, int height, int xOffset, int yOffset) {

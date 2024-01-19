@@ -23,6 +23,25 @@ public class Animation {
 
     }
 
+    public Frame[] readFrameDataOLD(String fileName){
+        List<String> lines = null;
+
+        try {
+            lines = Files.readAllLines(Path.of(animationsFolderPath + "/frame_datas/" + fileName));
+        }catch (IOException e) {
+            return null;
+        }
+
+        ArrayList<Frame> frameList = new ArrayList<>();
+
+
+        for(String line:lines) {
+            frameList.add(new Frame(line));
+        }
+
+        return frameList.toArray(new Frame[0]);
+    }
+
     public Frame[] readFrameData(String fileName){
         List<String> lines = null;
 

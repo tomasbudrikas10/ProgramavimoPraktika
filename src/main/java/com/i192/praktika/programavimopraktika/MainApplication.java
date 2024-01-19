@@ -24,7 +24,7 @@ public class MainApplication extends Application {
         player.volumeProperty().set(player.volumeProperty().get() * 0.02);
         SceneManager sceneManager = SceneManager.getInstance();
         sceneManager.setStage(stage);
-        sceneManager.setScene(Scenes.MAIN_MENU);
+        sceneManager.setScene(Scenes.SPRITESHEET_EDITOR);
         sceneManager.getStage().show();
 
         player.play();

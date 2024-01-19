@@ -69,8 +69,8 @@ public class OneVSOneFight implements Initialisable{
 
 
     public void gameLoop(){
-        selectedCharacterA = Characters.getFighter(Characters.GIRL);
-        selectedCharacterB = Characters.getFighter(Characters.BOY);
+        //selectedCharacterA = Characters.getFighter(Characters.GIRL);
+        //selectedCharacterB = Characters.getFighter(Characters.BOY);
 
         AnimationTimer timer = new AnimationTimer() {
 

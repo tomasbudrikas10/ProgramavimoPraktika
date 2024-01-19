@@ -5,6 +5,7 @@ import com.i192.praktika.programavimopraktika.SceneManager;
 import com.i192.praktika.programavimopraktika.Scenes;
 import com.i192.praktika.programavimopraktika.controller.ConfiguredController;
 import com.i192.praktika.programavimopraktika.controller.Inputs;
+import com.i192.praktika.programavimopraktika.game.Fighter;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -207,12 +208,6 @@ public class CharacterSelect implements Initialisable{
             characters.add(stackPane);
             characterCount++;
         }
-        try {
-            OneVSOneFight ovof = SceneManager.getInstance().getLoader(Scenes.ONE_VS_ONE_FIGHT).getController();
-            ovof.setPlayers(playerA, playerB);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
         charSelectLoop();
     }
     public void updateTurnText() {
@@ -237,6 +232,15 @@ public class CharacterSelect implements Initialisable{
         timeline.setCycleCount(totalSeconds);
         timeline.setOnFinished(e2 -> {
             try {
+
+                OneVSOneFight ovof = SceneManager.getInstance().getLoader(Scenes.ONE_VS_ONE_FIGHT).getController();
+                Characters a = Characters.values()[selectedCharacters.get(0).getKey() * charactersGrid.getColumnCount() + selectedCharacters.get(0).getValue()];
+                Characters b = Characters.values()[selectedCharacters.get(1).getKey() * charactersGrid.getColumnCount() + selectedCharacters.get(1).getValue()];
+                a.getFighter().character = a;
+                b.getFighter().character = b;
+                ovof.setSelectedCharacters(a.getFighter(), b.getFighter());
+                ovof.setPlayers(playerA, playerB);
+
                 SceneManager.getInstance().setScene(Scenes.ONE_VS_ONE_FIGHT);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
