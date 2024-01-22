@@ -58,11 +58,13 @@ public class PlayersJoin implements Initialisable{
                             if (playerA.controller.getType() == Controller.Type.MOUSE) {
                                 playerOneControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/mouse.png").toExternalForm()));
 
-                            } else if (playerA.controller.getType() == Controller.Type.GAMEPAD) {
+                            } else if (playerA.controller.getType() == Controller.Type.STICK || playerA.controller.getType() == Controller.Type.GAMEPAD) {
                                 playerOneControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/console.png").toExternalForm()));
 
                             } else if (playerA.controller.getType() == Controller.Type.KEYBOARD){
                                 playerOneControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/keyboard.png").toExternalForm()));
+                            } else {
+                                playerOneControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/surprise-box.png").toExternalForm()));
                             }
                             playerOneControllerType.setText("Player 1 has selected a: " + c.controller.getType());
                             playerTurnLabel.setText("Player 2's turn to select a controller!");
@@ -75,11 +77,13 @@ public class PlayersJoin implements Initialisable{
                                 if (playerB.controller.getType() == Controller.Type.MOUSE) {
                                     playerTwoControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/mouse.png").toExternalForm()));
 
-                                } else if (playerB.controller.getType() == Controller.Type.GAMEPAD) {
+                                } else if (playerB.controller.getType() == Controller.Type.STICK || playerB.controller.getType() == Controller.Type.GAMEPAD) {
                                     playerTwoControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/console.png").toExternalForm()));
 
                                 } else if (playerB.controller.getType() == Controller.Type.KEYBOARD){
                                     playerTwoControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/keyboard.png").toExternalForm()));
+                                } else {
+                                    playerTwoControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/surprise-box.png").toExternalForm()));
                                 }
                                 playerTwoControllerType.setText("Player 2 has selected a: " + c.controller.getType());
                                 playerTurnLabel.setText("Heading to character selection...");
