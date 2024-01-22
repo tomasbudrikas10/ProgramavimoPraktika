@@ -12,8 +12,8 @@ public class Vector2d{
         this.x = x;
         this.y = y;
     }
-    Vector2d(String s){
-        String[] ss = s.split(";");
+    public Vector2d(String s){
+        String[] ss = s.split(":");
         this.x = Double.parseDouble(ss[0]);
         this.y = Double.parseDouble(ss[1]);
     }
@@ -52,6 +52,6 @@ public class Vector2d{
     }
     @Override
     public String toString() {
-        return x + ";" + y;
+        return x + ":" + y;
     }
 }

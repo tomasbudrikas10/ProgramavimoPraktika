@@ -3,10 +3,10 @@ package com.i192.praktika.programavimopraktika;
 import com.i192.praktika.programavimopraktika.game.Fighter;
 
 public enum Characters {
-    GIRL("Bob The Cat", "Bob is a cool cat!", "Kurmis.png", new Fighter()),
-    BOY("Rob The Cat", "Rob is a less cool cat than Bob :(", "Girl.png", new Fighter()),
-    SOLDIER("Bob The Cat", "Bob is a cool cat!", "Soldier.png", new Fighter()),
-    ASASSIN("Rob The Cat", "Rob is a less cool cat than Bob :(", "Asassin.png", new Fighter());
+    GIRL("Girl", "Yes", "Girl.png", new Fighter("girl")),
+    BOY("Kurmis", "Yes", "Kurmis.png", new Fighter("kurmis")),
+    SOLDIER("Bob The Cat", "Bob is a cool cat!", "Soldier.png", new Fighter("soldier")),
+    ASASSIN("Rob The Cat", "Rob is a less cool cat than Bob :(", "Asassin.png", new Fighter("assassin"));
 
     private String name;
     private String description;

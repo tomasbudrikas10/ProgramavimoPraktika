@@ -178,10 +178,10 @@ public class FightGameManager {
         Box[] boxes = characterState.getColliderBoxes();
         for(Box b: boxes){
             for(Box bg:fightStage.gorund){
-                boolean c = Collisions.collides(bg, b.mabyFlippedX(11, characterState.isOnRight), Vector2d.ZERO, characterState.rb.rootPosition);
+                boolean c = Collisions.collides(bg, b.mabyFlippedX(100, characterState.isOnRight), Vector2d.ZERO, characterState.rb.rootPosition);
                 if(c){
                     //System.out.println("GGS");
-                    Vector2d v = Collisions.push(bg, b.mabyFlippedX(11, characterState.isOnRight), Vector2d.ZERO, characterState.rb.rootPosition);
+                    Vector2d v = Collisions.push(bg, b.mabyFlippedX(100, characterState.isOnRight), Vector2d.ZERO, characterState.rb.rootPosition);
                     characterState.rb.rootPosition.add(v);
 
                     //toDo:actually should only take avay the part of velocity that is pointing towards the obstacle
@@ -206,13 +206,13 @@ public class FightGameManager {
 
         for(Box ba: hitBoxesA){
             for(Box bb: hurtBoxesB){
-                boolean c = Collisions.collides(ba.mabyFlippedX(11, characterStateA.isOnRight), bb.mabyFlippedX(11, characterStateB.isOnRight), characterStateA.rb.rootPosition, characterStateB.rb.rootPosition);
+                boolean c = Collisions.collides(ba.mabyFlippedX(100, characterStateA.isOnRight), bb.mabyFlippedX(100, characterStateB.isOnRight), characterStateA.rb.rootPosition, characterStateB.rb.rootPosition);
                 if(c){
                     aHitB = true;
 
                     characterStateB.health-=10;
 
-                    Vector2d v = Collisions.push(ba.mabyFlippedX(11, characterStateA.isOnRight), bb.mabyFlippedX(11, characterStateB.isOnRight), characterStateA.rb.rootPosition, characterStateB.rb.rootPosition);
+                    Vector2d v = Collisions.push(ba.mabyFlippedX(100, characterStateA.isOnRight), bb.mabyFlippedX(100, characterStateB.isOnRight), characterStateA.rb.rootPosition, characterStateB.rb.rootPosition);
 
                     characterStateB.rb.rootPosition.add(Vector2d.mul(v,0.5));
                     //characterStateB.rb.velocity.add(Vector2d.mul(v, -1));
@@ -224,13 +224,13 @@ public class FightGameManager {
 
         for(Box ba: hitBoxesB){
             for(Box bb: hurtBoxesA){
-                boolean c = Collisions.collides(ba.mabyFlippedX(11, characterStateB.isOnRight), bb.mabyFlippedX(11, characterStateA.isOnRight), characterStateB.rb.rootPosition, characterStateA.rb.rootPosition);
+                boolean c = Collisions.collides(ba.mabyFlippedX(100, characterStateB.isOnRight), bb.mabyFlippedX(100, characterStateA.isOnRight), characterStateB.rb.rootPosition, characterStateA.rb.rootPosition);
                 if(c){
                     bHitA = true;
 
                     characterStateA.health-=10;
 
-                    Vector2d v = Collisions.push(ba.mabyFlippedX(11, characterStateB.isOnRight), bb.mabyFlippedX(11, characterStateA.isOnRight), characterStateB.rb.rootPosition, characterStateA.rb.rootPosition);
+                    Vector2d v = Collisions.push(ba.mabyFlippedX(100, characterStateB.isOnRight), bb.mabyFlippedX(100, characterStateA.isOnRight), characterStateB.rb.rootPosition, characterStateA.rb.rootPosition);
 
                     characterStateA.rb.rootPosition.add(Vector2d.mul(v,0.5));
                     //characterStateA.rb.velocity.add(Vector2d.mul(v, -1));

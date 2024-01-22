@@ -19,6 +19,7 @@ public class SpriteSheet {
         try {
             file = new FileInputStream(sheetsFolderPath +  spriteSheetName);
         } catch (FileNotFoundException e) {
+            System.out.println(sheetsFolderPath +  spriteSheetName);
             throw new RuntimeException(e);
         }
         this.spriteSheet = new Image(file);

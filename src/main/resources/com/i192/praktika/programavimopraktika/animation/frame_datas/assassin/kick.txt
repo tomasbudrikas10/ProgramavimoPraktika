@@ -1,0 +1,46 @@
+1
+17
+0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 
+0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 0.0:0.0 
+collisionBox 0 0 72 143 76 16
+hurtBox 0 0 59 100 74 14
+collisionBox 0 1 73 148 74 12
+hurtBox 0 1 71 142 70 10
+collisionBox 0 2 66 149 78 9
+hurtBox 0 2 54 139 80 10
+collisionBox 0 3 74 148 67 9
+hurtBox 0 3 71 136 68 9
+collisionBox 0 4 80 153 65 7
+hurtBox 0 4 63 135 72 9
+collisionBox 0 5 73 147 67 13
+hurtBox 0 5 67 129 70 14
+collisionBox 0 6 56 147 76 13
+hurtBox 0 6 47 125 81 15
+collisionBox 0 7 89 163 62 5
+hurtBox 0 7 66 142 74 5
+hitBox 0 7 65 37 125 64
+collisionBox 0 8 84 148 66 22
+hurtBox 0 8 71 128 68 26
+hitBox 0 8 52 50 117 79
+hitBox 0 8 34 56 104 115
+collisionBox 0 9 88 157 61 21
+hurtBox 0 9 83 136 60 24
+hitBox 0 9 52 41 120 71
+hitBox 0 9 30 62 99 114
+collisionBox 0 10 61 159 66 16
+hurtBox 0 10 56 139 68 16
+hitBox 0 10 52 19 123 45
+hitBox 0 10 27 39 86 143
+collisionBox 0 11 71 155 65 11
+hurtBox 0 11 63 139 70 10
+hitBox 0 11 42 61 132 63
+collisionBox 0 12 59 147 67 15
+hurtBox 0 12 69 123 60 17
+collisionBox 0 13 53 147 75 19
+hurtBox 0 13 68 140 74 19
+collisionBox 0 14 55 144 75 13
+hurtBox 0 14 68 139 72 13
+collisionBox 0 15 48 147 78 10
+hurtBox 0 15 64 146 78 13
+collisionBox 0 16 71 149 77 13
+hurtBox 0 16 63 143 81 16

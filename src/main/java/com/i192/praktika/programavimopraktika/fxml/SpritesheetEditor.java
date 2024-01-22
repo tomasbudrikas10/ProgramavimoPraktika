@@ -127,6 +127,18 @@ public class SpritesheetEditor implements Initialisable {
 
     }
 
+    public void addBox(BoxTypes type, Vector2d topLeft, Vector2d bottomRight) {
+
+        double width = bottomRight.x - topLeft.x;
+        double height = bottomRight.y - topLeft.y;
+        HitHurtCollisionBox box = new HitHurtCollisionBox(type, (int)width, (int)height);
+        box.setxOffset((int)topLeft.x);
+        box.setyOffset((int)topLeft.y);
+        this.boxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).add(box);
+        updateFrameBoxList();
+        displayCurrentBoxes();
+    }
+
     public Stage createOpenSpritesheetWindow(MouseEvent event) {
         Stage popupWindow = createPopup("Open Spritesheet", 600, 480, event);
         Button openFileSearchButton = new Button("Select Spritesheet");
@@ -289,6 +301,7 @@ public class SpritesheetEditor implements Initialisable {
     private void loadFrameData() throws IOException {
         String rows = frameData.readLine();
         String cols = frameData.readLine();
+        ArrayList<String> translations = new ArrayList<>(Arrays.asList(frameData.readLine().split(" ")));
         ArrayList<String> velocities = new ArrayList<>(Arrays.asList(frameData.readLine().split(" ")));
         String currentBox = frameData.readLine();
         if (currentBox != null) {
@@ -306,19 +319,19 @@ public class SpritesheetEditor implements Initialisable {
         while (currentBox != null) {
             String[] boxData = currentBox.split(" ");
             String boxTypeString = boxData[0];
-            BoxTypes boxType;
+            BoxTypes boxType = null;
             switch (boxTypeString) {
-                case "hitbox":
+                case "hitBox":
                     boxType = BoxTypes.HIT_BOX;
                     break;
-                case "hurtbox":
+                case "hurtBox":
                     boxType = BoxTypes.HURT_BOX;
                     break;
-                case "collisionbox":
+                case "collisionBox":
                     boxType = BoxTypes.COLLISION_BOX;
                     break;
                 default:
-                    boxType = BoxTypes.HIT_BOX;
+                    //boxType = BoxTypes.HIT_BOX;
                     break;
             }
             int boxRow = Integer.parseInt(boxData[1]);
@@ -553,6 +566,15 @@ public class SpritesheetEditor implements Initialisable {
             writer.newLine();
             for (int i = 0; i < openedSpritesheetRowCount; i++) {
                 for (int j = 0; j < openedSpritesheetColCount; j++) {
+                    writer.write(String.valueOf(frameVelocities.get(i).get(j).getKey() + ":" + frameVelocities.get(i).get(j).getValue()));
+                    if (!(j == openedSpritesheetColCount)) {
+                        writer.write(" ");
+                    }
+                }
+            }
+            writer.newLine();
+            for (int i = 0; i < openedSpritesheetRowCount; i++) {
+                for (int j = 0; j < openedSpritesheetColCount; j++) {
                     if (!boxes.get(i).get(j).isEmpty()) {
                         for (HitHurtCollisionBox box : boxes.get(i).get(j)) {
                             writer.write(String.valueOf(box.getName() + " " + i + " " + j + " " + box.getWidth() + " " + box.getHeight() + " " + box.getxOffset() + " " + box.getyOffset()));
@@ -571,19 +593,6 @@ public class SpritesheetEditor implements Initialisable {
         updateFrameBoxList();
     }
 
-
-
-    public void addBox(BoxTypes type, Vector2d topLeft, Vector2d bottomRight) {
-
-        double width = Math.abs(bottomRight.x - topLeft.x);
-        double height = Math.abs(bottomRight.y - topLeft.y);
-        HitHurtCollisionBox box = new HitHurtCollisionBox(type, (int)width, (int)height);
-        box.setxOffset((int)topLeft.x);
-        box.setyOffset((int)topLeft.y);
-        this.boxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).add(box);
-        updateFrameBoxList();
-        displayCurrentBoxes();
-    }
 
     public void loadBox(BoxTypes type, int row, int col, int width, int height, int xOffset, int yOffset) {
         HitHurtCollisionBox box = new HitHurtCollisionBox(type, width, height);

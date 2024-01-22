@@ -1,7 +1,11 @@
 package com.i192.praktika.programavimopraktika.game;
 
 import com.i192.praktika.programavimopraktika.controller.Inputs;
+import com.i192.praktika.programavimopraktika.data.Box;
 import com.i192.praktika.programavimopraktika.data.Frame;
+import com.i192.praktika.programavimopraktika.data.Vector2d;
+import com.i192.praktika.programavimopraktika.graphics.SpriteSheet;
+import com.i192.praktika.programavimopraktika.spritesheet.BoxTypes;
 import javafx.scene.image.Image;
 import javafx.util.Pair;
 import net.java.games.input.Component;
@@ -15,11 +19,17 @@ import java.util.*;
 
 public class Animation {
 
-    static String animationsFolderPath = "/com/i192/praktika/programavimopraktika/animation";
-    Frame[] frames;
+    public SpriteSheet spriteSheet;
+    static String animationsFolderPath = "src/main/resources/com/i192/praktika/programavimopraktika/animation";
+    public Frame[] frames;
 
     Animation(Frame[] frames){
         this.frames = frames;
+
+    }
+    Animation(String spriteSheetName, String frameData){
+        this.frames = readFrameData(frameData);
+        this.spriteSheet = new SpriteSheet(spriteSheetName, 200, 200);
 
     }
 
@@ -42,23 +52,72 @@ public class Animation {
         return frameList.toArray(new Frame[0]);
     }
 
-    public Frame[] readFrameData(String fileName){
+    public Frame[] readFrameData(String frameDataName){
         List<String> lines = null;
 
         try {
-            lines = Files.readAllLines(Path.of(animationsFolderPath + "/frame_datas/" + fileName));
+            lines = Files.readAllLines(Path.of(animationsFolderPath + "/frame_datas/" + frameDataName));
         }catch (IOException e) {
+            System.out.println(animationsFolderPath + "/frame_datas/" + frameDataName);
             return null;
         }
 
-        ArrayList<Frame> frameList = new ArrayList<>();
+        int collCount = Integer.parseInt(lines.get(1));
+        Frame[] frameList = new Frame[collCount];
+        String[] velocityStrings = lines.get(3).split(" ");
+        String[] translationStrings = lines.get(2).split(" ");
 
 
-        for(String line:lines) {
-            frameList.add(new Frame(line));
+        String[][] boxStrings = new String[lines.size() - 5][7] ;
+        for(int i = 4; i < lines.size() - 1; i++){
+            boxStrings[i - 4] = lines.get(i).split(" ");
         }
 
-        return frameList.toArray(new Frame[0]);
+        ArrayList<Box>[] hitBoxArrList = new ArrayList[collCount];
+        ArrayList<Box>[] hurtBoxArrList = new ArrayList[collCount];
+        ArrayList<Box>[] collisionBoxArrList = new ArrayList[collCount];
+
+        for(int i = 0; i < collCount; i++){
+            hitBoxArrList[i] = new ArrayList<>();
+            hurtBoxArrList[i] = new ArrayList<>();
+            collisionBoxArrList[i] = new ArrayList<>();
+        }
+
+        for(String[] arr: boxStrings){
+
+            int x = Integer.parseInt(arr[5]);
+            int y = Integer.parseInt(arr[6]);
+            Vector2d topLeft = new Vector2d((double)x, (double)y);
+            Vector2d bottomRight= new Vector2d((double)(Integer.parseInt(arr[3]) + x), (double)(Integer.parseInt(arr[4]) + y));
+
+            if(arr[0].equals("collisionBox")){
+                collisionBoxArrList[Integer.parseInt(arr[2])].add(new Box(topLeft, bottomRight));
+            }
+            if(arr[0].equals("hurtBox")){
+                hurtBoxArrList[Integer.parseInt(arr[2])].add(new Box(topLeft, bottomRight));
+            }
+            if(arr[0].equals("hitBox")){
+                hitBoxArrList[Integer.parseInt(arr[2])].add(new Box(topLeft, bottomRight));
+            }
+        }
+
+
+        //Frame(Box[] hitBoxes, Box[] hurtBoxes, Box[] colliderBoxes, int imageColl, int imageRow, Vector2d translation, Vector2d velosityChange)
+        //Tomas format is:
+        //num rows
+        //num colls
+        //vectors of velocities yet for me itl be translations?
+        //then many lines each with a box: box.getName() + " " + row + " " + coll + " " + box.getWidth() + " " + box.getHeight() + " " + box.getxOffset() + " " + box.getyOffset()));
+        //                                     0                  1           2                  3                     4                        5                      6
+        //empty line on end...
+
+
+
+        for(int i = 0; i < collCount; i++) {
+            frameList[i] = new Frame (hitBoxArrList[i].toArray(new Box[0]), hurtBoxArrList[i].toArray(new Box[0]), collisionBoxArrList[i].toArray(new Box[0]), i, 0, new Vector2d(translationStrings[i]), new Vector2d(velocityStrings[i]));
+        }
+
+        return frameList;
     }
 
     public void writeFrameData(Frame[] frames, String fileName){
