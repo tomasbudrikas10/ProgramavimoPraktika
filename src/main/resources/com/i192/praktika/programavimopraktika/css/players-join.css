@@ -1,0 +1,23 @@
+#playerTurnLabel {
+    -fx-font-size: 50;
+}
+Label {
+    -fx-font-size: 20;
+    -fx-wrap-text: true;
+}
+* {
+    -fx-text-alignment: center;
+}
+VBox, HBox, #root {
+    -fx-alignment: center;
+}
+VBox {
+    -fx-spacing: 20;
+}
+HBox {
+    -fx-spacing: 50;
+}
+#root {
+    -fx-spacing: 50;
+    -fx-background-color: lightblue;
+}

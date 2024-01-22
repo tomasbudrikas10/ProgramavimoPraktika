@@ -4,7 +4,7 @@ public enum Scenes {
     MAIN_MENU("Main Menu", "main-menu", "mainmenu"),
     CHARACTER_SELECT("Character Select", "character-select", null),
     SETTINGS("Settings", "settings", "settings"),
-    PLAYERS_JOIN("Players Join", "players-join", null),
+    PLAYERS_JOIN("Players Join", "players-join", "players-join"),
     GAMEMODE_MENU("Gamemode Menu", "gamemode-menu", null),
     ONE_VS_ONE_FIGHT("One VS One Fight", "one-vs-one-fight", null),
     GAME_STAGE("Game Stage", "game-stage", null),
