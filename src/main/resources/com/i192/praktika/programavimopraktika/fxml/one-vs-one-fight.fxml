@@ -16,14 +16,10 @@
    <children>
             <ImageView fx:id="background" fitHeight="80.0" fitWidth="120.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/backgorund.png" />
+                  <Image url="@../images/background.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="ground" fitHeight="54.0" fitWidth="200.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../images/gorund.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="ground" fitHeight="54.0" fitWidth="200.0" pickOnBounds="true" />
             <ImageView fx:id="ivA" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="ivB" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6b6b6b" height="50.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />

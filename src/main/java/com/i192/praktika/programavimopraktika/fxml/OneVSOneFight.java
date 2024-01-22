@@ -114,7 +114,7 @@ public class OneVSOneFight implements Initialisable{
                     updateTime(gameManager);
                     updatePips(gameManager);
 
-                    updateRectangles(gameManager.characterStateA, gameManager.characterStateB);
+                    //updateRectangles(gameManager.characterStateA, gameManager.characterStateB);
 
                     if(gameManager.bWon){
                         fightOverAction(selectedCharacterB);
@@ -291,12 +291,12 @@ public class OneVSOneFight implements Initialisable{
     public void initialise() {
 
 
-        try {
-            ground.setImage(new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/gorund.png")));
-            background.setImage(new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/backgorund.png")));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        //try {
+            //ground.setImage(new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/gorund.png")));
+            //background.setImage(new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/backgorund.png")));
+        //} catch (FileNotFoundException e) {
+        //    throw new RuntimeException(e);
+        //}
         ground.preserveRatioProperty().set(false);
         background.preserveRatioProperty().set(false);
 
