@@ -5,6 +5,7 @@ import com.i192.praktika.programavimopraktika.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 import java.io.FileInputStream;
@@ -12,8 +13,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class MainMenu implements Initialisable{
-
-    public Region backgrounRegion;
+    public ImageView backgroundImageView;
+    public StackPane root;
 
     @FXML
     public void quitGameAction() throws IOException {
@@ -31,20 +32,8 @@ public class MainMenu implements Initialisable{
 
     @Override
     public void initialise() {
-        Image image = null;
-        try {
-            image = new Image(new FileInputStream("src/main/resources/com/i192/praktika/programavimopraktika/images/backgorund.png"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        BackgroundImage bgImage= new BackgroundImage(
-                image,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(100,100,true,true,true,true)
-        );
-        backgrounRegion.backgroundProperty().set(new Background(bgImage));
+        backgroundImageView.fitWidthProperty().bind(root.widthProperty());
+        backgroundImageView.fitHeightProperty().bind(root.heightProperty());
     }
 
 }

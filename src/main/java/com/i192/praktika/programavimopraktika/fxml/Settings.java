@@ -3,11 +3,16 @@ package com.i192.praktika.programavimopraktika.fxml;
 
 import com.i192.praktika.programavimopraktika.SceneManager;
 import com.i192.praktika.programavimopraktika.Scenes;
+import com.i192.praktika.programavimopraktika.SoundManager;
 import com.i192.praktika.programavimopraktika.controller.ControllerManager;
 import com.i192.praktika.programavimopraktika.controller.ControllerMapingsReadWriter;
 import com.i192.praktika.programavimopraktika.controller.Inputs;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import net.java.games.input.Component;
 import net.java.games.input.Controller;
@@ -19,10 +24,20 @@ public class Settings implements Initialisable{
 
     public Text textInfo;
     public Button controllerSetupButton;
+    public StackPane root;
+    public ImageView backgroundImageView;
+    public Slider volumeSlider;
+    public Label volumeSliderText;
 
     @Override
     public void initialise() {
+        backgroundImageView.fitWidthProperty().bind(root.widthProperty());
+        backgroundImageView.fitHeightProperty().bind(root.heightProperty());
 
+        volumeSlider.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
+            SoundManager.getInstance().setVolume(newValue.intValue());
+            volumeSliderText.setText(newValue.intValue() + "%");
+        }));
     }
 
     public void doneAction() throws IOException {

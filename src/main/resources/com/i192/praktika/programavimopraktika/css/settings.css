@@ -1,0 +1,53 @@
+* {
+    -fx-text-fill: white;
+}
+#textInfo {
+    -fx-fill: white;
+}
+.container, .container HBox, .container VBox {
+    -fx-alignment: center;
+}
+.container {
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+    -fx-background-radius: 20;
+    -fx-max-height: 500;
+    -fx-max-width: 500;
+    -fx-spacing: 30;
+}
+.container VBox, .container HBox {
+    -fx-spacing: 10;
+}
+.title {
+    -fx-font-size: 32;
+    -fx-font-weight: bold;
+}
+.section {
+    -fx-font-size: 24;
+}
+.option {
+    -fx-font-size: 16;
+}
+StackPane {
+    -fx-background-color: gray;
+    -fx-alignment: center;
+}
+Button {
+    -fx-font-family: Arial;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-font-size: 14;
+    -fx-padding: 10;
+    -fx-background-color: none;
+    -fx-border-color: white;
+    -fx-min-width: 150;
+}
+Button:hover {
+    -fx-text-fill: rgb(255, 165, 0);
+    -fx-border-color: rgb(255, 165, 0);
+}
+Button:pressed {
+    -fx-text-fill: rgb(255, 165, 0);
+    -fx-border-color: rgb(255, 165, 0);
+    -fx-background-color: white;
+}
