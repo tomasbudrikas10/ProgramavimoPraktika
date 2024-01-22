@@ -1,9 +1,9 @@
 package com.i192.praktika.programavimopraktika;
 
 public enum Scenes {
-    MAIN_MENU("Main Menu", "main-menu", "style"),
+    MAIN_MENU("Main Menu", "main-menu", "mainmenu"),
     CHARACTER_SELECT("Character Select", "character-select", null),
-    SETTINGS("Settings", "settings", null),
+    SETTINGS("Settings", "settings", "settings"),
     PLAYERS_JOIN("Players Join", "players-join", null),
     GAMEMODE_MENU("Gamemode Menu", "gamemode-menu", null),
     ONE_VS_ONE_FIGHT("One VS One Fight", "one-vs-one-fight", null),
