@@ -15,6 +15,7 @@ public class FightGameManager {
     public FightGameManager setFighters(Fighter A, Fighter B){
         this.characterStateA = new CharacterState(A, new Vector2d(100, 200));
         this.characterStateB = new CharacterState(B, new Vector2d(500, 200));
+        resetStage();
 
         Box[] groundBoxes = new Box[3];
         groundBoxes[0] = new Box(new Vector2d(0, 350), new Vector2d(600, 1000000));
@@ -107,8 +108,8 @@ public class FightGameManager {
     }
 
     public void resetStage() {
-        characterStateA.reset(new Vector2d(100, 200));
-        characterStateB.reset(new Vector2d(500, 200));
+        characterStateA.reset(new Vector2d(50, 100));
+        characterStateB.reset(new Vector2d(450, 100));
         timeEnd = Long.MAX_VALUE;
     }
 
@@ -139,7 +140,7 @@ public class FightGameManager {
     }
 
     void moveCharacter(CharacterState cs){
-        cs.rb.move(1f/30);
+        cs.rb.move(1f);
         if(cs.isOnRight){
             cs.rb.rootPosition.add(Vector2d.flipX(cs.getFrame().translation));
             cs.rb.velocity.add(Vector2d.flipX(cs.getFrame().velosityChange));
@@ -168,10 +169,12 @@ public class FightGameManager {
                     characterStateB.rb.rootPosition.add(Vector2d.mul(v,0.5));
                     characterStateA.rb.velocity.noPosY();
                     characterStateB.rb.velocity.noPosY();
+
+                    characterStateA.rb.velocity.noX();
+                    characterStateB.rb.velocity.noX();
                 }
             }
         }
-
     }
 
     private void characterGroundOverlap(CharacterState characterState) {
@@ -187,6 +190,7 @@ public class FightGameManager {
                     //toDo:actually should only take avay the part of velocity that is pointing towards the obstacle
                     characterState.rb.velocity.noPosY();
                     characterState.isGrounded = true;
+                    characterState.rb.velocity.noX();
                 }
             }
 

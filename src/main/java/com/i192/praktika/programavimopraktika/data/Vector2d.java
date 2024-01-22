@@ -39,6 +39,15 @@ public class Vector2d{
         return this;
     }
 
+    public Vector2d noX(){
+
+        setX(0);
+
+        return this;
+    }
+
+
+
     public void setX(double x){
         this.x = x;
     }

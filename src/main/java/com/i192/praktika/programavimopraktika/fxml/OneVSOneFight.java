@@ -35,7 +35,7 @@ import java.util.Vector;
 public class OneVSOneFight implements Initialisable{
 
     private static final int FRAMES_PER_SECOND = 18;
-    private static final double SECONDS_PER_FRAME = 1.0 / FRAMES_PER_SECOND;
+    //private static final double SECONDS_PER_FRAME = 1.0 / FRAMES_PER_SECOND;
     ConfiguredController playerA = null;
     ConfiguredController playerB = null;
 
@@ -83,68 +83,65 @@ public class OneVSOneFight implements Initialisable{
 
 
     public void gameLoop(){
-        //selectedCharacterA = Characters.getFighter(Characters.GIRL);
-        //selectedCharacterB = Characters.getFighter(Characters.BOY);
 
         AnimationTimer timer = new AnimationTimer() {
 
             FightGameManager gameManager = new FightGameManager().setFighters(selectedCharacterA, selectedCharacterB).setControllers(playerA, playerB);
 
-            SpriteSheet spriteSheet = new SpriteSheet("CircleFighterNew.png", 22, 22);
-
-
 
             boolean b = setPips(gameManager);
+            double lastTime = 0;
+
 
             @Override
             public void handle(long now) {
 
+                double elapsedSeconds = (now - lastTime) / 1e9;
+
+                // Check if enough time has passed to update the animation
+                if (elapsedSeconds >= 1.0 / FRAMES_PER_SECOND) {
+
+                    gameManager.update(now);
+
+                    //display both characters
+                    updateCharacterImages(gameManager.characterStateA, ivA);
+                    updateCharacterImages(gameManager.characterStateB, ivB);
 
 
-                gameManager.update(now);
 
-                //display both characters
-                updateCharacterImages(gameManager.characterStateA, ivA);
-                updateCharacterImages(gameManager.characterStateB, ivB);
+                    updateHealth(gameManager.characterStateA, gameManager.characterStateB);
 
+                    updateTime(gameManager);
+                    updatePips(gameManager);
 
+                    updateRectangles(gameManager.characterStateA, gameManager.characterStateB);
 
-                updateHealth(gameManager.characterStateA, gameManager.characterStateB);
+                    if(gameManager.bWon){
+                        fightOverAction(selectedCharacterB);
+                        winImage.setImage(new Image( getClass().getResource("/com/i192/praktika/programavimopraktika/images/" + selectedCharacterB.character.getImageName()).toExternalForm()));
+                        this.stop();
+                    }
 
-                updateTime(gameManager);
-                updatePips(gameManager);
+                    if(gameManager.aWon){
+                        fightOverAction(selectedCharacterA);
+                        winImage.setImage(new Image( getClass().getResource("/com/i192/praktika/programavimopraktika/images/" + selectedCharacterA.character.getImageName()).toExternalForm()));
+                        this.stop();
+                    }
 
-                updateRectangles(gameManager.characterStateA, gameManager.characterStateB);
-
-                if(gameManager.bWon){
-                    fightOverAction(selectedCharacterB);
-                    winImage.setImage(new Image( getClass().getResource("/com/i192/praktika/programavimopraktika/images/" + selectedCharacterB.character.getImageName()).toExternalForm()));
-                    this.stop();
+                    // Update lastTime for the next frame
+                    lastTime = now;
                 }
 
-                if(gameManager.aWon){
-                    fightOverAction(selectedCharacterA);
-                    winImage.setImage(new Image( getClass().getResource("/com/i192/praktika/programavimopraktika/images/" + selectedCharacterA.character.getImageName()).toExternalForm()));
-                    this.stop();
-                }
+
             }
         };
 
-        // Set up the Timeline to control the frame rate
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(SECONDS_PER_FRAME), event -> {
-            // Handle the animation timer in each frame
-            timer.handle(0);
-        }));
-        timeline.setCycleCount(Animation.INDEFINITE);
 
 
 
+        timer.start();
 
-        //timer.start();
-
-        timeline.play();
     }
-
     void updateRectangles(CharacterState characterStateA, CharacterState characterStateB){
         rectsUsed = 0;
         addRects(characterStateA.rb.rootPosition, characterStateA.getFrame().colliderBoxes, BoxTypes.COLLISION_BOX.getColor(), characterStateA.isOnRight);
@@ -202,8 +199,11 @@ public class OneVSOneFight implements Initialisable{
         Node pip = pipsA.getChildren().getFirst();
         int aCount = gameManager.characterStateA.pipsLeft;
 
+        if(pipsA.getChildren().size() == gameManager.characterStateA.pipsLeft){
+            updatePips(gameManager);
+            return true;
+        }
         for(int i = 1; i < aCount; i++){
-
             pipsA.getChildren().add(makePip());
             pipsB.getChildren().add(makePip());
 
