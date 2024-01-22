@@ -30,6 +30,12 @@ public class SceneManager {
         return sceneManager;
     }
 
+    public void cleanOldScenes() throws IOException {
+        loadFXMLScene(Scenes.PLAYERS_JOIN);
+        loadFXMLScene(Scenes.CHARACTER_SELECT);
+        loadFXMLScene(Scenes.ONE_VS_ONE_FIGHT);
+    }
+
     private void loadFXMLScene(Scenes sceneData) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/com/i192/praktika/programavimopraktika/fxml/" + sceneData.getFxmlFileName() + ".fxml"));
         Scene scene = new Scene(fxmlLoader.load());

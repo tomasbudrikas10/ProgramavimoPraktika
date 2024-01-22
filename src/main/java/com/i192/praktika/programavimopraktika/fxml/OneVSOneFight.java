@@ -229,6 +229,7 @@ public class OneVSOneFight implements Initialisable{
 
     public void toCharSelect(){
         try {
+            SceneManager.getInstance().cleanOldScenes();
             CharacterSelect cs = SceneManager.getInstance().getLoader(Scenes.CHARACTER_SELECT).getController();
             cs.setPlayers(playerA, playerB);
             SceneManager.getInstance().setScene(Scenes.CHARACTER_SELECT);
@@ -247,6 +248,7 @@ public class OneVSOneFight implements Initialisable{
 
     public void toMainMenu(){
         try {
+            SceneManager.getInstance().cleanOldScenes();
             SceneManager.getInstance().setScene(Scenes.MAIN_MENU);
         } catch (IOException e) {
             throw new RuntimeException(e);
