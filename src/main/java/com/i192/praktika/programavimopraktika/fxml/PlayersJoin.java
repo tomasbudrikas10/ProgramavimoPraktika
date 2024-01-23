@@ -61,7 +61,7 @@ public class PlayersJoin implements Initialisable{
                             } else if (playerA.controller.getType() == Controller.Type.STICK || playerA.controller.getType() == Controller.Type.GAMEPAD) {
                                 playerOneControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/console.png").toExternalForm()));
 
-                            } else if (playerA.controller.getType() == Controller.Type.KEYBOARD){
+                            } else if (playerA.controller.getType() == Controller.Type.KEYBOARD) {
                                 playerOneControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/keyboard.png").toExternalForm()));
                             } else {
                                 playerOneControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/surprise-box.png").toExternalForm()));
@@ -80,7 +80,7 @@ public class PlayersJoin implements Initialisable{
                                 } else if (playerB.controller.getType() == Controller.Type.STICK || playerB.controller.getType() == Controller.Type.GAMEPAD) {
                                     playerTwoControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/console.png").toExternalForm()));
 
-                                } else if (playerB.controller.getType() == Controller.Type.KEYBOARD){
+                                } else if (playerB.controller.getType() == Controller.Type.KEYBOARD) {
                                     playerTwoControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/keyboard.png").toExternalForm()));
                                 } else {
                                     playerTwoControllerImageView.setImage(new Image(getClass().getResource("/com/i192/praktika/programavimopraktika/images/surprise-box.png").toExternalForm()));

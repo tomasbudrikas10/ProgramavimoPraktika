@@ -101,18 +101,6 @@ public class Animation {
             }
         }
 
-
-        //Frame(Box[] hitBoxes, Box[] hurtBoxes, Box[] colliderBoxes, int imageColl, int imageRow, Vector2d translation, Vector2d velosityChange)
-        //Tomas format is:
-        //num rows
-        //num colls
-        //vectors of velocities yet for me itl be translations?
-        //then many lines each with a box: box.getName() + " " + row + " " + coll + " " + box.getWidth() + " " + box.getHeight() + " " + box.getxOffset() + " " + box.getyOffset()));
-        //                                     0                  1           2                  3                     4                        5                      6
-        //empty line on end...
-
-
-
         for(int i = 0; i < collCount; i++) {
             frameList[i] = new Frame (hitBoxArrList[i].toArray(new Box[0]), hurtBoxArrList[i].toArray(new Box[0]), collisionBoxArrList[i].toArray(new Box[0]), i, 0, new Vector2d(translationStrings[i]), new Vector2d(velocityStrings[i]));
         }
