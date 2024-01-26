@@ -356,14 +356,6 @@ public class SpritesheetEditor implements Initialisable {
         createAddBoxWindow(event).show();
     }
 
-    public void cycleAddingBoxType(){
-
-        if(currentlyAddingBoxType+1 != BoxTypes.values().length){
-            currentlyAddingBoxType++;
-        }else currentlyAddingBoxType=0;
-        cycleBoxTypeButton.setText(BoxTypes.values()[currentlyAddingBoxType].getName());
-
-    }
     public void setCurrentlyDisplayed(Image image) {
         currentlyDisplayed.setImage(image);
     }
