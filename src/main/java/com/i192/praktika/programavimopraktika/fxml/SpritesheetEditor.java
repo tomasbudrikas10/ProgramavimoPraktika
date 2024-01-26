@@ -101,42 +101,6 @@ public class SpritesheetEditor implements Initialisable {
         vboxOfTranslationAmountSpinner.getChildren().add(translateAmountSpinner);
         vboxOfXVelocityAmountSpinner.getChildren().add(xVelocityAmountSpinner);
         vboxOfYVelocityAmountSpinner.getChildren().add(yVelocityAmountSpinner);
-        setupImage(boxStackPane);
-    }
-
-    void setupImage(Node node){
-
-        node.setOnMousePressed(mouseEvent -> {
-            //System.out.println("afsdfasdf");
-            startX = mouseEvent.getX();
-            startY = mouseEvent.getY();
-            endX = startX;
-            endY = startY;
-        });
-
-        node.setOnMouseDragged(mouseEvent -> {
-            //System.out.println("afsdfasdf");
-            endX = mouseEvent.getX();
-            endY = mouseEvent.getY();
-        });
-
-        node.setOnMouseReleased(mouseEvent -> {
-            //System.out.println("afsdfasdf");
-            addBox(BoxTypes.values()[currentlyAddingBoxType], new Vector2d(startX, startY), new Vector2d(endX, endY));
-        });
-
-    }
-
-    public void addBox(BoxTypes type, Vector2d topLeft, Vector2d bottomRight) {
-
-        double width = bottomRight.x - topLeft.x;
-        double height = bottomRight.y - topLeft.y;
-        HitHurtCollisionBox box = new HitHurtCollisionBox(type, (int)width, (int)height);
-        box.setxOffset((int)topLeft.x);
-        box.setyOffset((int)topLeft.y);
-        this.boxes.get(currentlyDisplayedRow).get(currentlyDisplayedCol).add(box);
-        updateFrameBoxList();
-        displayCurrentBoxes();
     }
 
     public Stage createOpenSpritesheetWindow(MouseEvent event) {
